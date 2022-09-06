@@ -1,0 +1,32 @@
+@use 'sass:math';
+
+// px to rem/em
+@function px-to-rem-or-em($value, $unit: rem, $base: 16px) {
+  @if math.is-unitless($value) {
+    @error 'value must contain a unit. example: px-to-rem-or-em(#{$value}px)';
+  }
+  @if $unit == rem {
+    @return math.div($value, $base) + $unit;
+  }
+  @if $unit == em {
+    @return math.div($value, $base) + $unit;
+  }
+  @error 'unit must be rem or em';
+}
+
+// rem/em to px
+@function rem-or-em-to-px($value, $base: 16px) {
+  @if math.is-unitless($value) {
+    @error 'value must contain a unit. example: rem-or-em-to-px(#{$value}rem/em)';
+  }
+  @if math.unit($value) == 'rem' {
+    @return math.div($value, 1rem) * $base;
+  }
+  @if math.unit($value) == 'em' {
+    @return math.div($value, 1em) * $base;
+  }
+  @error 'value unit must be rem or em';
+}
+
+// @debug px-to-rem-or-em(16px);
+// @debug rem-or-em-to-px(1rem);

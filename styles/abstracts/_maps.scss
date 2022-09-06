@@ -1,0 +1,9 @@
+@use './functions' as func;
+
+$breakpoints: (
+  'xs': func.px-to-rem-or-em(200px, em),
+  'sm': func.px-to-rem-or-em(450px, em),
+  'md': func.px-to-rem-or-em(768px, em),
+  'lg': func.px-to-rem-or-em(1024px, em),
+  'xl': func.px-to-rem-or-em(2000px, em),
+);

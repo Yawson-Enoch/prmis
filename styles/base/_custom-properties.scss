@@ -1,0 +1,83 @@
+:root {
+  // colors
+  // blue
+  --blue-100: #ccccff;
+  --blue-200: #9999ff;
+  --blue-300: #6666ff;
+  --blue-400: #3333ff;
+  --blue-500: #0000ff;
+  --blue-600: #0000cc;
+  --blue-700: #000099;
+  --blue-800: #000066;
+  --blue-900: #000033;
+
+  // orange
+  --orange-100: #ffedcc;
+  --orange-200: #ffdb99;
+  --orange-300: #ffc966;
+  --orange-400: #ffb833;
+  --orange-500: #ffa600;
+  --orange-600: #cc8500;
+  --orange-700: #996300;
+  --orange-800: #664200;
+  --orange-900: #332100;
+
+  // grey
+  --grey-100: #f1f5f9;
+  --grey-200: #e1e7ef;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #65758b;
+  --grey-600: #48566a;
+  --grey-700: #344256;
+  --grey-800: #1d283a;
+  --grey-900: #0f1729;
+
+  // rest of the colors
+  --clr-black: #000000;
+  --clr-white: #ffffff;
+  --clr-error: #cc0000;
+  --clr-success: #005c00;
+  --clr-backdrop: rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(
+    45deg,
+    var(--clr-accent-primary),
+    var(--clr-accent-secondary)
+  );
+
+  // fonts
+  /* font family */
+  --ff-heading: 'Poppins', sans-serif;
+  --ff-body: 'PT Serif', serif;
+
+  /* font size */
+  --fs-xtra-small: clamp(0.4rem, 0.4rem + 0.4vw, 0.7rem);
+  --fs-small: clamp(0.8rem, 0.8rem + 0.8vw, 1.1rem);
+  --fs-medium: clamp(1.2rem, 1.2rem + 1.2vw, 1.5rem);
+  --fs-large: clamp(1.6rem, 1.6rem + 1.6vw, 1.9rem);
+
+  // page-specific variables
+  --radius-small: 0.6rem;
+  --radius-medium: 1.2rem;
+  --radius-round: 50%;
+  --radius-pill: 100vmax;
+  --space-xtra-small: var(--fs-xtra-small);
+  --space-small: var(--fs-small);
+  --space-medium: var(--fs-medium);
+  --space-large: var(--fs-large);
+  --aspect-video: 16 / 9;
+  --max-width: 1024px;
+  --transition-3s: 0.3s ease-in-out;
+  --transition-5s: 0.5s ease-in-out;
+
+  --clr-primary: var(--grey-200);
+  --clr-secondary: var(--grey-900);
+  --clr-accent-primary: var(--blue-600);
+  --clr-accent-secondary: var(--orange-500);
+  --clr-accent-tertiary: #1cb5f1;
+  --border-primary: 4px solid hsla(0, 0%, 0%, 0.15);
+  --primary-shadow-outside: 4px 4px 4px var(--grey-200),
+    -4px -4px 4px var(--grey-400);
+  --primary-shadow-inside: inset 4px 4px 4px var(--grey-200),
+    inset -4px -4px 4px var(--grey-400);
+}

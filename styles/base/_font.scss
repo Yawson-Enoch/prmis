@@ -1,0 +1,37 @@
+/* pt-serif */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Serif'), local('PTSerif-Regular'),
+    url('/fonts/pt-serif/pt-serif.woff') format('woff');
+  font-display: fallback;
+}
+/* pt-serif-italic */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: local('PT Serif Italic'), local('PTSerif-Italic'),
+    url('/fonts/pt-serif/pt-serif-italic.woff') format('woff');
+  font-display: fallback;
+}
+
+/* poppins-bold */
+@font-face {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Poppins Bold'), local('Poppins-Bold'),
+    url('/fonts/poppins/poppins-bold.woff') format('woff');
+  font-display: fallback;
+}
+/* poppins-bold-italic */
+@font-face {
+  font-family: Poppins;
+  font-style: italic;
+  font-weight: 700;
+  src: local('Poppins Bold Italic'), local('Poppins-BoldItalic'),
+    url('/fonts/poppins/poppins-bold-italic.woff') format('woff');
+  font-display: fallback;
+}

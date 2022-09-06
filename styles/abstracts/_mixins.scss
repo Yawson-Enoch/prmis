@@ -1,0 +1,43 @@
+@use './maps' as *;
+@use './functions' as *;
+
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid($width: px-to-rem-or-em(250px), $height: px-to-rem-or-em(70px)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min($width, 100%), 1fr));
+  grid-auto-rows: minmax($height, auto);
+}
+
+@mixin wrapper($width: var(--max-width)) {
+  width: min(95%, $width);
+  margin-inline: auto;
+}
+
+@mixin hover() {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin breakpoint($width: tablet) {
+  @if $width == mobile {
+    @media (max-width: map-get($breakpoints, sm)) {
+      @content;
+    }
+  }
+  @if $width == tablet {
+    @media (min-width: map-get($breakpoints, md)) {
+      @content;
+    }
+  }
+  @if $width == laptop {
+    @media (min-width: map-get($breakpoints, lg)) {
+      @content;
+    }
+  }
+}

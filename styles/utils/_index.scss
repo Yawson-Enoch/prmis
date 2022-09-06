@@ -1,0 +1,30 @@
+@use '../abstracts/index' as *;
+
+.center {
+  @include center();
+}
+
+:where(.flow :not(:first-child)) {
+  margin-top: var(--flow-space, 3rem);
+}
+
+.wrapper {
+  @include wrapper();
+}
+
+.btn {
+  font-size: var(--fs-small);
+  border-color: transparent;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-small);
+  background: var(--blue-600);
+  color: inherit;
+  transition: tranform 0.3s linear;
+
+  &:hover {
+    background: var(--blue-400);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}

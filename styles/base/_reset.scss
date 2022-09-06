@@ -1,0 +1,94 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/maps' as *;
+
+html {
+  // font-size: 62.5%;
+  scroll-padding-top: px-to-rem-or-em(20px);
+
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  @media (max-width: map-get($breakpoints, xs)) {
+    font-size: 30%;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--clr-accent-primary);
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-small);
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  // display: grid;
+  // align-content: space-between;
+  // grid-auto-rows: minmax(px-to-rem-or-em(70px), auto);
+}
+
+p {
+  line-height: 1.4;
+  opacity: 0.7;
+  // max-width: 35ch;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+:where(input, textarea, select, label, button) {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+p,
+a {
+  font-size: var(--fs-small);
+}
+
+h1 {
+  font-size: var(--fs-large);
+}
+
+h2 {
+  font-size: var(--fs-medium);
+}
