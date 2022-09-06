@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Logo from '../components/Logo/Logo';
 
 const Home: NextPage = () => {
   return (
@@ -13,12 +14,7 @@ const Home: NextPage = () => {
           />
           <link rel='icon' href='/favicon.png' />
         </Head>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
-          recusandae maxime illum, temporibus quos non dicta cum quidem. Ab
-          ducimus ipsam quod impedit sapiente accusantium tempore amet natus
-          eveniet dolore.
-        </p>
+        <Logo />
       </div>
     </main>
   );

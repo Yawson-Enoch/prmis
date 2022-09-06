@@ -40,9 +40,9 @@
   --clr-success: #005c00;
   --clr-backdrop: rgba(0, 0, 0, 0.3);
   --gradient-primary: linear-gradient(
-    45deg,
+    to right,
     var(--clr-accent-primary),
-    var(--clr-accent-secondary)
+    var(--clr-white)
   );
 
   // fonts
@@ -72,7 +72,7 @@
 
   --clr-primary: var(--grey-200);
   --clr-secondary: var(--grey-900);
-  --clr-accent-primary: var(--blue-600);
+  --clr-accent-primary: #137aca;
   --clr-accent-secondary: var(--orange-500);
   --clr-accent-tertiary: #1cb5f1;
   --border-primary: 4px solid hsla(0, 0%, 0%, 0.15);
