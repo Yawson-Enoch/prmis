@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../UserAuth/Login.module.scss';
 import { FaLock, FaEye } from 'react-icons/fa';
 
@@ -10,6 +10,7 @@ const Login = () => {
   >('password');
 
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   const canSubmit = [email, password].every(Boolean);
 
@@ -18,6 +19,10 @@ const Login = () => {
       passwordInputType === 'password' ? 'text' : 'password'
     );
   };
+
+  useEffect(() => {
+    emailInputRef.current?.focus();
+  }, []);
 
   return (
     <section className={`flow ${styles.wrapper}`}>
@@ -36,9 +41,9 @@ const Login = () => {
             id="email"
             required
             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-            autoFocus
             onChange={(e) => setEmail(e.target.value)}
             placeholder="enter email"
+            ref={emailInputRef}
           />
           <div className={styles.errorMessage}>Email is invalid.</div>
         </div>
