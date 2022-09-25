@@ -1,22 +1,20 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Login from '../components/UserAuth/Login';
-// import Logo from '../components/Logo/Logo';
+import Hero from '../components/Hero/Hero';
 
 const Home: NextPage = () => {
   return (
     <main>
-      <div className='wrapper'>
+      <div className="wrapper">
         <Head>
           <title>Obeyeyie Medical Center</title>
           <meta
-            name='description'
-            content='Welcome to Obeyeyie Medical Center.'
+            name="description"
+            content="Welcome to Obeyeyie Medical Center."
           />
-          <link rel='icon' href='/favicon.png' />
+          <link rel="icon" href="/favicon.png" />
         </Head>
-        {/* <Logo /> */}
-        <Login />
+        <Hero />
       </div>
     </main>
   );
