@@ -58,6 +58,7 @@ p {
 
 :where(input, textarea, select, label, button) {
   font: inherit;
+  display: block;
 }
 
 button {

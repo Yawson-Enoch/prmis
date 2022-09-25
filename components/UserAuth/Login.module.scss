@@ -1,0 +1,121 @@
+@use '../../styles/abstracts' as *;
+
+.wrapper {
+  max-width: px-to-rem-or-em(350px);
+  border: 2px solid lighten(black, 70%);
+  border-radius: var(--radius-small);
+  padding: px-to-rem-or-em(20px);
+}
+
+.icon {
+  width: px-to-rem-or-em(40px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  background-color: lighten(black, 70%);
+  color: lighten(red, 20%);
+  border-radius: var(--radius-pill);
+}
+
+.title {
+  text-align: center;
+  color: lighten(black, 20%);
+  font-size: var(--fs-medium);
+}
+
+.form {
+  --flow-space: 1.2rem;
+
+  button {
+    width: 100%;
+    height: px-to-rem-or-em(40px);
+    color: var(--clr-primary);
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  &:invalid {
+    button {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.formField {
+  label {
+    color: lighten(black, 30%);
+
+    &::after {
+      content: '*';
+      color: lighten(red, 10%);
+    }
+  }
+
+  input {
+    width: 100%;
+    height: px-to-rem-or-em(40px);
+    border: 2px solid lighten(black, 70%);
+    border-radius: var(--radius-xtra-small);
+    padding: px-to-rem-or-em(2px);
+    caret-color: lighten(black, 30%);
+
+    &:where(:focus, :focus-visible) {
+      outline: none;
+      border: 2px solid lighten(blue, 20%);
+    }
+  }
+
+  .errorMessage {
+    margin-top: 0.3rem;
+    color: lighten(red, 10%);
+    opacity: 0;
+    pointer-events: none;
+    font-size: px-to-rem-or-em(14px);
+  }
+
+  input:invalid:not(:placeholder-shown) {
+    border-color: var(--clr-error);
+
+    ~ .errorMessage {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
+
+.passwordControl {
+  position: relative;
+
+  input + span {
+    position: absolute;
+    top: 17%;
+    right: 2%;
+    color: lighten(black, 50%);
+    cursor: pointer;
+  }
+}
+
+.trustDevice {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-xtra-small);
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xtra-small);
+
+  @include breakpoint() {
+    flex-direction: row;
+  }
+
+  a {
+    font-size: px-to-rem-or-em(15px);
+  }
+}
