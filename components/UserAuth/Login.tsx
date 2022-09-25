@@ -52,14 +52,15 @@ const Login = () => {
               required
               ref={passwordInputRef}
               onChange={(e) => setPassword(e.target.value)}
-              pattern=".{8,}"
+              pattern="\S{8,}"
               placeholder="enter password"
             />
             <span onClick={togglePasswordType}>
               <FaEye />
             </span>
             <div className={styles.errorMessage}>
-              Password should be at least 8 characters long.
+              Password should be at least 8 characters long. <br /> Must not
+              contain whitespace.
             </div>
           </div>
         </div>

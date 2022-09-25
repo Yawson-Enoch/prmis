@@ -1,0 +1,9 @@
+@use '../../styles/abstracts/mixins' as *;
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @include breakpoint() {
+    grid-template-columns: 1fr 3fr;
+  }
+}

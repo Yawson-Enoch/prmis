@@ -9,7 +9,7 @@ const Hero = () => {
         <p className={styles.heroText}>
           Obeyeyie Medical Center. <br />
           The home of absolute healing. <br /> Your health is always our
-          priority
+          priority.
         </p>
       </div>
     </section>
