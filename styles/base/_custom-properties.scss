@@ -1,27 +1,4 @@
 :root {
-  // colors
-  // blue
-  --blue-100: #ccccff;
-  --blue-200: #9999ff;
-  --blue-300: #6666ff;
-  --blue-400: #3333ff;
-  --blue-500: #0000ff;
-  --blue-600: #0000cc;
-  --blue-700: #000099;
-  --blue-800: #000066;
-  --blue-900: #000033;
-
-  // orange
-  --orange-100: #ffedcc;
-  --orange-200: #ffdb99;
-  --orange-300: #ffc966;
-  --orange-400: #ffb833;
-  --orange-500: #ffa600;
-  --orange-600: #cc8500;
-  --orange-700: #996300;
-  --orange-800: #664200;
-  --orange-900: #332100;
-
   // grey
   --grey-100: #f1f5f9;
   --grey-200: #e1e7ef;
@@ -74,9 +51,9 @@
   --clr-primary: var(--grey-200);
   --clr-secondary: var(--grey-900);
   --clr-accent-primary: #137aca;
-  --clr-accent-secondary: var(--orange-500);
+  --clr-accent-secondary: #b87e14;
   --clr-accent-tertiary: #1cb5f1;
-  --border-primary: 4px solid hsla(0, 0%, 0%, 0.15);
+  --border-primary: 4px solid var(--grey-500);
   --shadow-small: 0 0 5px var(--grey-400);
   --shadow-medium: 0 0 10px var(--grey-400);
   --shadow-large: 0 0 15px var(--grey-400);

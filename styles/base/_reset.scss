@@ -1,8 +1,6 @@
-@use '../abstracts/functions' as *;
-@use '../abstracts/maps' as *;
+@use '../abstracts' as *;
 
 html {
-  // font-size: 62.5%;
   scroll-padding-top: px-to-rem-or-em(20px);
 
   &:focus-within {
@@ -37,15 +35,11 @@ body {
   color: var(--clr-secondary);
   min-height: 100vh;
   overflow-x: hidden;
-  // display: grid;
-  // align-content: space-between;
-  // grid-auto-rows: minmax(px-to-rem-or-em(70px), auto);
 }
 
 p {
   line-height: 1.4;
   opacity: 0.7;
-  // max-width: 35ch;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -79,6 +73,17 @@ ul {
 a {
   display: block;
   text-decoration: none;
+  color: $clr-links;
+
+  @include hover() {
+    &:hover {
+      color: $clr-links-hover;
+    }
+  }
+
+  &:active {
+    color: $clr-links-hover;
+  }
 }
 
 p,

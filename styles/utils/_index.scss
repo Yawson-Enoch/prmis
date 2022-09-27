@@ -1,4 +1,4 @@
-@use '../abstracts/index' as *;
+@use '../abstracts' as *;
 
 .center {
   @include center();
@@ -14,7 +14,7 @@
 
 .btn {
   font-size: var(--fs-small);
-  background-color: lighten(blue, 10%);
+  background-color: $clr-links;
   border-radius: var(--radius-xtra-small);
   border-color: transparent;
   padding: 0.3rem 0.7rem;
@@ -23,7 +23,7 @@
 
   @include hover() {
     &:not(:disabled):hover {
-      background-color: lighten(blue, 20%);
+      background-color: $clr-links-hover;
     }
   }
 
