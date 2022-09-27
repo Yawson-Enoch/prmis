@@ -3,7 +3,7 @@ import Logo from '../Logo/Logo';
 
 const Hero = () => {
   return (
-    <section className={`center ${styles.heroWrapper}`}>
+    <section className={styles.heroWrapper}>
       <div className="flow">
         <Logo />
         <p className={styles.heroText}>

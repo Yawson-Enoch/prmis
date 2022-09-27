@@ -21,16 +21,13 @@
   color: inherit;
   transition: tranform 0.3s linear;
 
-  &:not(:disabled):hover {
-    background-color: lighten(blue, 20%);
+  @include hover() {
+    &:not(:disabled):hover {
+      background-color: lighten(blue, 20%);
+    }
   }
 
-  &:where(:focus, :focus-visible) {
-    outline: none;
-    background-color: lighten(blue, 20%);
-  }
-
-  &:active {
+  &:not(:disabled):active {
     transform: scale(0.98);
   }
 }

@@ -1,9 +1,9 @@
-@use './functions' as func;
+@use './functions' as *;
 
 $breakpoints: (
-  'xs': func.px-to-rem-or-em(200px, em),
-  'sm': func.px-to-rem-or-em(450px, em),
-  'md': func.px-to-rem-or-em(768px, em),
-  'lg': func.px-to-rem-or-em(1024px, em),
-  'xl': func.px-to-rem-or-em(2000px, em),
+  xs: px-to-rem-or-em(200px, em),
+  sm: px-to-rem-or-em(450px, em),
+  md: px-to-rem-or-em(768px, em),
+  lg: px-to-rem-or-em(1024px, em),
+  xl: px-to-rem-or-em(2000px, em),
 );
