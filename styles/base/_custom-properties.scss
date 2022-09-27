@@ -77,8 +77,11 @@
   --clr-accent-secondary: var(--orange-500);
   --clr-accent-tertiary: #1cb5f1;
   --border-primary: 4px solid hsla(0, 0%, 0%, 0.15);
-  --primary-shadow-outside: 4px 4px 4px var(--grey-200),
+  --shadow-small: 0 0 5px var(--grey-400);
+  --shadow-medium: 0 0 10px var(--grey-400);
+  --shadow-large: 0 0 15px var(--grey-400);
+  --primary-shadow-outside: 4px 4px 4px var(--grey-300),
     -4px -4px 4px var(--grey-400);
-  --primary-shadow-inside: inset 4px 4px 4px var(--grey-200),
+  --primary-shadow-inside: inset 4px 4px 4px var(--grey-300),
     inset -4px -4px 4px var(--grey-400);
 }
