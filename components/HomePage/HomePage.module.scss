@@ -2,8 +2,16 @@
 
 .main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  @include breakpoint() {
+  place-content: center;
+  padding: var(--space-small);
+
+  @include breakpoint(md) {
+    grid-template-columns: 1fr 2fr;
+    place-content: unset;
+    padding: 0;
+  }
+
+  @include breakpoint(lg) {
     grid-template-columns: 1fr 3fr;
   }
 }
