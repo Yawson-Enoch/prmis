@@ -1,8 +1,14 @@
 @use '../../styles/abstracts' as *;
 
 .wrapper {
-  max-width: px-to-rem-or-em(350px);
+  width: min(px-to-rem-or-em(350px), 100%);
   padding: px-to-rem-or-em(20px);
+  border: 2px solid lighten(#000, 60%);
+  border-radius: var(--radius-small);
+
+  @include breakpoint(md) {
+    border: none;
+  }
 }
 
 .icon {
@@ -27,16 +33,11 @@
     width: 100%;
     height: px-to-rem-or-em(40px);
     color: var(--clr-primary);
-
-    &:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
   }
 
   &:invalid {
     button {
-      opacity: 0.3;
+      opacity: 0.2;
       cursor: not-allowed;
     }
   }
@@ -62,7 +63,7 @@
 
     &:where(:focus, :focus-visible) {
       outline: none;
-      border: 2px solid lighten(blue, 20%);
+      border-color: var(--clr-accent-primary);
     }
   }
 
@@ -75,7 +76,7 @@
   }
 
   input:invalid:not(:placeholder-shown) {
-    border-color: var(--clr-error);
+    border-color: lighten(red, 30%);
 
     ~ .errorMessage {
       pointer-events: all;
@@ -89,8 +90,8 @@
 
   input + span {
     position: absolute;
-    top: 17%;
-    right: 2%;
+    top: 13px;
+    right: 10px;
     color: lighten(black, 50%);
     cursor: pointer;
   }
@@ -109,7 +110,7 @@
   flex-direction: column;
   gap: var(--space-xtra-small);
 
-  @include breakpoint() {
+  @include breakpoint(md) {
     flex-direction: row;
   }
 
