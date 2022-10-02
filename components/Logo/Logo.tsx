@@ -1,16 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Logo.module.scss';
+import { motion } from 'framer-motion';
+import { scaleDown } from '../../animations/animations';
 
 const Logo = () => {
   return (
-    <div className={styles.companyInfo}>
+    <motion.div
+      className={styles.companyInfo}
+      variants={scaleDown}
+      initial="initial"
+      animate="animate"
+    >
       <div className={styles.logo}>
-        <Link href='/'>
-          <a className='center'>
+        <Link href="/">
+          <a className="center">
             <Image
-              src='/assets/cover/logo.png'
-              alt='Obeyeyie Medical Center logo'
+              src="/assets/cover/logo.png"
+              alt="Obeyeyie Medical Center logo"
               width={45}
               height={45}
             ></Image>
@@ -23,7 +30,7 @@ const Logo = () => {
 
         <p>We prioritize your health</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
