@@ -1,13 +1,15 @@
-import Hero from '../Hero/Hero';
-import Login from '../UserAuth/Login';
+import Header from './Header/Header';
+import Main from './Main/Main';
+import Footer from './Footer/Footer';
 import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
-    <main className={styles.main}>
-      <Login />
-      <Hero />
-    </main>
+    <div className={styles.homePageLayout}>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
   );
 };
 
