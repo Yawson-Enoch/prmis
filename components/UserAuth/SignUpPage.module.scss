@@ -3,31 +3,26 @@
 
 .main {
   min-height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-image: url(/assets/cover/PH2.jpg);
+  background-image: url(/assets/cover/signup.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  padding-block: px-to-rem-or-em(10px);
 
   @include breakpoint(lg) {
-    background-position: -15rem -20rem;
+    background-position: -250px -175px;
+    justify-content: flex-end;
+    padding-right: px-to-rem-or-em(50px);
   }
 }
 
 .formContainer {
-  --flow-space: 1.2rem;
+  --flow-space: 1rem;
   background-color: var(--clr-primary);
-  width: min(px-to-rem-or-em(400px), 100%);
+  width: min(px-to-rem-or-em(400px), 95%);
   padding: px-to-rem-or-em(20px);
   border-radius: var(--radius-small);
-  box-shadow: var(--shadow-medium);
-  margin-inline: auto;
-
-  @include breakpoint(lg) {
-    margin-inline: unset;
-    margin-right: px-to-rem-or-em(50px);
-  }
+  box-shadow: var(--shadow-large);
 }
 
 .formTitle {
@@ -78,6 +73,7 @@
   input {
     width: 100%;
     background-color: var(--clr-primary);
+    background-color: #e8f6f3;
     height: px-to-rem-or-em(55px);
     border: 2px solid lighten(black, 70%);
     border-radius: var(--radius-xtra-small);
@@ -97,8 +93,20 @@
     &:not(:placeholder-shown) + label {
       transform: translate(0.5rem, -4.2rem) scale(0.9);
       background-color: var(--clr-primary);
+      background-color: #e8f6f3;
       color: var(--clr-accent-primary);
+      border: 2px solid var(--clr-accent-primary);
       opacity: 1;
+    }
+
+    &:invalid:not(:placeholder-shown) + label,
+    &:invalid:not(:placeholder-shown, :focus) + label {
+      border: 2px solid lighten(red, 30%);
+    }
+
+    &:valid:not(:placeholder-shown) + label,
+    &:valid:not(:placeholder-shown, :focus) + label {
+      border: 2px solid lighten(green, 20%);
     }
 
     &:focus + label::after,

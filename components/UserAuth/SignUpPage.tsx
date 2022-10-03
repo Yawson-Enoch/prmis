@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import styles from './SignUp.module.scss';
+import styles from './SignUpPage.module.scss';
 
-const SignUp = () => {
+const SignUpPage = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -39,8 +39,8 @@ const SignUp = () => {
   };
 
   return (
-    <main className={styles.main}>
-      <section className={`flow ${styles.formContainer}`}>
+    <main className={`center ${styles.main}`}>
+      <div className={`flow ${styles.formContainer}`}>
         <div>
           <p className={styles.formTitle}>Patient Sign Up</p>
         </div>
@@ -166,11 +166,11 @@ const SignUp = () => {
           </button>
         </form>
         <div className={styles.loginOption}>
-          <Link href="/">Already have an account? Log In.</Link>
+          <Link href="/login">Already have an account? Log In.</Link>
         </div>
-      </section>
+      </div>
     </main>
   );
 };
 
-export default SignUp;
+export default SignUpPage;

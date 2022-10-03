@@ -1,14 +1,27 @@
 @use '../../styles/abstracts' as *;
 
-.wrapper {
-  width: min(px-to-rem-or-em(350px), 100%);
-  padding: px-to-rem-or-em(20px);
-  border: 2px solid lighten(#000, 60%);
-  border-radius: var(--radius-small);
+.main {
+  min-height: 100vh;
+  background-image: url(/assets/cover/login.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-block: px-to-rem-or-em(10px);
 
-  @include breakpoint(md) {
-    border: none;
+  @include breakpoint(lg) {
+    background-position: -250px -70px;
+    justify-content: flex-end;
+    padding-right: px-to-rem-or-em(50px);
   }
+}
+
+.formContainer {
+  --flow-space: 1rem;
+  background-color: var(--clr-primary);
+  width: min(px-to-rem-or-em(400px), 95%);
+  padding: px-to-rem-or-em(20px);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-large);
 }
 
 .icon {
@@ -60,6 +73,7 @@
     border-radius: var(--radius-xtra-small);
     padding: px-to-rem-or-em(2px);
     caret-color: lighten(black, 30%);
+    background-color: #e8f6f3;
 
     &:where(:focus, :focus-visible) {
       outline: none;
