@@ -1,0 +1,66 @@
+@use '../../../styles/abstracts' as *;
+@use '../../../styles/animations' as *;
+
+.header {
+  background-color: lighten(black, 75%);
+  padding-block: px-to-rem-or-em(10px);
+  box-shadow: var(--shadow-large);
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--space-small);
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+}
+
+.linksContainer {
+  gap: var(--space-large);
+  flex-direction: column;
+
+  @media (min-width: px-to-rem-or-em(550px)) {
+    flex-direction: row;
+  }
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+}
+
+.btnsContainer {
+  gap: var(--space-xtra-small);
+  button:last-child {
+    outline: 2px solid lighten(black, 75%);
+    outline-offset: -5px;
+  }
+}
+
+.emergencyServiceContainer {
+  --flow-space: 0.5rem;
+  width: fit-content;
+
+  p {
+    border-bottom: 2px solid var(--clr-secondary);
+    padding-bottom: px-to-rem-or-em(10px);
+  }
+}
+
+.callLink {
+  width: fit-content;
+  gap: px-to-rem-or-em(5px);
+  animation: scale-up 1s infinite;
+
+  @include hover() {
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  &:active {
+    animation-play-state: paused;
+  }
+}

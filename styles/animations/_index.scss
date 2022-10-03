@@ -17,3 +17,15 @@
     transform: translateX(4%);
   }
 }
+
+@keyframes scale-up {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+    color: var(--clr-accent-secondary);
+  }
+}
