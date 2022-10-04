@@ -1,32 +1,13 @@
 @use '../../../styles/abstracts' as *;
 
-.mainWrapper {
-  --flow-space: 1rem;
-}
-
-.servicesContainer {
-  @include grid(15rem, 10rem);
-  gap: var(--space-medium);
-  place-items: center top;
-}
-
-.serviceContainer {
-  --flow-space: 2rem;
-  background-color: var(--clr-secondary);
+.sliderContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-inline: auto;
   color: var(--clr-primary);
-  border: 3px solid var(--clr-secondary);
-  border-radius: var(--radius-small);
-  overflow: hidden;
-  padding-block-end: px-to-rem-or-em(30px);
+  margin-block-end: 3rem;
 
-  :not(:first-child) {
-    padding-inline: px-to-rem-or-em(10px);
-  }
-}
-
-.imageContainer {
-  img {
-    width: 100%;
-    object-fit: cover;
+  @include breakpoint(md) {
+    width: 70%;
   }
 }
