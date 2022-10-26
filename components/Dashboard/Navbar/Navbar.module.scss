@@ -1,0 +1,19 @@
+@use '../../../styles/abstracts' as *;
+
+.box {
+  height: px-to-rem-or-em(60px);
+  border-bottom: 1px solid lighten(black, 80%);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-inline-end: px-to-rem-or-em(10px);
+}
+
+.name {
+  font-size: var(--fs-large);
+  font-weight: 500;
+
+  span {
+    text-transform: capitalize;
+  }
+}
