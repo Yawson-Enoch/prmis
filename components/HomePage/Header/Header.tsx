@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 import { FaPhoneAlt } from 'react-icons/fa';
 import Logo from '../../Logo/Logo';
 import styles from './Header.module.scss';
+import { useSession } from 'next-auth/react';
 
 const Header = () => {
   const router = useRouter();
+  const { status } = useSession();
 
   return (
     <header className={styles.header}>
@@ -21,19 +23,33 @@ const Header = () => {
               <span>+233 000000000</span>
             </a>
           </div>
-          <div className={`center ${styles.btnsContainer}`}>
+
+          {status === 'authenticated' && (
             <button
-              className="btn"
+              className={`btn ${styles.dash}`}
               onClick={() => {
-                router.replace('/login');
+                router.push('/dashboard');
               }}
             >
-              Sign In
+              Dashboard
             </button>
+          )}
+
+          <div className={`center ${styles.authBtns}`}>
+            {status === 'unauthenticated' && (
+              <button
+                className={`btn ${styles.login}`}
+                onClick={() => {
+                  router.push('/login');
+                }}
+              >
+                Sign In
+              </button>
+            )}
             <button
-              className="btn"
+              className={`btn ${styles.signup}`}
               onClick={() => {
-                router.replace('/signup');
+                router.push('/signup');
               }}
             >
               Sign Up

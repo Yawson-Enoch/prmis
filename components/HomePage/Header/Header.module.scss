@@ -31,12 +31,23 @@
   }
 }
 
-.btnsContainer {
+.authBtns {
   gap: var(--space-xtra-small);
-  button:last-child {
-    outline: 2px solid lighten(black, 75%);
-    outline-offset: -5px;
+  margin-left: auto;
+}
+
+.dash {
+  background-color: var(--clr-accent-secondary);
+
+  &:hover {
+    background-color: var(--clr-accent-secondary) !important;
+    opacity: 0.8;
   }
+}
+
+.signup {
+  outline: 2px solid lighten(black, 75%);
+  outline-offset: -5px;
 }
 
 .emergencyServiceContainer {

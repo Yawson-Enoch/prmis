@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
 import styles from '../UserAuth/LoginPage.module.scss';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +12,21 @@ const LoginPage = () => {
     'password' | 'text'
   >('password');
 
-  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (errorMessage) {
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
+    }
+
+    return () => clearInterval(timer);
+  }, [errorMessage]);
+
+  const router = useRouter();
 
   const canSubmit = [email, password].every(Boolean);
 
@@ -18,6 +34,18 @@ const LoginPage = () => {
     setPasswordInputType(
       passwordInputType === 'password' ? 'text' : 'password'
     );
+  };
+
+  const submitHandler = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const result: any = await signIn('credentials', {
+      redirect: false,
+      email: email,
+      password: password,
+    });
+
+    result.error ? setErrorMessage(result.error) : router.replace('/dashboard');
   };
 
   return (
@@ -30,7 +58,7 @@ const LoginPage = () => {
           <p className={styles.title}>Log In</p>
         </div>
 
-        <form className={`flow ${styles.form}`}>
+        <form className={`flow ${styles.form}`} onSubmit={submitHandler}>
           <div className={styles.formField}>
             <label htmlFor="email">Email</label>
             <input
@@ -52,7 +80,6 @@ const LoginPage = () => {
                 type={passwordInputType}
                 id="password"
                 required
-                ref={passwordInputRef}
                 onChange={(e) => setPassword(e.target.value)}
                 pattern="\S{8,}"
                 placeholder="enter password"
@@ -70,17 +97,24 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
-          <div className={styles.trustDevice}>
+          {/* <div className={styles.trustDevice}>
             <label htmlFor="trust">Trust this device</label>
             <input type="checkbox" name="trust" id="trust" />
-          </div>
-          <button className="btn" disabled={!canSubmit}>
+          </div> */}
+          <button type="submit" className="btn" disabled={!canSubmit}>
             Login
           </button>
+          {errorMessage && (
+            <p
+              style={{ color: 'hsla(0, 100%, 50%, 0.8)', marginTop: '0.5rem' }}
+            >
+              {errorMessage}
+            </p>
+          )}
         </form>
         <div></div>
         <div className={styles.optionsContainer}>
-          <a href="#">Forgot password?</a>
+          {/* <a href="#">Forgot password?</a> */}
           <Link href="/signup">Don't have an account? Sign Up.</Link>
         </div>
       </div>

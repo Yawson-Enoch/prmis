@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import styles from './SignUpPage.module.scss';
 
@@ -8,13 +9,29 @@ const SignUpPage = () => {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '',
+    phone: '',
     password: '',
   });
 
   const [passwordInputType, setPasswordInputType] = useState<
     'password' | 'text'
   >('password');
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (errorMessage) {
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
+    }
+
+    return () => clearInterval(timer);
+  }, [errorMessage]);
+
+  const router = useRouter();
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const type = e.target.type;
@@ -33,16 +50,38 @@ const SignUpPage = () => {
 
   const canSubmit = [...Object.values(formData)].every(Boolean);
 
-  const submitHandler = (e: FormEvent) => {
+  const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
+
     // send data to DB and redirect to login: no need to reset fields on submit
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+        }),
+      });
+
+      const { message }: any = await response.json();
+
+      if (!response.ok) {
+        throw new Error(message || 'Something went wrong!');
+      } else {
+        router.replace('/login');
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
     <main className={`center ${styles.main}`}>
       <div className={`flow ${styles.formContainer}`}>
         <div>
-          <p className={styles.formTitle}>Patient Sign Up</p>
+          <p className={styles.formTitle}>Sign Up</p>
         </div>
         <form className={styles.form} onSubmit={submitHandler}>
           <div className={styles.userNames}>
@@ -97,15 +136,15 @@ const SignUpPage = () => {
           <div className={styles.formField}>
             <input
               type="tel"
-              name="phoneNumber"
-              id="phoneNumber"
-              placeholder="+233 000 000 000"
+              name="phone"
+              id="phone"
+              placeholder="+233000000000"
               required
-              value={formData.phoneNumber}
+              value={formData.phone}
               onChange={changeHandler}
               pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
             />
-            <label htmlFor="phoneNumber">Phone Number</label>
+            <label htmlFor="phone">Phone Number</label>
             <p className={styles.errorMessage}>
               Incorrect format! <br />
               Example: 000-000-0000
@@ -164,6 +203,15 @@ const SignUpPage = () => {
           <button type="submit" className="btn" disabled={!canSubmit}>
             Sign Up
           </button>
+          <p
+            style={{
+              color: 'hsla(0, 100%, 50%, 0.8)',
+              marginTop: '0.5rem',
+              display: `${errorMessage ? 'block' : 'none'}`,
+            }}
+          >
+            {errorMessage}
+          </p>
         </form>
         <div className={styles.loginOption}>
           <Link href="/login">Already have an account? Log In.</Link>
