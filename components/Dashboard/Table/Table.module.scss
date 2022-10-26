@@ -1,0 +1,23 @@
+.table {
+  background-color: var(--clr-primary);
+  box-shadow: none;
+
+  * {
+    background-color: var(--clr-primary);
+  }
+}
+
+.tableCell {
+  text-align: left;
+}
+
+.cellWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cellImage {
+  border-radius: 50%;
+  object-fit: cover;
+}

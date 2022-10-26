@@ -1,0 +1,31 @@
+@use '../../../styles/abstracts' as *;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-xtra-small);
+  box-shadow: var(--shadow-small);
+  padding: var(--space-medium);
+  border-radius: var(--radius-small);
+  margin-inline: px-to-rem-or-em(10px);
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.total {
+  color: var(--clr-success);
+  font-size: 10rem;
+  justify-self: center;
+  text-align: center;
+}
