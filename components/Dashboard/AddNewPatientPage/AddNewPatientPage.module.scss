@@ -1,0 +1,94 @@
+@use '../../../styles/abstracts' as *;
+
+.list {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+}
+
+.container {
+  padding: px-to-rem-or-em(10px);
+
+  h1 {
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--radius-xtra-small);
+    padding: px-to-rem-or-em(20px) px-to-rem-or-em(10px);
+  }
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgContainer {
+  border: 2px solid lighten(gray, 10%);
+  border-radius: var(--radius-round);
+  width: fit-content;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.formContainer {
+  margin-block-start: px-to-rem-or-em(20px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-large);
+}
+
+.form {
+  --flow-space: 1.5rem;
+}
+
+.formInput {
+  input:not([type='file']) {
+    background-color: #e8f6f3;
+    height: px-to-rem-or-em(35px);
+    border: 2px solid lighten(gray, 30%);
+    border-radius: var(--radius-xtra-small);
+    padding: px-to-rem-or-em(2px);
+    caret-color: lighten(black, 30%);
+
+    &:is(:focus, :focus-visible) {
+      outline: none;
+      border-color: var(--clr-accent-primary);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-large);
+}
+
+.picPlaceholder {
+  font-size: 150px;
+  padding: 0.5rem;
+  color: lighten(gray, 10%);
+}
+
+.formInputRadioOptions,
+.formInputRadio {
+  display: flex;
+  align-items: center;
+  gap: px-to-rem-or-em(10px);
+
+  p {
+    opacity: 1;
+  }
+}
+
+.btn {
+  margin-left: auto;
+}
