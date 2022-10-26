@@ -9,8 +9,8 @@ export const bumpEffect = {
 
 export const scaleUp = {
   hide: {
-    translateX: '-30%',
-    translateY: '-30%',
+    translateX: '100%',
+    translateY: '-50%',
     scale: 0.5,
     opacity: 0,
   },
@@ -20,7 +20,7 @@ export const scaleUp = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.1,
+      duration: 0.3,
     },
   },
 };
@@ -42,8 +42,24 @@ export const scaleDown = {
 };
 
 export const slideLeft = {
+  hide: {
+    x: 100,
+    opacity: 0,
+    scale: 0.9,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+export const slideRight = {
   initial: {
-    x: 20,
+    x: -20,
     opacity: 0,
     scale: 0.9,
   },
@@ -52,9 +68,19 @@ export const slideLeft = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: 'tween',
-      delay: 0.4,
       duration: 0.3,
+    },
+  },
+};
+
+export const flash = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.05,
     },
   },
 };
