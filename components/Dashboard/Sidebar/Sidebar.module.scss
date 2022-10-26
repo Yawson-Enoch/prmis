@@ -1,0 +1,63 @@
+@use '../../../styles/abstracts' as *;
+
+.sidebarContainer {
+  --flow-space: 1.5rem;
+  border-right: 1px solid lighten(black, 80%);
+}
+
+.logoSecondary {
+  border-bottom: 1px solid lighten(black, 80%);
+  height: px-to-rem-or-em(60px);
+  @include center();
+  font-size: var(--fs-large);
+  color: var(--clr-accent-primary);
+  cursor: pointer;
+}
+
+.sidebarLinks {
+  p {
+    padding-inline-start: px-to-rem-or-em(5px);
+    font-size: var(--fs-large);
+    margin-bottom: px-to-rem-or-em(5px);
+
+    &:not(:nth-child(1), .logOut) {
+      margin-top: px-to-rem-or-em(20px);
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-inline-start: px-to-rem-or-em(30px);
+    padding-inline-start: px-to-rem-or-em(5px);
+    border-top-left-radius: var(--radius-small);
+    border-bottom-left-radius: var(--radius-small);
+
+    &:hover {
+      background-color: lighten(blue, 40%);
+    }
+
+    a,
+    .logOut {
+      color: var(--clr-accent-primary);
+      opacity: 1;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    > :first-child {
+      font-size: px-to-rem-or-em(40px);
+      color: var(--clr-accent-primary);
+      padding-inline-end: px-to-rem-or-em(10px);
+    }
+
+    > :last-child {
+      font-size: var(--fs-medium);
+    }
+  }
+
+  li:last-of-type {
+    margin-top: px-to-rem-or-em(10px);
+  }
+}
