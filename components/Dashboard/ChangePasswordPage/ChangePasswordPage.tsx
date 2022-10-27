@@ -41,8 +41,6 @@ const ChangePasswordPage = () => {
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');
       } else {
-        // router.replace('/login');
-        // alert('Password Changed Successfully');
         dispatch({
           type: 'NOTIFICATION',
           payload: {

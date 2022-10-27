@@ -53,7 +53,6 @@ const SignUpPage = () => {
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
 
-    // send data to DB and redirect to login: no need to reset fields on submit
     try {
       const response = await fetch('/api/auth/signup', {
         method: 'POST',
@@ -99,7 +98,7 @@ const SignUpPage = () => {
               />
               <label htmlFor="firstName">First Name</label>
               <p className={styles.errorMessage}>
-                First name must be 2-16 characters long.
+                First name must be 2-16 characters long - all lowercase.
               </p>
             </div>
             <div className={styles.formField}>
@@ -115,7 +114,7 @@ const SignUpPage = () => {
               />
               <label htmlFor="lastName">Last Name</label>
               <p className={styles.errorMessage}>
-                Last name must be 2-16 characters long.
+                Last name must be 2-16 characters long - all lowercase.
               </p>
             </div>
           </div>

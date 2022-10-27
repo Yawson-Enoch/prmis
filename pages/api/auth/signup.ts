@@ -5,29 +5,13 @@ import Admin from '../../../models/admin';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<{ message: string }>
 ) {
   const { method } = req;
 
   await dbConnect();
 
   switch (method) {
-    case 'GET': {
-      try {
-        const allAdmins = await Admin.find({});
-        res.status(StatusCodes.OK).json({
-          message: 'Success.',
-          admins: allAdmins,
-          nbOfHits: allAdmins.length,
-        });
-      } catch (error: any) {
-        res
-          .status(StatusCodes.INTERNAL_SERVER_ERROR)
-          .json({ message: error.message });
-      }
-      break;
-    }
-
     case 'POST': {
       const { firstName, lastName, email, phone, password } = req.body;
 
@@ -45,7 +29,7 @@ export default async function handler(
           });
         }
 
-        const admin = await Admin.create({
+        await Admin.create({
           firstName,
           lastName,
           email,
@@ -54,7 +38,6 @@ export default async function handler(
         });
         res.status(StatusCodes.OK).json({
           message: 'Successfully created admin.',
-          admin,
         });
       } catch (error: any) {
         res

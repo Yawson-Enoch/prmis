@@ -1,10 +1,10 @@
-import styles from './ContentSlider.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Autoplay, Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import styles from './ContentSlider.module.scss';
 
 const slides = [
   {
@@ -41,7 +41,11 @@ const ContentSlider = () => {
       navigation
       slidesPerView={1}
       pagination={{ clickable: true }}
-      autoplay={{ delay: 2000 }}
+      autoplay={{
+        delay: 2000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       loop
       className={styles.swiper}
     >

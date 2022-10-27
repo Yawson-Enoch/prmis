@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import { MdPersonOutline } from 'react-icons/md';
 import useSWR from 'swr';
-
 import styles from './Widget.module.scss';
 
 const Widget = () => {

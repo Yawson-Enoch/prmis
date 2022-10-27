@@ -1,8 +1,8 @@
+import { motion } from 'framer-motion';
 import useSWR, { useSWRConfig } from 'swr';
+import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '../../store/appContext';
 import styles from './DeleteDialog.module.scss';
-import { motion } from 'framer-motion';
-import { scaleUp } from '../../animations/animations';
 
 const DeleteDialog = () => {
   const { dispatch, state } = useAppContext();

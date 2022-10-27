@@ -9,7 +9,6 @@
 
 @mixin grid($width: px-to-rem-or-em(250px), $height: px-to-rem-or-em(70px)) {
   display: grid;
-  // use 100% for base (min of minmax) if screen size is smaller than the base size--el cannot get smaller than the base size
   grid-template-columns: repeat(auto-fit, minmax(min($width, 100%), 1fr));
   grid-auto-rows: minmax($height, auto);
 }

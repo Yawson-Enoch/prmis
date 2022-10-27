@@ -3,9 +3,28 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../lib/db-connect';
 import Patient from '../../../models/patient';
 
+interface ISinglePatient {
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  phone: string;
+  gender: string;
+  image: string;
+}
+
+type ISinglePatientResData =
+  | {
+      message: string;
+      patient: ISinglePatient;
+    }
+  | {
+      message: string;
+    };
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<ISinglePatientResData>
 ) {
   const { method } = req;
   const { patientId } = req.query;

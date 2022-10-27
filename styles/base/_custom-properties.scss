@@ -1,5 +1,4 @@
 :root {
-  // grey
   --grey-100: #f1f5f9;
   --grey-200: #e1e7ef;
   --grey-300: #cbd5e1;
@@ -10,7 +9,6 @@
   --grey-800: #1d283a;
   --grey-900: #0f1729;
 
-  // rest of the colors
   --clr-black: #000000;
   --clr-white: #ffffff;
   --clr-error: #cc0000;
@@ -22,18 +20,14 @@
     var(--clr-white)
   );
 
-  // fonts
-  /* font family */
   --ff-heading: 'Poppins', sans-serif;
   --ff-body: 'PT Serif', serif;
 
-  /* font size */
   --fs-xtra-small: clamp(0.4rem, 0.4rem + 0.4vw, 0.7rem);
   --fs-small: clamp(0.8rem, 0.8rem + 0.8vw, 1.1rem);
   --fs-medium: clamp(1.2rem, 1.2rem + 1.2vw, 1.5rem);
   --fs-large: clamp(1.6rem, 1.6rem + 1.6vw, 1.9rem);
 
-  // page-specific variables
   --radius-xtra-small: 0.3rem;
   --radius-small: 0.6rem;
   --radius-medium: 1.2rem;

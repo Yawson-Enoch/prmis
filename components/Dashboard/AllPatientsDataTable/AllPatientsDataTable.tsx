@@ -3,11 +3,11 @@ import Stack from '@mui/material/Stack';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styles from './AllPatientsDataTable.module.scss';
-import useSWR from 'swr';
-import { MdOutlineSearch } from 'react-icons/md';
 import { useState } from 'react';
+import { MdOutlineSearch } from 'react-icons/md';
+import useSWR from 'swr';
 import { useAppContext } from '../../../store/appContext';
+import styles from './AllPatientsDataTable.module.scss';
 
 const columns: GridColDef[] = [
   {
@@ -52,54 +52,12 @@ const columns: GridColDef[] = [
 ];
 
 const AllPatientsDataTable = () => {
-  // const [patients, setData] = useState([] as any);
-  // const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAppContext();
 
   const [query, setQuery] = useState('');
 
   const { data } = useSWR('/api/patient');
   const router = useRouter();
-
-  // const patientDeleteHandler = (id: string) => {
-  //   setData(patients.filter((patient: any) => patient._id !== id));
-
-  //   const deletePatientFromDb = async () => {
-  //     try {
-  //       const response = await fetch(`/api/patient/${id}`, {
-  //         method: 'DELETE',
-  //       });
-
-  //       const { message }: any = await response.json();
-
-  //       if (!response.ok) {
-  //         throw new Error(message);
-  //       }
-  //     } catch (error: any) {}
-  //   };
-  //   deletePatientFromDb();
-  // };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await fetch('/api/patient');
-  //       const { patients }: any = await response.json();
-
-  //       if (!response.ok) {
-  //         throw new Error('Something went wrong.');
-  //       }
-
-  //       setData(patients);
-  //     } catch (error: any) {
-  //       console.log(error.message);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
 
   const actionsColumn = [
     {
@@ -121,7 +79,6 @@ const AllPatientsDataTable = () => {
             <button
               className={`btn ${styles.delBtn}`}
               onClick={() => {
-                // patientDeleteHandler(params.row._id);
                 dispatch({ type: 'API_PATIENT_ID', payload: params.row._id });
                 dispatch({
                   type: 'SHOW_BACKDROP',
@@ -141,7 +98,6 @@ const AllPatientsDataTable = () => {
     },
   ];
 
-  // if (!patients || isLoading) {
   if (!data) {
     return (
       <Stack
@@ -186,7 +142,6 @@ const AllPatientsDataTable = () => {
         </button>
       </div>
       <DataGrid
-        // rows={patients}
         rows={searchResults}
         columns={columns.concat(actionsColumn)}
         pageSize={6}

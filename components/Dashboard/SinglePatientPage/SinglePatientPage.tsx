@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
+import { useAppContext } from '../../../store/appContext';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import styles from './SinglePatientPage.module.scss';
-import { FaEdit } from 'react-icons/fa';
-import { useAppContext } from '../../../store/appContext';
 
 const SinglePatientPage = () => {
   const router = useRouter();
@@ -16,30 +16,6 @@ const SinglePatientPage = () => {
   const { dispatch } = useAppContext();
 
   const { data } = useSWR(`/api/patient/${patientId}`);
-
-  // const [data, setData] = useState({} as any);
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await fetch(`/api/patient/${patientId}`);
-  //       const { patient }: any = await response.json();
-
-  //       if (!response.ok) {
-  //         throw new Error('Something went wrong.');
-  //       }
-
-  //       setData(patient);
-  //     } catch (error: any) {
-  //       console.log(error.message);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
 
   if (!data) {
     return (

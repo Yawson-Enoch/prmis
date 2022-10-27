@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import mongoose from 'mongoose';
 
-// use regex patterns to validate input both on the front-end and back-end
 const AdminSchema = new mongoose.Schema(
   {
     firstName: {
@@ -51,8 +50,6 @@ const AdminSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Mongoose middleware
-// mongoose middleware to hash password before saving to db. triggers: create and update
 AdminSchema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, 12);
 });

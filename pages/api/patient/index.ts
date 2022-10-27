@@ -3,31 +3,28 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../lib/db-connect';
 import Patient from '../../../models/patient';
 
-// interface IUser {
-//   firstName: string;
-//   lastName: string;
-//   age: number;
-//   email: string;
-//   phone: string;
-// }
+interface IAllPatients {
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  phone: string;
+  gender: string;
+  image: string;
+}
 
-// type IResData =
-//   | {
-//       message: string;
-//       patients: IUser[];
-//       nbOfHits: number;
-//     }
-//   | {
-//       message: string;
-//       patient: IUser;
-//     }
-//   | {
-//       message: string;
-//     };
+type IAllPatientsResData =
+  | {
+      message: string;
+      patients: IAllPatients[];
+    }
+  | {
+      message: string;
+    };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<IAllPatientsResData>
 ) {
   const { method } = req;
 
@@ -40,7 +37,6 @@ export default async function handler(
         res.status(StatusCodes.OK).json({
           message: 'Success.',
           patients: allPatients,
-          nbOfHits: allPatients.length,
         });
       } catch (error: any) {
         res
@@ -49,6 +45,7 @@ export default async function handler(
       }
       break;
     }
+
     case 'POST': {
       const { firstName, lastName, email, age, phone, gender } = req.body;
 
@@ -59,10 +56,9 @@ export default async function handler(
       }
 
       try {
-        const patient = await Patient.create({ ...req.body });
+        await Patient.create({ ...req.body });
         res.status(StatusCodes.OK).json({
           message: 'Patient added successfully.',
-          patient,
         });
       } catch (error: any) {
         res

@@ -1,8 +1,8 @@
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaPhoneAlt } from 'react-icons/fa';
 import Logo from '../../Logo/Logo';
 import styles from './Header.module.scss';
-import { useSession } from 'next-auth/react';
 
 const Header = () => {
   const router = useRouter();
@@ -35,26 +35,24 @@ const Header = () => {
             </button>
           )}
 
-          <div className={`center ${styles.authBtns}`}>
-            {status === 'unauthenticated' && (
-              <button
-                className={`btn ${styles.login}`}
-                onClick={() => {
-                  router.push('/login');
-                }}
-              >
-                Sign In
-              </button>
-            )}
+          {status === 'unauthenticated' && (
             <button
-              className={`btn ${styles.signup}`}
+              className={`btn ${styles.login}`}
               onClick={() => {
-                router.push('/signup');
+                router.push('/login');
               }}
             >
-              Sign Up
+              Sign In
             </button>
-          </div>
+          )}
+          <button
+            className={`btn ${styles.signup}`}
+            onClick={() => {
+              router.push('/signup');
+            }}
+          >
+            Sign Up
+          </button>
         </section>
       </div>
     </header>

@@ -8,8 +8,6 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// check auth state on server and redirect swiftly on client - prevents protected route flash
-// redirect to login if not logged since dashboard is a protected route
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession({ req: context.req });
 

@@ -1,9 +1,9 @@
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
 import styles from '../UserAuth/LoginPage.module.scss';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -97,10 +97,6 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
-          {/* <div className={styles.trustDevice}>
-            <label htmlFor="trust">Trust this device</label>
-            <input type="checkbox" name="trust" id="trust" />
-          </div> */}
           <button type="submit" className="btn" disabled={!canSubmit}>
             Login
           </button>
@@ -114,8 +110,7 @@ const LoginPage = () => {
         </form>
         <div></div>
         <div className={styles.optionsContainer}>
-          {/* <a href="#">Forgot password?</a> */}
-          <Link href="/signup">Don't have an account? Sign Up.</Link>
+          <Link href="/signup">Don&#39;t have an account? Sign Up.</Link>
         </div>
       </div>
     </main>

@@ -1,9 +1,9 @@
+import { motion } from 'framer-motion';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import useSWR, { useSWRConfig } from 'swr';
+import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '../../store/appContext';
 import styles from './EditPatientDetailsForm.module.scss';
-import { motion } from 'framer-motion';
-import { scaleUp } from '../../animations/animations';
-import useSWR, { useSWRConfig } from 'swr';
 
 const EditPatientDetailsForm = () => {
   const { dispatch, state } = useAppContext();
@@ -108,7 +108,7 @@ const EditPatientDetailsForm = () => {
               value={formData.firstName}
               onChange={changeHandler}
               pattern="^[a-z0-9_-]{2,15}$"
-              title="First name must be 2-16 characters long."
+              title="First name must be 2-16 characters long - all lowercase."
             />
             <label htmlFor="firstName">First Name</label>
           </div>
@@ -122,7 +122,7 @@ const EditPatientDetailsForm = () => {
               value={formData.lastName}
               onChange={changeHandler}
               pattern="^[a-z0-9_-]{2,15}$"
-              title="Last name must be 2-16 characters long."
+              title="Last name must be 2-16 characters long - all lowercase."
             />
             <label htmlFor="lastName">Last Name</label>
           </div>

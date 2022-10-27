@@ -1,6 +1,6 @@
-import styles from './Backdrop.module.scss';
 import { motion } from 'framer-motion';
 import { flash } from '../../animations/animations';
+import styles from './Backdrop.module.scss';
 
 const Backdrop = () => {
   return (

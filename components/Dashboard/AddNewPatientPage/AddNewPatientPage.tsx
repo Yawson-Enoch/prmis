@@ -96,7 +96,6 @@ const AddNewPatientPage = () => {
             <div className={styles.imgContainer}>
               {imagePreview[0] ? (
                 <Image
-                  // src="/assets/cover/camera-outline.png"
                   src={URL.createObjectURL(imagePreview[0])}
                   alt="image preview"
                   width={150}
@@ -146,7 +145,7 @@ const AddNewPatientPage = () => {
                     placeholder="Enoch"
                     required
                     pattern="^[a-z0-9_-]{2,15}$"
-                    title="First name must be 2-16 characters long."
+                    title="First name must be 2-16 characters long - all lowercase."
                   />
                 </div>
                 <div className={styles.formInput}>
@@ -160,7 +159,7 @@ const AddNewPatientPage = () => {
                     onChange={changeHandler}
                     placeholder="Gybex"
                     pattern="^[a-z0-9_-]{2,15}$"
-                    title="Last name must be 2-16 characters long."
+                    title="Last name must be 2-16 characters long - all lowercase."
                   />
                 </div>
               </div>
