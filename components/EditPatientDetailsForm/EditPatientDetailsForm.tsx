@@ -79,9 +79,9 @@ const EditPatientDetailsForm = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'success',
+          title: 'error',
           description: error.message,
-          style: 'success',
+          style: 'error',
         },
       });
     }

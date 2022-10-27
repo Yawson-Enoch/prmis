@@ -82,10 +82,13 @@ const ChangePasswordPage = () => {
                 id="oldPassword"
                 placeholder="Enter Old Password"
                 required
-                pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
                 autoComplete="off"
                 autoCapitalize="off"
                 autoCorrect="off"
+                pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+                title="Minimum eight characters, at least one upper case English
+                letter, one lower case English letter, one number and one
+                special character."
                 autoFocus
                 onChange={(e) => setOldPassword(e.target.value)}
               />
@@ -96,11 +99,6 @@ const ChangePasswordPage = () => {
                   <FaEye style={{ color: '#137aca' }} />
                 )}
               </span>
-              <p className={styles.errorMessage}>
-                Minimum eight characters, at least one upper case English
-                letter, one lower case English letter, one number and one
-                special character.
-              </p>
             </div>
             <div className={styles.formField}>
               <label htmlFor="newPassword">New Password</label>
@@ -110,6 +108,10 @@ const ChangePasswordPage = () => {
                 id="newPassword"
                 placeholder="Enter New Password"
                 required
+                pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+                title="Minimum eight characters, at least one upper case English
+                letter, one lower case English letter, one number and one
+                special character."
                 autoComplete="off"
                 autoCapitalize="off"
                 autoCorrect="off"
@@ -122,11 +124,6 @@ const ChangePasswordPage = () => {
                   <FaEye style={{ color: '#137aca' }} />
                 )}
               </span>
-              <p className={styles.errorMessage}>
-                Minimum eight characters, at least one upper case English
-                letter, one lower case English letter, one number and one
-                special character.
-              </p>
             </div>
             <button
               type="submit"

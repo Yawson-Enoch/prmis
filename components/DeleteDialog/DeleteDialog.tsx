@@ -16,7 +16,38 @@ const DeleteDialog = () => {
       patients: data.patients.filter((patient: any) => patient._id !== id),
     };
     await mutate('/api/patient', newData, false);
-    await fetch(`/api/patient/${id}`, { method: 'DELETE' });
+
+    try {
+      const response = await fetch(`/api/patient/${id}`, {
+        method: 'DELETE',
+      });
+
+      const { message }: any = await response.json();
+
+      if (!response.ok) {
+        throw new Error(message || 'Something went wrong!');
+      } else {
+        dispatch({
+          type: 'NOTIFICATION',
+          payload: {
+            active: true,
+            title: 'success',
+            description: message || 'Patient deleted.',
+            style: 'success',
+          },
+        });
+      }
+    } catch (error: any) {
+      dispatch({
+        type: 'NOTIFICATION',
+        payload: {
+          active: true,
+          title: 'error',
+          description: error.message,
+          style: 'error',
+        },
+      });
+    }
   };
 
   return (
