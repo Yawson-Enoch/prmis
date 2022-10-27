@@ -29,6 +29,14 @@ export default async function handler(
     }
 
     case 'PATCH': {
+      const { firstName, lastName, email, phone } = req.body;
+
+      if (!firstName || !lastName || !email || !phone) {
+        return res
+          .status(StatusCodes.BAD_REQUEST)
+          .json({ message: 'Invalid user data.' });
+      }
+
       try {
         await Patient.findOneAndUpdate(
           { _id: patientId },

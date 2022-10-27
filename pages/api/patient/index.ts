@@ -50,10 +50,16 @@ export default async function handler(
       break;
     }
     case 'POST': {
-      const data = req.body;
+      const { firstName, lastName, email, age, phone, gender } = req.body;
+
+      if (!firstName || !lastName || !email || !age || !phone || !gender) {
+        return res
+          .status(StatusCodes.BAD_REQUEST)
+          .json({ message: 'Invalid user data.' });
+      }
 
       try {
-        const patient = await Patient.create({ ...data });
+        const patient = await Patient.create({ ...req.body });
         res.status(StatusCodes.OK).json({
           message: 'Patient added successfully.',
           patient,
