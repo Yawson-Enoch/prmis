@@ -3,10 +3,11 @@ import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import { MdPersonOutline } from 'react-icons/md';
 import useSWR from 'swr';
+import { IAllPatientsResData } from '../AllPatientsPage/AllPatientsPage';
 import styles from './Widget.module.scss';
 
 const Widget = () => {
-  const { data } = useSWR('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   return (
     <div className={styles.box}>

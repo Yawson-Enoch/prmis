@@ -5,8 +5,14 @@ import { useRouter } from 'next/router';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
 import { useAppContext } from '../../../store/appContext';
+import { IPatient } from '../AllPatientsPage/AllPatientsPage';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './SinglePatientPage.module.scss';
+
+interface ISinglePatientResData {
+  message: string;
+  patient: IPatient;
+}
 
 const SinglePatientPage = () => {
   const router = useRouter();
@@ -14,7 +20,7 @@ const SinglePatientPage = () => {
 
   const { dispatch } = useAppContext();
 
-  const { data } = useSWR(`/api/patient/${patientId}`);
+  const { data } = useSWR<ISinglePatientResData>(`/api/patient/${patientId}`);
 
   if (!data) {
     return (

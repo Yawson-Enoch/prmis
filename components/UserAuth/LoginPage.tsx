@@ -39,13 +39,15 @@ const LoginPage = () => {
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
 
-    const result: any = await signIn('credentials', {
+    const result = await signIn('credentials', {
       redirect: false,
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
-    result.error ? setErrorMessage(result.error) : router.replace('/dashboard');
+    result?.error
+      ? setErrorMessage(result?.error)
+      : router.replace('/dashboard');
   };
 
   return (

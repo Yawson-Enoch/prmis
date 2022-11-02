@@ -2,18 +2,19 @@ import { motion } from 'framer-motion';
 import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '../../store/appContext';
+import { IAllPatientsResData } from '../Dashboard/AllPatientsPage/AllPatientsPage';
 import styles from './DeleteDialog.module.scss';
 
 const DeleteDialog = () => {
   const { dispatch, state } = useAppContext();
 
-  const { data } = useSWR('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient');
   const { mutate } = useSWRConfig();
 
   const deletePatient = async (id: string) => {
     const newData = {
       ...data,
-      patients: data.patients.filter((patient: any) => patient._id !== id),
+      patients: data?.patients.filter((patient) => patient._id !== id),
     };
     await mutate('/api/patient', newData, false);
 
@@ -22,7 +23,7 @@ const DeleteDialog = () => {
         method: 'DELETE',
       });
 
-      const { message }: any = await response.json();
+      const { message }: { message: string } = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');

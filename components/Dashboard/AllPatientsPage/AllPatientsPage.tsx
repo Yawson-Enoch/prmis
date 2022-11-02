@@ -10,62 +10,84 @@ import { useAppContext } from '../../../store/appContext';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './AllPatientsPage.module.scss';
 
-const columns: GridColDef[] = [
-  {
-    field: 'id',
-    headerName: 'ID',
-    width: 70,
-    renderCell: (params) => {
-      return <>{`${params.row._id}`}</>;
-    },
-  },
-  {
-    field: 'patient',
-    headerName: 'Patient Info',
-    width: 200,
-    renderCell: (params) => {
-      return (
-        <div className={styles.cellUserInfo}>
-          <Image
-            src={params.row.image || '/assets/patients/user.png'}
-            alt={`${params.row.firstName} ${params.row.lastName}`}
-            width={30}
-            height={30}
-            className={styles.cellImage}
-          />
-          {`${params.row.firstName} ${params.row.lastName}`}
-        </div>
-      );
-    },
-  },
-  { field: 'email', headerName: 'Email', width: 200 },
-  { field: 'age', headerName: 'Age', width: 50 },
-  { field: 'gender', headerName: 'Gender', width: 70 },
-  { field: 'phone', headerName: 'Phone', width: 120 },
-  {
-    field: 'dateAdded',
-    headerName: 'Date Added',
-    width: 82,
-    renderCell: (params) => {
-      return <>{`${params.row.createdAt}`}</>;
-    },
-  },
-];
+export interface IPatient {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  phone: string;
+  gender: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface IAllPatientsResData {
+  message: string;
+  patients: IPatient[];
+}
+
+type DynamicSearchKeys = Pick<
+  IPatient,
+  'firstName' | 'lastName' | 'email' | 'gender'
+>;
 
 const AllPatientsPage = () => {
   const { dispatch } = useAppContext();
 
   const [query, setQuery] = useState('');
 
-  const { data } = useSWR('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient');
+
   const router = useRouter();
 
-  const actionsColumn = [
+  const columns: GridColDef[] = [
+    {
+      field: 'id',
+      headerName: 'ID',
+      width: 70,
+      renderCell: (params) => {
+        return <>{`${params.row._id}`}</>;
+      },
+    },
+    {
+      field: 'patient',
+      headerName: 'Patient Info',
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className={styles.cellUserInfo}>
+            <Image
+              src={params.row.image || '/assets/patients/user.png'}
+              alt={`${params.row.firstName} ${params.row.lastName}`}
+              width={30}
+              height={30}
+              className={styles.cellImage}
+            />
+            {`${params.row.firstName} ${params.row.lastName}`}
+          </div>
+        );
+      },
+    },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'age', headerName: 'Age', width: 50 },
+    { field: 'gender', headerName: 'Gender', width: 70 },
+    { field: 'phone', headerName: 'Phone', width: 120 },
+    {
+      field: 'dateAdded',
+      headerName: 'Date Added',
+      width: 82,
+      renderCell: (params) => {
+        return <>{`${params.row.createdAt}`}</>;
+      },
+    },
     {
       field: 'actions',
       headerName: 'Actions',
       width: 200,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
           <div className={styles.cellActions}>
             <button
@@ -115,8 +137,10 @@ const AllPatientsPage = () => {
 
   const keys = ['firstName', 'lastName', 'email', 'gender'];
 
-  const searchResults = data.patients.filter((patient: any) => {
-    return keys.some((key: any) => patient[key].toLowerCase().includes(query));
+  const searchResults = data.patients.filter((patient) => {
+    return keys.some((key) =>
+      patient[key as keyof DynamicSearchKeys].toLowerCase().includes(query)
+    );
   });
 
   return (
@@ -145,7 +169,7 @@ const AllPatientsPage = () => {
         </div>
         <DataGrid
           rows={searchResults}
-          columns={columns.concat(actionsColumn)}
+          columns={columns}
           pageSize={6}
           rowsPerPageOptions={[6]}
           checkboxSelection

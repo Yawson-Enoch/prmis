@@ -9,10 +9,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Image from 'next/image';
 import useSWR from 'swr';
+import { IAllPatientsResData } from '../AllPatientsPage/AllPatientsPage';
 import styles from './Table.module.scss';
 
 const Table = () => {
-  const { data } = useSWR('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   if (!data) {
     return (
@@ -28,11 +29,9 @@ const Table = () => {
     );
   }
 
-  const newData = data.patients
-    .slice(-3)
-    .sort((patientOne: any, patientTwo: any) => {
-      return patientOne.createdAt > patientTwo.createAt ? -1 : 1;
-    });
+  const newData = data.patients.slice(-3).sort((patientOne, patientTwo) => {
+    return patientOne.createdAt > patientTwo.createdAt ? -1 : 1;
+  });
 
   return (
     <div className="styledbox">
@@ -51,19 +50,19 @@ const Table = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {newData.map((row: any) => (
+            {newData.map((row) => (
               <TableRow key={row._id}>
                 <TableCell className={styles.tableCell}>{row._id}</TableCell>
                 <TableCell className={styles.tableCell}>
                   <div className={styles.cellWrapper}>
                     <Image
-                      src={row?.image || '/assets/patients/user.png'}
+                      src={row.image || '/assets/patients/user.png'}
                       alt={row.firstName}
                       width={30}
                       height={30}
                       className={styles.cellImage}
                     />
-                    {row.name}
+                    {`${row.firstName} ${row.lastName}`}
                   </div>
                 </TableCell>
                 <TableCell className={styles.tableCell}>{row.email}</TableCell>

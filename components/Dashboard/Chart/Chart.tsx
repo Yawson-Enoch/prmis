@@ -11,12 +11,13 @@ import {
   YAxis,
 } from 'recharts';
 import useSWR from 'swr';
+import { IAllPatientsResData } from '../AllPatientsPage/AllPatientsPage';
 import styles from './Chart.module.scss';
 
 const DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const Chart = () => {
-  const { data } = useSWR('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   if (!data) {
     return (
@@ -34,10 +35,10 @@ const Chart = () => {
 
   const weeklyTotalNumberOfPatients = (day: string): number => {
     return data.patients
-      .map((user: any) => ({
-        name: DAYS_OF_THE_WEEK[new Date(user.createdAt).getDay()],
-      }))
-      .filter((user: any) => user.name === day).length;
+      .map((patient) => {
+        return { name: DAYS_OF_THE_WEEK[new Date(patient.createdAt).getDay()] };
+      })
+      .filter((patient) => patient.name === day).length;
   };
 
   const chartData = [

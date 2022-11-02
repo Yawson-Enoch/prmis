@@ -64,7 +64,7 @@ const SignUpPage = () => {
         }),
       });
 
-      const { message }: any = await response.json();
+      const { message }: { message: string } = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');
