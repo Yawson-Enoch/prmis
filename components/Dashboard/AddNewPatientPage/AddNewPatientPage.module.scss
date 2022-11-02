@@ -1,28 +1,5 @@
 @use '../../../styles/abstracts' as *;
 
-.list {
-  width: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-}
-
-.listContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-large);
-}
-
-.container {
-  padding: px-to-rem-or-em(10px);
-
-  h1 {
-    box-shadow: var(--shadow-medium);
-    border-radius: var(--radius-xtra-small);
-    padding: px-to-rem-or-em(20px) px-to-rem-or-em(10px);
-  }
-}
-
 .img {
   object-fit: cover;
   object-position: center;
@@ -40,7 +17,6 @@
 }
 
 .formContainer {
-  margin-block-start: px-to-rem-or-em(20px);
   display: flex;
   align-items: center;
   gap: var(--space-large);

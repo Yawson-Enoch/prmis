@@ -31,7 +31,7 @@ const Table = () => {
   const newData = data.patients.slice(-3);
 
   return (
-    <>
+    <div className="styledbox">
       <p>RECENTLY ADDED PATIENTS</p>
       <TableContainer component={Paper} className={styles.table}>
         <MTable sx={{ minWidth: 650 }} aria-label="simple table">
@@ -74,7 +74,7 @@ const Table = () => {
           </TableBody>
         </MTable>
       </TableContainer>
-    </>
+    </div>
   );
 };
 

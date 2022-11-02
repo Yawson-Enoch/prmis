@@ -1,14 +1,81 @@
 @use '../../../styles/abstracts' as *;
 
-.list {
+.dataTable {
   width: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  height: 500px;
 }
 
-.listContainer {
+.cellUserInfo {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-small);
+}
+
+.cellImage {
+  border-radius: var(--radius-round);
+}
+
+.cellActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+
+  button {
+    background-color: transparent;
+  }
+}
+
+.viewBtn {
+  $clr: lighten(blue, 10%);
+  border: 1px solid $clr;
+  color: $clr;
+
+  &:hover {
+    background-color: $clr !important;
+    color: var(--clr-primary);
+    border: none;
+  }
+}
+
+.delBtn {
+  $clr: lighten(red, 10%);
+
+  border: 1px solid $clr;
+  color: $clr;
+  &:hover {
+    background-color: $clr !important;
+    color: var(--clr-primary);
+    border: none;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
   gap: var(--space-large);
+
+  form {
+    margin-left: auto;
+  }
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid lighten(black, 70%);
+  border-radius: var(--radius-xtra-small);
+  padding: px-to-rem-or-em(3px);
+
+  input {
+    background-color: transparent;
+    border: none;
+    caret-color: $clr-links-hover;
+
+    &:is(:focus, :focus-visible) {
+      outline: none;
+      border: none;
+    }
+  }
 }

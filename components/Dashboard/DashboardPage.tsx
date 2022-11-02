@@ -1,13 +1,15 @@
-import styles from './DashboardPage.module.scss';
-import Sidebar from './Sidebar/Sidebar';
-import SideContainer from './SideContainer/SideContainer';
+import Chart from './Chart/Chart';
+import DashboardLayout from './DashboardLayout/DashboardLayout';
+import Table from './Table/Table';
 
 const DashboardPage = () => {
   return (
-    <section className={styles.dashContainer}>
-      <Sidebar />
-      <SideContainer />
-    </section>
+    <DashboardLayout>
+      <div className="flow">
+        <Chart />
+        <Table />
+      </div>
+    </DashboardLayout>
   );
 };
 

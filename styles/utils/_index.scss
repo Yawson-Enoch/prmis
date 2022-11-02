@@ -31,3 +31,9 @@
     transform: scale(0.98);
   }
 }
+
+.styledbox {
+  box-shadow: var(--shadow-small);
+  border-radius: var(--radius-small);
+  padding: px-to-rem-or-em(10px);
+}
