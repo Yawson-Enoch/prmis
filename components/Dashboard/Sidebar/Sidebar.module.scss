@@ -22,7 +22,7 @@
   p {
     padding-inline-start: px-to-rem-or-em(5px);
     padding-block: px-to-rem-or-em(10px);
-    font-size: var(--fs-small);
+    font-size: var(--fs-medium);
     margin-bottom: px-to-rem-or-em(5px);
     background-color: lighten(blue, 40%);
 
@@ -49,9 +49,9 @@
     }
 
     > :first-child {
-      font-size: px-to-rem-or-em(35px);
+      font-size: px-to-rem-or-em(30px);
       color: var(--clr-accent-primary);
-      padding-inline-end: px-to-rem-or-em(10px);
+      padding-inline-end: px-to-rem-or-em(5px);
     }
 
     > :last-child {

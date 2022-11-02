@@ -7,7 +7,7 @@ import Admin from '../../../models/admin';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<{ message: string }>
 ) {
   const { method } = req;
 
@@ -53,7 +53,7 @@ export default async function handler(
 
         const hashedPassword = await hash(newPassword, 12);
 
-        const updatedPost = await Admin.findOneAndUpdate(
+        await Admin.findOneAndUpdate(
           { email: adminEmail },
           { password: hashedPassword },
           {
@@ -61,9 +61,7 @@ export default async function handler(
             runValidators: true,
           }
         );
-        res
-          .status(StatusCodes.OK)
-          .json({ admin: updatedPost, message: 'Password updated.' });
+        res.status(StatusCodes.OK).json({ message: 'Password updated.' });
       } catch (error: any) {
         res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
