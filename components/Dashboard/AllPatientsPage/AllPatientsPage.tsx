@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
 import useSWR from 'swr';
 import { useAppContext } from '../../../store/appContext';
+import { formatDate } from '../../../utils';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './AllPatientsPage.module.scss';
 
@@ -47,7 +48,7 @@ const AllPatientsPage = () => {
     {
       field: 'id',
       headerName: 'ID',
-      width: 70,
+      width: 30,
       renderCell: (params) => {
         return <>{`${params.row._id}`}</>;
       },
@@ -55,7 +56,7 @@ const AllPatientsPage = () => {
     {
       field: 'patient',
       headerName: 'Patient Info',
-      width: 200,
+      width: 170,
       renderCell: (params) => {
         return (
           <div className={styles.cellUserInfo}>
@@ -71,14 +72,14 @@ const AllPatientsPage = () => {
         );
       },
     },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'age', headerName: 'Age', width: 50 },
-    { field: 'gender', headerName: 'Gender', width: 70 },
-    { field: 'phone', headerName: 'Phone', width: 120 },
+    { field: 'email', headerName: 'Email', width: 220 },
+    { field: 'age', headerName: 'Age', width: 10 },
+    { field: 'gender', headerName: 'Gender', width: 60 },
+    { field: 'phone', headerName: 'Phone', width: 110 },
     {
       field: 'dateAdded',
       headerName: 'Date Added',
-      width: 82,
+      width: 220,
       renderCell: (params) => {
         return <>{`${params.row.createdAt}`}</>;
       },
@@ -86,7 +87,7 @@ const AllPatientsPage = () => {
     {
       field: 'actions',
       headerName: 'Actions',
-      width: 200,
+      width: 190,
       renderCell: (params) => {
         return (
           <div className={styles.cellActions}>
@@ -137,11 +138,18 @@ const AllPatientsPage = () => {
 
   const keys = ['firstName', 'lastName', 'email', 'gender'];
 
-  const searchResults = data.patients.filter((patient) => {
-    return keys.some((key) =>
-      patient[key as keyof DynamicSearchKeys].toLowerCase().includes(query)
-    );
-  });
+  const newDataWithFormattedDate = data.patients
+    .map((patient) => {
+      return {
+        ...patient,
+        createdAt: formatDate('UK', 'full', new Date(patient.createdAt)),
+      };
+    })
+    .filter((patient) => {
+      return keys.some((key) =>
+        patient[key as keyof DynamicSearchKeys].toLowerCase().includes(query)
+      );
+    });
 
   return (
     <DashboardLayout>
@@ -168,10 +176,10 @@ const AllPatientsPage = () => {
           </button>
         </div>
         <DataGrid
-          rows={searchResults}
+          rows={newDataWithFormattedDate}
           columns={columns}
-          pageSize={6}
-          rowsPerPageOptions={[6]}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
           checkboxSelection
           getRowId={(row) => row._id}
         />
