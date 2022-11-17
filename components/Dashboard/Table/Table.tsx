@@ -16,20 +16,10 @@ const Table = () => {
   const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   if (!data) {
-    return (
-      <Stack
-        sx={{ color: 'grey.500' }}
-        spacing={4}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <CircularProgress color="success" />
-      </Stack>
-    );
+    return;
   }
 
-  const newData = data.patients.slice(-3).sort((patientOne, patientTwo) => {
+  const newData = data?.patients.slice(-3).sort((patientOne, patientTwo) => {
     return patientOne.createdAt > patientTwo.createdAt ? -1 : 1;
   });
 
@@ -50,7 +40,7 @@ const Table = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {newData.map((row) => (
+            {newData?.map((row) => (
               <TableRow key={row._id}>
                 <TableCell className={styles.tableCell}>{row._id}</TableCell>
                 <TableCell className={styles.tableCell}>
