@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
-import styles from '../UserAuth/LoginPage.module.scss';
+import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');

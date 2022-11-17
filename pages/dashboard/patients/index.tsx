@@ -1,8 +1,8 @@
-import Backdrop from '../../../components/Backdrop/Backdrop';
-import AllPatientsPage from '../../../components/Dashboard/AllPatientsPage/AllPatientsPage';
-import DeleteDialog from '../../../components/DeleteDialog/DeleteDialog';
-import NotificationModal from '../../../components/NotificationModal/NotificationModal';
-import { useAppContext } from '../../../store/appContext';
+import Backdrop from '@/components/Backdrop/Backdrop';
+import AllPatientsPage from '@/components/Dashboard/AllPatientsPage/AllPatientsPage';
+import DeleteDialog from '@/components/DeleteDialog/DeleteDialog';
+import NotificationModal from '@/components/NotificationModal/NotificationModal';
+import { useAppContext } from '@/store/appContext';
 
 const AllPatients = () => {
   const { state } = useAppContext();

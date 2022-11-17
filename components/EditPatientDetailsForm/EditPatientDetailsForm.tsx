@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../animations/animations';
-import { useAppContext } from '../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import styles from './EditPatientDetailsForm.module.scss';
 
 const EditPatientDetailsForm = () => {

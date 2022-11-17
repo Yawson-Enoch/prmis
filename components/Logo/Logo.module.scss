@@ -1,4 +1,4 @@
-@use '../../styles/abstracts' as *;
+@use '@/styles/abstracts' as *;
 
 .companyInfo {
   $space: px-to-rem-or-em(10px);

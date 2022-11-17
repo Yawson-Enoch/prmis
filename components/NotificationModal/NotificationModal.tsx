@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { MdCancel, MdCheckCircle, MdError } from 'react-icons/md';
 import { slideLeft } from '../../animations/animations';
-import { useAppContext } from '../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import styles from './NotificationModal.module.scss';
 
 const NotificationModal = () => {

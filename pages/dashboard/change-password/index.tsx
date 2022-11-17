@@ -1,6 +1,6 @@
-import ChangePasswordPage from '../../../components/Dashboard/ChangePasswordPage/ChangePasswordPage';
-import NotificationModal from '../../../components/NotificationModal/NotificationModal';
-import { useAppContext } from '../../../store/appContext';
+import ChangePasswordPage from '@/components/Dashboard/ChangePasswordPage/ChangePasswordPage';
+import NotificationModal from '@/components/NotificationModal/NotificationModal';
+import { useAppContext } from '@/store/appContext';
 
 const ChangePassword = () => {
   const { state } = useAppContext();

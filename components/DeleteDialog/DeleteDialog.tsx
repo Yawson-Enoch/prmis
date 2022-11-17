@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../animations/animations';
-import { useAppContext } from '../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import { IAllPatientsResData } from '../Dashboard/AllPatientsPage/AllPatientsPage';
 import styles from './DeleteDialog.module.scss';
 

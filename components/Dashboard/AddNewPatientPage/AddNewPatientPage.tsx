@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { MdCameraAlt, MdDriveFolderUpload } from 'react-icons/md';
-import { useAppContext } from '../../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './AddNewPatientPage.module.scss';
 

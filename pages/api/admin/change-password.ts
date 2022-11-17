@@ -2,8 +2,8 @@ import { compare, hash } from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
-import dbConnect from '../../../lib/db-connect';
-import Admin from '../../../models/admin';
+import dbConnect from '@/lib/db-connect';
+import Admin from '@/models/admin';
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
-import DashboardPage from '../../components/Dashboard/DashboardPage';
+import DashboardPage from '@/components/Dashboard/DashboardPage';
 
 const Dashboard = () => {
   return <DashboardPage />;

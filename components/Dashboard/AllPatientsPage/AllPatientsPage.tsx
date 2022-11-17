@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
 import useSWR from 'swr';
-import { useAppContext } from '../../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import { formatDate } from '../../../utils';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './AllPatientsPage.module.scss';

@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../lib/db-connect';
-import Patient from '../../../models/patient';
+import dbConnect from '@/lib/db-connect';
+import Patient from '@/models/patient';
 
 interface ISinglePatient {
   firstName: string;

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
-import { useAppContext } from '../../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import { IPatient } from '../AllPatientsPage/AllPatientsPage';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './SinglePatientPage.module.scss';

@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useAppContext } from '../../../store/appContext';
+import { useAppContext } from '@/store/appContext';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './ChangePasswordPage.module.scss';
 
