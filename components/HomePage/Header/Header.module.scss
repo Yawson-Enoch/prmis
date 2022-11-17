@@ -28,10 +28,10 @@
 }
 
 .dash {
-  background-color: var(--clr-accent-secondary);
+  background-color: var(--clr-secondary);
 
   &:hover {
-    background-color: var(--clr-accent-secondary) !important;
+    background-color: var(--clr-secondary) !important;
     opacity: 0.8;
   }
 }
