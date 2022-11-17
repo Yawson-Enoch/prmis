@@ -15,15 +15,13 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-
     if (errorMessage) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setErrorMessage('');
       }, 2000);
-    }
 
-    return () => clearInterval(timer);
+      return () => clearInterval(timer);
+    }
   }, [errorMessage]);
 
   const router = useRouter();

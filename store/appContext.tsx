@@ -58,10 +58,8 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-
     if (state.notification.active) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         dispatch({
           type: 'NOTIFICATION',
           payload: {
@@ -72,9 +70,8 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           },
         });
       }, 3000);
+      return () => clearInterval(timer);
     }
-
-    return () => clearInterval(timer);
   }, [state.notification.active]);
 
   useEffect(() => {
