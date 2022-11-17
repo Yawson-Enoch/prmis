@@ -95,7 +95,9 @@ const AllPatientsPage = () => {
               className={`btn ${styles.viewBtn}`}
               onClick={() => {
                 dispatch({ type: 'API_PATIENT_ID', payload: params.row._id });
-                router.push(`/dashboard/patients/${params.row._id}`);
+                router.push(
+                  `/dashboard/patients/${params.row._id}?firstName=${params.row.firstName}&lastName=${params.row.lastName}&date=${params.row.createdAt}`
+                );
               }}
             >
               View
