@@ -94,7 +94,7 @@ const DeleteDialog = () => {
           className="btn"
           onClick={() => {
             if (state.confirmDialog.type === 'deleteUser') {
-              deletePatient(state.apiPatientId);
+              state.apiPatientId && deletePatient(state.apiPatientId);
             } else if (state.confirmDialog.type === 'logOut') {
               logOutHandler();
             }
@@ -103,6 +103,7 @@ const DeleteDialog = () => {
               type: 'SHOW_BACKDROP',
               payload: false,
             });
+
             dispatch({
               type: 'CONFIRM_DIALOG',
               payload: {

@@ -82,7 +82,7 @@ const Chart = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="total" fill="#b87e14" />
+          <Bar dataKey="total" fill="#9999ff" />
         </BarChart>
       </ResponsiveContainer>
     </div>

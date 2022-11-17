@@ -20,7 +20,7 @@
 }
 
 .name {
-  background-color: var(--clr-accent-secondary);
+  background-color: lighten(blue, 40%);
   color: var(--clr-black);
   border-radius: var(--radius-xtra-small);
   font-size: var(--fs-large);

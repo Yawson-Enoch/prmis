@@ -12,6 +12,16 @@ const NotificationModal = () => {
     dispatch,
   } = useAppContext();
 
+  const notificationColors = (colorDesc: string | null) => {
+    if (colorDesc === 'success') {
+      return 'green';
+    }
+    if (colorDesc === 'error') {
+      return 'red';
+    }
+    return 'blue';
+  };
+
   return (
     <motion.div
       className={styles.box}
@@ -21,7 +31,7 @@ const NotificationModal = () => {
     >
       <div
         style={{
-          color: `${style === 'success' ? 'green' : 'red'}`,
+          color: `${notificationColors(style)}`,
           fontSize: '3.5rem',
         }}
       >
@@ -31,7 +41,7 @@ const NotificationModal = () => {
         <p
           style={{
             textTransform: 'capitalize',
-            color: `${style === 'success' ? 'green' : 'red'}`,
+            color: `${notificationColors(style)}`,
             fontSize: '1.5rem',
             marginBottom: '0.5rem',
           }}
@@ -47,9 +57,9 @@ const NotificationModal = () => {
             type: 'NOTIFICATION',
             payload: {
               active: false,
-              title: 'success',
-              description: '',
-              style: 'success',
+              title: null,
+              description: null,
+              style: null,
             },
           });
         }}

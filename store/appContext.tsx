@@ -10,9 +10,9 @@ import { appReducer } from './appReducer';
 
 export interface INotification {
   active: boolean;
-  title: 'success' | 'error';
-  description: string;
-  style: 'success' | 'error';
+  title: 'success' | 'error' | null;
+  description: string | null;
+  style: 'success' | 'error' | null;
 }
 export interface IConfirmDialog {
   active: boolean;
@@ -24,7 +24,7 @@ export type ActionTypes =
   | { type: 'NOTIFICATION'; payload: INotification }
   | { type: 'CONFIRM_DIALOG'; payload: IConfirmDialog }
   | { type: 'SHOW_BACKDROP'; payload: boolean }
-  | { type: 'API_PATIENT_ID'; payload: string }
+  | { type: 'API_PATIENT_ID'; payload: string | null }
   | { type: 'SHOW_PATIENT_DETAILS_EDIT_FORM'; payload: boolean };
 
 export interface IAppState {
@@ -32,7 +32,7 @@ export interface IAppState {
   confirmDialog: IConfirmDialog;
   showBackdrop: boolean;
   showPatientDetailsEditForm: boolean;
-  apiPatientId: string;
+  apiPatientId: string | null;
 }
 
 interface IAppContextProps {
@@ -49,9 +49,9 @@ const AppContext = createContext({} as IAppContextProps);
 const initialAppState: IAppState = {
   notification: {
     active: false,
-    title: 'success',
-    description: '',
-    style: 'success',
+    title: null,
+    description: null,
+    style: null,
   },
   confirmDialog: {
     active: false,
@@ -60,7 +60,7 @@ const initialAppState: IAppState = {
   },
   showBackdrop: false,
   showPatientDetailsEditForm: false,
-  apiPatientId: '',
+  apiPatientId: null,
 };
 
 const AppContextProvider = ({ children }: IAppContextProviderProps) => {
@@ -73,9 +73,9 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           type: 'NOTIFICATION',
           payload: {
             active: false,
-            title: 'success',
-            description: '',
-            style: 'success',
+            title: null,
+            description: null,
+            style: null,
           },
         });
       }, 3000);
@@ -90,9 +90,9 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           type: 'NOTIFICATION',
           payload: {
             active: false,
-            title: 'success',
-            description: '',
-            style: 'success',
+            title: null,
+            description: null,
+            style: null,
           },
         });
         dispatch({
