@@ -105,11 +105,15 @@ const AllPatientsPage = () => {
               onClick={() => {
                 dispatch({ type: 'API_PATIENT_ID', payload: params.row._id });
                 dispatch({
-                  type: 'SHOW_BACKDROP',
-                  payload: true,
+                  type: 'CONFIRM_DIALOG',
+                  payload: {
+                    active: true,
+                    description: 'Are you sure want to delete?',
+                    type: 'deleteUser',
+                  },
                 });
                 dispatch({
-                  type: 'SHOW_PATIENT_DELETE_DIALOG',
+                  type: 'SHOW_BACKDROP',
                   payload: true,
                 });
               }}

@@ -11,7 +11,7 @@ const AllPatients = () => {
     <>
       <AllPatientsPage />
       {state.showBackdrop && <Backdrop />}
-      {state.showPatientDeleteDialog && <DeleteDialog />}
+      {state.confirmDialog.active && <DeleteDialog />}
       {state.notification.active && <NotificationModal />}
     </>
   );

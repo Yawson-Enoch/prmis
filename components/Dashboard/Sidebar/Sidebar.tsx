@@ -1,6 +1,5 @@
-import { signOut } from 'next-auth/react';
+import { useAppContext } from '@/store/appContext';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import {
   MdDashboard,
   MdExitToApp,
@@ -10,12 +9,8 @@ import {
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
-  const router = useRouter();
+  const { dispatch } = useAppContext();
 
-  const logOutHandler = () => {
-    signOut();
-    router.replace('/');
-  };
   return (
     <aside className={`flow ${styles.sidebarContainer}`}>
       <Link href="/">
@@ -41,7 +36,23 @@ const Sidebar = () => {
           </li>
           <li>
             <MdExitToApp />
-            <p onClick={logOutHandler} className={styles.logOut}>
+            <p
+              onClick={() => {
+                dispatch({
+                  type: 'CONFIRM_DIALOG',
+                  payload: {
+                    active: true,
+                    description: 'Are you sure want to log out?',
+                    type: 'logOut',
+                  },
+                });
+                dispatch({
+                  type: 'SHOW_BACKDROP',
+                  payload: true,
+                });
+              }}
+              className={styles.logOut}
+            >
               Logout
             </p>
           </li>

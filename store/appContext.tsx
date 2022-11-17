@@ -14,18 +14,23 @@ export interface INotification {
   description: string;
   style: 'success' | 'error';
 }
+export interface IConfirmDialog {
+  active: boolean;
+  type: 'logOut' | 'deleteUser' | null;
+  description: string | null;
+}
 
 export type ActionTypes =
   | { type: 'NOTIFICATION'; payload: INotification }
+  | { type: 'CONFIRM_DIALOG'; payload: IConfirmDialog }
   | { type: 'SHOW_BACKDROP'; payload: boolean }
   | { type: 'API_PATIENT_ID'; payload: string }
-  | { type: 'SHOW_PATIENT_DELETE_DIALOG'; payload: boolean }
   | { type: 'SHOW_PATIENT_DETAILS_EDIT_FORM'; payload: boolean };
 
 export interface IAppState {
   notification: INotification;
+  confirmDialog: IConfirmDialog;
   showBackdrop: boolean;
-  showPatientDeleteDialog: boolean;
   showPatientDetailsEditForm: boolean;
   apiPatientId: string;
 }
@@ -48,8 +53,12 @@ const initialAppState: IAppState = {
     description: '',
     style: 'success',
   },
+  confirmDialog: {
+    active: false,
+    type: null,
+    description: null,
+  },
   showBackdrop: false,
-  showPatientDeleteDialog: false,
   showPatientDetailsEditForm: false,
   apiPatientId: '',
 };
@@ -91,8 +100,12 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           payload: false,
         });
         dispatch({
-          type: 'SHOW_PATIENT_DELETE_DIALOG',
-          payload: false,
+          type: 'CONFIRM_DIALOG',
+          payload: {
+            active: false,
+            description: null,
+            type: null,
+          },
         });
         dispatch({
           type: 'SHOW_PATIENT_DETAILS_EDIT_FORM',

@@ -4,12 +4,20 @@ import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '@/store/appContext';
 import { IAllPatientsResData } from '../Dashboard/AllPatientsPage/AllPatientsPage';
 import styles from './DeleteDialog.module.scss';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const DeleteDialog = () => {
   const { dispatch, state } = useAppContext();
+  const router = useRouter();
 
   const { data } = useSWR<IAllPatientsResData>('/api/patient');
   const { mutate } = useSWRConfig();
+
+  const logOutHandler = () => {
+    signOut();
+    router.replace('/');
+  };
 
   const deletePatient = async (id: string) => {
     const newData = {
@@ -58,7 +66,7 @@ const DeleteDialog = () => {
       initial="hide"
       animate="show"
     >
-      <p>Are you sure you want to delete?</p>
+      <p className={styles.desc}>{state.confirmDialog.description}</p>
       <div className={styles.btnsContainer}>
         <button
           type="button"
@@ -70,8 +78,12 @@ const DeleteDialog = () => {
               payload: false,
             });
             dispatch({
-              type: 'SHOW_PATIENT_DELETE_DIALOG',
-              payload: false,
+              type: 'CONFIRM_DIALOG',
+              payload: {
+                active: false,
+                description: null,
+                type: null,
+              },
             });
           }}
         >
@@ -81,14 +93,23 @@ const DeleteDialog = () => {
           type="button"
           className="btn"
           onClick={() => {
-            deletePatient(state.apiPatientId);
+            if (state.confirmDialog.type === 'deleteUser') {
+              deletePatient(state.apiPatientId);
+            } else if (state.confirmDialog.type === 'logOut') {
+              logOutHandler();
+            }
+
             dispatch({
               type: 'SHOW_BACKDROP',
               payload: false,
             });
             dispatch({
-              type: 'SHOW_PATIENT_DELETE_DIALOG',
-              payload: false,
+              type: 'CONFIRM_DIALOG',
+              payload: {
+                active: false,
+                description: null,
+                type: null,
+              },
             });
           }}
         >

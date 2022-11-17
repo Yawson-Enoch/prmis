@@ -16,7 +16,7 @@ const Table = () => {
   const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   if (!data) {
-    return;
+    return null;
   }
 
   const newData = data?.patients.slice(-3).sort((patientOne, patientTwo) => {
