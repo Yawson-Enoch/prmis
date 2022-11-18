@@ -24,7 +24,7 @@ export type ActionTypes =
   | { type: 'NOTIFICATION'; payload: INotification }
   | { type: 'CONFIRM_DIALOG'; payload: IConfirmDialog }
   | { type: 'SHOW_BACKDROP'; payload: boolean }
-  | { type: 'API_PATIENT_ID'; payload: string | null }
+  | { type: 'API_PATIENT_ID'; payload: string }
   | { type: 'SHOW_PATIENT_DETAILS_EDIT_FORM'; payload: boolean };
 
 export interface IAppState {
@@ -32,7 +32,7 @@ export interface IAppState {
   confirmDialog: IConfirmDialog;
   showBackdrop: boolean;
   showPatientDetailsEditForm: boolean;
-  apiPatientId: string | null;
+  apiPatientId: string;
 }
 
 interface IAppContextProps {
@@ -60,7 +60,10 @@ const initialAppState: IAppState = {
   },
   showBackdrop: false,
   showPatientDetailsEditForm: false,
-  apiPatientId: null,
+  apiPatientId:
+    (typeof localStorage !== 'undefined' &&
+      localStorage.getItem('apiPatientId')) ||
+    '',
 };
 
 const AppContextProvider = ({ children }: IAppContextProviderProps) => {
@@ -82,6 +85,10 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
       return () => clearInterval(timer);
     }
   }, [state.notification.active]);
+
+  useEffect(() => {
+    localStorage.setItem('apiPatientId', state.apiPatientId);
+  }, [state.apiPatientId]);
 
   useEffect(() => {
     window.addEventListener('keyup', (e: KeyboardEvent) => {

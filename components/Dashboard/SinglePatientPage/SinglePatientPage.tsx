@@ -1,7 +1,6 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
 import { useAppContext } from '@/store/appContext';
@@ -15,12 +14,11 @@ interface ISinglePatientResData {
 }
 
 const SinglePatientPage = () => {
-  const router = useRouter();
-  const { patientId } = router.query;
+  const { state, dispatch } = useAppContext();
 
-  const { dispatch } = useAppContext();
-
-  const { data } = useSWR<ISinglePatientResData>(`/api/patient/${patientId}`);
+  const { data } = useSWR<ISinglePatientResData>(
+    `/api/patient/${state.apiPatientId}`
+  );
 
   if (!data) {
     return (
@@ -30,15 +28,15 @@ const SinglePatientPage = () => {
         direction="row"
         alignItems="center"
         justifyContent="center"
+        mt={4}
       >
         <CircularProgress color="success" />
       </Stack>
     );
   }
 
-  const {
-    patient: { image, firstName, email, age, gender, phone, createdAt },
-  } = data;
+  const { image, firstName, email, age, gender, phone, createdAt } =
+    data?.patient;
 
   return (
     <DashboardLayout>

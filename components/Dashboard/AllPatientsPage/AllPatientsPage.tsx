@@ -138,6 +138,7 @@ const AllPatientsPage = () => {
         direction="row"
         alignItems="center"
         justifyContent="center"
+        mt={4}
       >
         <CircularProgress color="success" />
       </Stack>

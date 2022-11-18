@@ -4,11 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--space-xtra-small);
-  box-shadow: var(--shadow-small);
-  padding: var(--space-medium);
-  border-radius: var(--radius-small);
-  margin-inline: px-to-rem-or-em(10px);
 }
 
 .bottom {
@@ -24,7 +19,7 @@
 }
 
 .total {
-  color: var(--clr-success);
+  color: var(--clr-secondary);
   font-size: 10rem;
   justify-self: center;
   text-align: center;

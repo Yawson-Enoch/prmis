@@ -27,6 +27,7 @@ const Chart = () => {
         direction="row"
         alignItems="center"
         justifyContent="center"
+        mt={4}
       >
         <CircularProgress color="success" />
       </Stack>
@@ -74,7 +75,7 @@ const Chart = () => {
 
   return (
     <div className={`styledbox ${styles.box}`}>
-      <p style={{ marginBottom: '1.5rem' }}>WEEKLY COUNT OF PATIENTS</p>
+      <p style={{ marginBottom: '0.7rem' }}>WEEKLY COUNT OF PATIENTS</p>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart width={730} height={250} data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />

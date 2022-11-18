@@ -10,7 +10,7 @@ const Widget = () => {
   const { data } = useSWR<IAllPatientsResData>('/api/patient');
 
   return (
-    <div className={styles.box}>
+    <div className={`styledbox ${styles.box}`}>
       <p>TOTAL NUMBER OF PATIENTS</p>
       {!data ? (
         <Stack
@@ -19,6 +19,7 @@ const Widget = () => {
           direction="row"
           alignItems="center"
           justifyContent="center"
+          mt={4}
         >
           <CircularProgress color="success" />
         </Stack>
