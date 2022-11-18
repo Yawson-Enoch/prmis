@@ -1,6 +1,6 @@
 import Backdrop from '@/components/Backdrop/Backdrop';
+import ConfirmDialog from '@/components/ConfirmDialog/ConfirmDialog';
 import AllPatientsPage from '@/components/Dashboard/AllPatientsPage/AllPatientsPage';
-import DeleteDialog from '@/components/DeleteDialog/DeleteDialog';
 import NotificationModal from '@/components/NotificationModal/NotificationModal';
 import { useAppContext } from '@/store/appContext';
 
@@ -11,7 +11,7 @@ const AllPatients = () => {
     <>
       <AllPatientsPage />
       {state.showBackdrop && <Backdrop />}
-      {state.confirmDialog.active && <DeleteDialog />}
+      {state.confirmDialog.active && <ConfirmDialog />}
       {state.notification.active && <NotificationModal />}
     </>
   );

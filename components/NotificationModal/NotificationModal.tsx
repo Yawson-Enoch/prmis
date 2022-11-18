@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 import { MdCancel, MdCheckCircle, MdError } from 'react-icons/md';
 import { slideLeft } from '../../animations/animations';
@@ -22,7 +23,7 @@ const NotificationModal = () => {
     return 'blue';
   };
 
-  return (
+  return ReactDOM.createPortal(
     <motion.div
       className={styles.box}
       variants={slideLeft}
@@ -66,7 +67,8 @@ const NotificationModal = () => {
       >
         <MdCancel />
       </div>
-    </motion.div>
+    </motion.div>,
+    document.getElementById('notification') as HTMLDivElement
   );
 };
 

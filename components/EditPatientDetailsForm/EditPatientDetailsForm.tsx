@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
@@ -87,7 +88,7 @@ const EditPatientDetailsForm = () => {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <motion.section
       className={`flow ${styles.formContainer}`}
       variants={scaleUp}
@@ -179,7 +180,8 @@ const EditPatientDetailsForm = () => {
           </button>
         </div>
       </form>
-    </motion.section>
+    </motion.section>,
+    document.getElementById('edit-patient-form') as HTMLDivElement
   );
 };
 

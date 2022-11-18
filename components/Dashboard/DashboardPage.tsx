@@ -1,5 +1,5 @@
 import { useAppContext } from '@/store/appContext';
-import DeleteDialog from '../DeleteDialog/DeleteDialog';
+import ConfirmDialog from '../ConfirmDialog/ConfirmDialog';
 import Chart from './Chart/Chart';
 import DashboardLayout from './DashboardLayout/DashboardLayout';
 import Table from './Table/Table';
@@ -13,7 +13,7 @@ const DashboardPage = () => {
         <Chart />
         <Table />
       </div>
-      {state.confirmDialog.active && <DeleteDialog />}
+      {state.confirmDialog.active && <ConfirmDialog />}
     </DashboardLayout>
   );
 };

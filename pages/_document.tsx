@@ -19,6 +19,10 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <div id="notification"></div>
+          <div id="backdrop"></div>
+          <div id="confirm-dialog"></div>
+          <div id="edit-patient-form"></div>
         </body>
       </Html>
     );

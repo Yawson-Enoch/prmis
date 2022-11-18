@@ -1,13 +1,14 @@
+import ReactDOM from 'react-dom';
 import { motion } from 'framer-motion';
 import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '@/store/appContext';
 import { IAllPatientsResData } from '../Dashboard/AllPatientsPage/AllPatientsPage';
-import styles from './DeleteDialog.module.scss';
+import styles from './ConfirmDialog.module.scss';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-const DeleteDialog = () => {
+const ConfirmDialog = () => {
   const { dispatch, state } = useAppContext();
   const router = useRouter();
 
@@ -59,7 +60,7 @@ const DeleteDialog = () => {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <motion.form
       className={styles.form}
       variants={scaleUp}
@@ -117,8 +118,9 @@ const DeleteDialog = () => {
           yes
         </button>
       </div>
-    </motion.form>
+    </motion.form>,
+    document.getElementById('confirm-dialog') as HTMLDivElement
   );
 };
 
-export default DeleteDialog;
+export default ConfirmDialog;
