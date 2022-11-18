@@ -20,6 +20,5 @@
 }
 
 .cellImage {
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: var(--radius-round);
 }

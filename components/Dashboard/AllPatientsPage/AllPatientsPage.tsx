@@ -65,6 +65,8 @@ const AllPatientsPage = () => {
               alt={`${params.row.firstName} ${params.row.lastName}`}
               width={30}
               height={30}
+              objectFit="cover"
+              objectPosition="center"
               className={styles.cellImage}
             />
             {`${params.row.firstName} ${params.row.lastName}`}

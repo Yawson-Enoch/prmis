@@ -70,6 +70,8 @@ const SinglePatientPage = () => {
               alt="patient image"
               width={200}
               height={200}
+              objectFit="cover"
+              objectPosition="center"
               className={styles.patientImg}
             />
           </div>

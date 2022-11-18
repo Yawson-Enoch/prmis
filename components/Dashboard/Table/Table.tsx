@@ -50,6 +50,8 @@ const Table = () => {
                       alt={row.firstName}
                       width={30}
                       height={30}
+                      objectFit="cover"
+                      objectPosition="center"
                       className={styles.cellImage}
                     />
                     {`${row.firstName} ${row.lastName}`}
