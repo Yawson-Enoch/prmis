@@ -130,24 +130,8 @@ const AllPatientsPage = () => {
     },
   ];
 
-  if (!data) {
-    return (
-      <Stack
-        sx={{ color: 'grey.500' }}
-        spacing={4}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-        mt={4}
-      >
-        <CircularProgress color="success" />
-      </Stack>
-    );
-  }
-
   const keys = ['firstName', 'lastName', 'email', 'gender'];
-
-  const newDataWithFormattedDate = data.patients
+  const newDataWithFormattedDate = data?.patients
     .map((patient) => {
       return {
         ...patient,
@@ -184,14 +168,27 @@ const AllPatientsPage = () => {
             Add Patient
           </button>
         </div>
-        <DataGrid
-          rows={newDataWithFormattedDate}
-          columns={columns}
-          pageSize={7}
-          rowsPerPageOptions={[7]}
-          checkboxSelection
-          getRowId={(row) => row._id}
-        />
+        {!newDataWithFormattedDate ? (
+          <Stack
+            sx={{ color: 'grey.500' }}
+            spacing={4}
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            mt={4}
+          >
+            <CircularProgress color="success" />
+          </Stack>
+        ) : (
+          <DataGrid
+            rows={newDataWithFormattedDate}
+            columns={columns}
+            pageSize={7}
+            rowsPerPageOptions={[7]}
+            checkboxSelection
+            getRowId={(row) => row._id}
+          />
+        )}
       </div>
     </DashboardLayout>
   );
