@@ -8,7 +8,7 @@
 .imgContainer {
   border: 2px solid lighten(gray, 10%);
   border-radius: var(--radius-round);
-  width: fit-content;
+  width: 150px;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
@@ -48,12 +48,6 @@
   gap: var(--space-large);
 }
 
-.picPlaceholder {
-  font-size: 150px;
-  padding: 0.5rem;
-  color: lighten(gray, 10%);
-}
-
 .formInputRadioOptions,
 .formInputRadio {
   display: flex;
@@ -67,4 +61,10 @@
 
 .btn {
   margin-left: auto;
+
+  &:disabled {
+    opacity: 0.3;
+    background-color: lighten(blue, 10%);
+    cursor: not-allowed;
+  }
 }

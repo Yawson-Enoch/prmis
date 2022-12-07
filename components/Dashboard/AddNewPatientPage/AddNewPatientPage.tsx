@@ -1,12 +1,21 @@
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { MdCameraAlt, MdDriveFolderUpload } from 'react-icons/md';
+import { MdDriveFolderUpload } from 'react-icons/md';
 import { useAppContext } from '@/store/appContext';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './AddNewPatientPage.module.scss';
 
+interface IFormData {
+  firstName: string;
+  lastName: string;
+  age: string;
+  email: string;
+  gender: string;
+  phone: string;
+}
+
 const AddNewPatientPage = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IFormData>({
     firstName: '',
     lastName: '',
     age: '',
@@ -15,9 +24,11 @@ const AddNewPatientPage = () => {
     phone: '',
   });
 
-  const [imagePreview, setImagePreview] = useState({} as any);
-  const [imageUrl, setImageUrl] = useState('');
   const { dispatch } = useAppContext();
+
+  const [uploading, setUploading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const type = e.target.type;
@@ -28,23 +39,39 @@ const AddNewPatientPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  type DynamicKeys = keyof IFormData;
+
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
-
+    setUploading(true);
     try {
+      if (!selectedFile) {
+        dispatch({
+          type: 'NOTIFICATION',
+          payload: {
+            active: true,
+            title: 'error',
+            description: 'Please select an Image',
+            style: 'error',
+          },
+        });
+        return;
+      }
+
+      const uploadData = new FormData();
+
+      for (const data in formData) {
+        uploadData.append(data, formData[data as DynamicKeys]);
+      }
+
+      uploadData.append('image', selectedFile);
+
       const response = await fetch('/api/patient', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          image: imageUrl,
-          age: Number(formData.age),
-        }),
+        body: uploadData,
       });
 
-      const { message }: any = await response.json();
+      const { message }: { message: string } = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');
@@ -68,8 +95,8 @@ const AddNewPatientPage = () => {
         gender: '',
         phone: '',
       });
-      setImageUrl('');
-      setImagePreview({});
+      setSelectedImage('');
+      setSelectedFile(null);
     } catch (error: any) {
       dispatch({
         type: 'NOTIFICATION',
@@ -80,6 +107,8 @@ const AddNewPatientPage = () => {
           style: 'error',
         },
       });
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -90,22 +119,22 @@ const AddNewPatientPage = () => {
 
         <div className={styles.formContainer}>
           <div className={styles.imgContainer}>
-            {imagePreview[0] ? (
+            {selectedImage ? (
               <Image
-                src={URL.createObjectURL(imagePreview[0])}
-                alt="image preview"
+                src={selectedImage}
+                alt="Image preview"
                 width={150}
                 height={150}
                 className={styles.img}
               />
             ) : (
-              <MdCameraAlt className={styles.picPlaceholder} />
+              <p style={{ padding: '0.5rem' }}>Select Image</p>
             )}
           </div>
           <form className={`flow ${styles.form}`} onSubmit={submitHandler}>
             <div className={styles.formInput}>
               <label
-                htmlFor="imagePreview"
+                htmlFor="image"
                 style={{
                   cursor: 'pointer',
                   display: 'flex',
@@ -120,12 +149,15 @@ const AddNewPatientPage = () => {
               </label>
               <input
                 type="file"
-                id="imagePreview"
+                id="image"
                 accept=".jpg,.jpeg,.png"
                 style={{ display: 'none' }}
                 onChange={(e) => {
-                  setImagePreview(e.target.files);
-                  setImageUrl(`/assets/patients/${e.target.files![0]?.name}`);
+                  if (e.target.files) {
+                    const file = e.target.files[0];
+                    setSelectedImage(URL.createObjectURL(file));
+                    setSelectedFile(file);
+                  }
                 }}
               />
             </div>
@@ -232,8 +264,12 @@ const AddNewPatientPage = () => {
               </div>
             </div>
 
-            <button type="submit" className={`btn ${styles.btn}`}>
-              Add Patient
+            <button
+              type="submit"
+              className={`btn ${styles.btn}`}
+              disabled={uploading}
+            >
+              {uploading ? 'Adding Patient...' : 'Add Patient'}
             </button>
           </form>
         </div>

@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '@/lib/db-connect';
 import Patient from '@/models/patient';
+import fs from 'fs';
 
 interface ISinglePatient {
   firstName: string;
@@ -78,7 +79,10 @@ export default async function handler(
 
     case 'DELETE': {
       try {
-        await Patient.findOneAndDelete({ _id: patientId });
+        // await Patient.findOneAndDelete({ _id: patientId });
+        const patient = await Patient.findById({ _id: patientId });
+        patient.remove();
+        fs.unlinkSync(`public${patient.image}`);
         res.status(StatusCodes.OK).json({
           message: 'Patient deleted.',
         });
