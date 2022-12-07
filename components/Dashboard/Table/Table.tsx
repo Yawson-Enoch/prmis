@@ -19,9 +19,7 @@ const Table = () => {
     return null;
   }
 
-  const newData = data?.patients.slice(-3).sort((patientOne, patientTwo) => {
-    return patientOne.createdAt > patientTwo.createdAt ? -1 : 1;
-  });
+  const newData = data?.patients.slice(0, 3);
 
   return (
     <div className="styledbox">

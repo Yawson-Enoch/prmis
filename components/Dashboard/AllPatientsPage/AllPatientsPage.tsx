@@ -74,7 +74,7 @@ const AllPatientsPage = () => {
         );
       },
     },
-    { field: 'email', headerName: 'Email', width: 220 },
+    { field: 'email', headerName: 'Email', width: 180 },
     { field: 'age', headerName: 'Age', width: 10 },
     { field: 'gender', headerName: 'Gender', width: 60 },
     { field: 'phone', headerName: 'Phone', width: 110 },
@@ -132,6 +132,9 @@ const AllPatientsPage = () => {
 
   const keys = ['firstName', 'lastName', 'email', 'gender'];
   const newDataWithFormattedDate = data?.patients
+    .sort((patientOne, patientTwo) => {
+      return patientOne.createdAt > patientTwo.createdAt ? -1 : 1;
+    })
     .map((patient) => {
       return {
         ...patient,
