@@ -10,9 +10,9 @@ import { appReducer } from './appReducer';
 
 export interface INotification {
   active: boolean;
-  title: 'success' | 'error' | null;
+  title: 'success' | 'error' | 'info' | null;
   description: string | null;
-  style: 'success' | 'error' | null;
+  style: 'success' | 'error' | 'info' | null;
 }
 export interface IConfirmDialog {
   active: boolean;
