@@ -6,13 +6,8 @@
   z-index: 5;
   height: px-to-rem-or-em(60px);
   border-bottom: 1px solid lighten(black, 80%);
-  background-color: rgba(225, 231, 239, 0.05);
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0) 1px,
-    var(--clr-primary) 1px
-  );
-  background-size: 4px 4px;
-  backdrop-filter: blur(4px);
+  background-color: rgba(225, 231, 239, 0.1);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: flex-end;
   align-items: center;
