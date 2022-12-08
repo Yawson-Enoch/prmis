@@ -7,10 +7,6 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="author" content="Yawson Enoch" />
           <meta
-            name="keywords"
-            content="patient, record management, patient record management information system"
-          />
-          <meta
             name="description"
             content="Welcome to Obeyeyie Medical Center. We have assembled some of the finest Doctors, Nurses, Dentists, etc who take care of all your medical and mental health needs."
           />

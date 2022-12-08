@@ -6,6 +6,7 @@ import { SWRConfig } from 'swr';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import '@/styles/nprogress.scss';
+import Head from 'next/head';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -14,15 +15,20 @@ NProgress.configure({ showSpinner: false });
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SWRConfig
-      value={{ fetcher: (url) => fetch(url).then((res) => res.json()) }}
-    >
-      <SessionProvider session={session}>
-        <AppContextProvider>
-          <Component {...pageProps} />
-        </AppContextProvider>
-      </SessionProvider>
-    </SWRConfig>
+    <>
+      <Head>
+        <title>Obeyeyie Medical Center</title>
+      </Head>
+      <SWRConfig
+        value={{ fetcher: (url) => fetch(url).then((res) => res.json()) }}
+      >
+        <SessionProvider session={session}>
+          <AppContextProvider>
+            <Component {...pageProps} />
+          </AppContextProvider>
+        </SessionProvider>
+      </SWRConfig>
+    </>
   );
 }
 

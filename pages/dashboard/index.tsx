@@ -1,9 +1,17 @@
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import DashboardPage from '@/components/Dashboard/DashboardPage';
+import Head from 'next/head';
 
 const Dashboard = () => {
-  return <DashboardPage />;
+  return (
+    <>
+      <Head>
+        <link rel="canonical" href="/dashboard" />
+      </Head>
+      <DashboardPage />
+    </>
+  );
 };
 
 export default Dashboard;

@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Obeyeyie Medical Center</title>
+        <link rel="canonical" href="/" />
       </Head>
       <HomePage />
     </>
