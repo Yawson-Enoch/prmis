@@ -5,15 +5,16 @@ import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../animations/animations';
 import { useAppContext } from '@/store/appContext';
 import styles from './EditPatientDetailsForm.module.scss';
+import { ISinglePatientResData } from '../Dashboard/SinglePatientPage/SinglePatientPage';
 
 const EditPatientDetailsForm = () => {
   const { dispatch, state } = useAppContext();
-  const { data } = useSWR(`/api/patient/${state.apiPatientId}`);
+  const { data } = useSWR<ISinglePatientResData>(
+    `/api/patient/${state.apiPatientId}`
+  );
   const { mutate } = useSWRConfig();
 
-  const {
-    patient: { firstName, lastName, email, phone },
-  } = data;
+  const { firstName, lastName, email, phone } = data!.patient;
 
   const [formData, setFormData] = useState({
     firstName,
@@ -36,7 +37,7 @@ const EditPatientDetailsForm = () => {
 
     const newData = {
       ...data,
-      patient: { ...data.patient, ...formData },
+      patient: { ...data?.patient, ...formData },
     };
 
     await mutate(`/api/patient/${state.apiPatientId}`, newData, false);

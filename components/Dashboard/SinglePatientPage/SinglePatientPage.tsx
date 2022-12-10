@@ -8,7 +8,7 @@ import { IPatient } from '../AllPatientsPage/AllPatientsPage';
 import DashboardLayout from '../DashboardLayout/DashboardLayout';
 import styles from './SinglePatientPage.module.scss';
 
-interface ISinglePatientResData {
+export interface ISinglePatientResData {
   message: string;
   patient: IPatient;
 }

@@ -132,9 +132,6 @@ const AllPatientsPage = () => {
 
   const keys = ['firstName', 'lastName', 'email', 'gender'];
   const newDataWithFormattedDate = data?.patients
-    .sort((patientOne, patientTwo) => {
-      return patientOne.createdAt > patientTwo.createdAt ? -1 : 1;
-    })
     .map((patient) => {
       return {
         ...patient,
