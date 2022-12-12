@@ -4,11 +4,15 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import dbConnect from '@/lib/db-connect';
 import Admin from '@/models/admin';
 
+interface ICredentials {
+  email: string;
+  password: string;
+}
+
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      id: 'credentials',
-      name: 'Credentials',
+      type: 'credentials',
       credentials: {
         email: {
           label: 'Email',
@@ -19,21 +23,20 @@ export default NextAuth({
           type: 'password',
         },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<any> {
         await dbConnect();
 
+        const { email, password } = credentials as ICredentials;
+
         const user = await Admin.findOne({
-          email: credentials?.email,
+          email,
         });
 
         if (!user) {
           throw new Error('Email is not registered.');
         }
 
-        const isPasswordCorrect = await compare(
-          credentials!.password,
-          user.password
-        );
+        const isPasswordCorrect = await compare(password, user.password);
 
         if (!isPasswordCorrect) {
           throw new Error('Password is incorrect.');
