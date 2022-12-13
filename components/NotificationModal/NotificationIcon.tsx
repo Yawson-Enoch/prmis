@@ -20,7 +20,6 @@ const NotificationIcon = () => {
     state: {
       notification: { style },
     },
-    dispatch,
   } = useAppContext();
 
   let notificationIcon = <MdCheckCircle />;
@@ -41,7 +40,7 @@ const NotificationIcon = () => {
     <div
       style={{
         color: `${notificationColors(style)}`,
-        fontSize: '3.5rem',
+        fontSize: '3rem',
       }}
     >
       {notificationIcon}

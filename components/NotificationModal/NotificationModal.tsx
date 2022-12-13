@@ -20,6 +20,7 @@ const NotificationModal = () => {
       variants={slideLeft}
       initial="hide"
       animate="show"
+      exit="hide"
     >
       <NotificationIcon />
       <div className={styles.textBox}>
@@ -27,8 +28,8 @@ const NotificationModal = () => {
           style={{
             textTransform: 'capitalize',
             color: `${notificationColors(style)}`,
-            fontSize: '1.5rem',
-            marginBottom: '0.5rem',
+            fontSize: '1.3rem',
+            marginBottom: '0.2rem',
           }}
         >
           {title}

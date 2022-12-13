@@ -66,6 +66,7 @@ const ConfirmDialog = () => {
       variants={scaleUp}
       initial="hide"
       animate="show"
+      exit="hide"
     >
       <p className={styles.desc}>{state.confirmDialog.description}</p>
       <div className={styles.btnsContainer}>

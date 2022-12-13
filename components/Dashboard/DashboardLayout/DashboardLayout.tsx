@@ -7,6 +7,7 @@ import ConfirmDialog from '@/components/ConfirmDialog/ConfirmDialog';
 import NotificationModal from '@/components/NotificationModal/NotificationModal';
 import EditPatientDetailsForm from '@/components/EditPatientDetailsForm/EditPatientDetailsForm';
 import Backdrop from '@/components/Backdrop/Backdrop';
+import { AnimatePresence } from 'framer-motion';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { state } = useAppContext();
@@ -16,9 +17,15 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <Navbar />
       <div className={styles.children}>{children}</div>
       {state.showBackdrop && <Backdrop />}
-      {state.notification.active && <NotificationModal />}
-      {state.confirmDialog.active && <ConfirmDialog />}
-      {state.showPatientDetailsEditForm && <EditPatientDetailsForm />}
+      <AnimatePresence key="notification-modal">
+        {state.notification.active && <NotificationModal />}
+      </AnimatePresence>
+      <AnimatePresence key="confirm-dialog">
+        {state.confirmDialog.active && <ConfirmDialog />}
+      </AnimatePresence>
+      <AnimatePresence key="edit-patient-details">
+        {state.showPatientDetailsEditForm && <EditPatientDetailsForm />}
+      </AnimatePresence>
     </div>
   );
 };

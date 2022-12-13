@@ -95,6 +95,7 @@ const EditPatientDetailsForm = () => {
       variants={scaleUp}
       initial="hide"
       animate="show"
+      exit="hide"
     >
       <p>Edit Patient Details</p>
       <form className={styles.form} onSubmit={submitHandler}>
