@@ -1,4 +1,4 @@
-import AddNewPatientPage from '@/components/Dashboard/AddNewPatientPage/AddNewPatientPage';
+import AddNewPatientPage from '@/components/dashboard/add-new-patient/AddNewPatientPage';
 import Head from 'next/head';
 
 const AddNewPatient = () => {

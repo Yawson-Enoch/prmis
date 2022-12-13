@@ -1,4 +1,4 @@
-import SinglePatientPage from '@/components/Dashboard/SinglePatientPage/SinglePatientPage';
+import SinglePatientPage from '@/components/dashboard/single-patient/SinglePatientPage';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 

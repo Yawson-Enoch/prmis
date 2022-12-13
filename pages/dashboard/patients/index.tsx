@@ -1,4 +1,4 @@
-import AllPatientsPage from '@/components/Dashboard/AllPatientsPage/AllPatientsPage';
+import AllPatientsPage from '@/components/dashboard/all-patients-table-max/AllPatientsPage';
 import Head from 'next/head';
 
 const AllPatients = () => {

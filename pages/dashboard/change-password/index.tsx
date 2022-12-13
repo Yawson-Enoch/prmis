@@ -1,4 +1,4 @@
-import ChangePasswordPage from '@/components/Dashboard/ChangePasswordPage/ChangePasswordPage';
+import ChangePasswordPage from '@/components/dashboard/change-password/ChangePasswordPage';
 import Head from 'next/head';
 
 const ChangePassword = () => {
