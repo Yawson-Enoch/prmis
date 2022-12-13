@@ -9,10 +9,10 @@
   z-index: 30;
   display: flex;
   align-items: center;
-  gap: var(--space-large);
-  width: 35%;
+  gap: var(--space-small);
+  max-width: fit-content;
   background-color: var(--clr-primary);
-  padding: px-to-rem-or-em(10px) px-to-rem-or-em(20px);
+  padding: px-to-rem-or-em(5px) px-to-rem-or-em(10px);
 }
 
 .cancelBtn {
