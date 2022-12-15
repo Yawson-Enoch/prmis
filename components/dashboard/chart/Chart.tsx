@@ -21,15 +21,8 @@ const Chart = () => {
 
   if (!data) {
     return (
-      <Stack
-        sx={{ color: 'grey.500' }}
-        spacing={4}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-        mt={4}
-      >
-        <CircularProgress color="success" />
+      <Stack direction="row" alignItems="center" justifyContent="center" mt={4}>
+        <CircularProgress color="info" />
       </Stack>
     );
   }

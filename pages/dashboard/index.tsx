@@ -1,20 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
-import DashboardPage from '@/components/dashboard/DashboardPage';
 import Head from 'next/head';
-
-const Dashboard = () => {
-  return (
-    <>
-      <Head>
-        <link rel="canonical" href="/dashboard" />
-      </Head>
-      <DashboardPage />
-    </>
-  );
-};
-
-export default Dashboard;
+import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
+import DashboardIndexPage from '@/components/dashboard/DashboardIndexPage';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession({ req: context.req });
@@ -34,3 +22,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+const Dashboard = () => {
+  return (
+    <>
+      <Head>
+        <link rel="canonical" href="/dashboard" />
+      </Head>
+      <DashboardIndexPage />
+    </>
+  );
+};
+
+Dashboard.PageLayout = DashboardLayout;
+export default Dashboard;

@@ -12,10 +12,10 @@ import { AnimatePresence } from 'framer-motion';
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { state } = useAppContext();
   return (
-    <div>
+    <>
       <Sidebar />
       <Navbar />
-      <div className={styles.children}>{children}</div>
+      <main className={styles.children}>{children}</main>
       {state.showBackdrop && <Backdrop />}
       <AnimatePresence key="notification-modal">
         {state.notification.active && <NotificationModal />}
@@ -26,7 +26,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <AnimatePresence key="edit-patient-details">
         {state.showPatientDetailsEditForm && <EditPatientDetailsForm />}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

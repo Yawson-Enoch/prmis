@@ -1,4 +1,5 @@
 import AddNewPatientPage from '@/components/dashboard/add-new-patient/AddNewPatientPage';
+import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
 import Head from 'next/head';
 
 const AddNewPatient = () => {
@@ -12,4 +13,5 @@ const AddNewPatient = () => {
   );
 };
 
+AddNewPatient.PageLayout = DashboardLayout;
 export default AddNewPatient;

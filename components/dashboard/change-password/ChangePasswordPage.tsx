@@ -1,7 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAppContext } from '@/store/appContext';
-import DashboardLayout from '../layout/DashboardLayout';
 import styles from './ChangePasswordPage.module.scss';
 
 const ChangePasswordPage = () => {
@@ -64,69 +63,67 @@ const ChangePasswordPage = () => {
   };
 
   return (
-    <DashboardLayout>
-      <div className="flow">
-        <h1 className="styledbox" style={{ textAlign: 'center' }}>
+    <div className="flow">
+      <h1 className="styledbox" style={{ textAlign: 'center' }}>
+        Change Password
+      </h1>
+      <form onSubmit={submitHandler} className={`flow ${styles.form}`}>
+        <div className={styles.formField}>
+          <label htmlFor="oldPassword">Old Password</label>
+          <input
+            type={passwordInputType}
+            name="oldPassword"
+            id="oldPassword"
+            placeholder="Enter Old Password"
+            required
+            autoComplete="off"
+            autoCapitalize="off"
+            autoCorrect="off"
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+            title="Minimum eight characters, at least one upper case English
+                letter, one lower case English letter, one number and one
+                special character."
+            autoFocus
+            onChange={(e) => setOldPassword(e.target.value)}
+          />
+          <span onClick={togglePasswordType}>
+            {passwordInputType === 'password' ? (
+              <FaEyeSlash />
+            ) : (
+              <FaEye style={{ color: '#137aca' }} />
+            )}
+          </span>
+        </div>
+        <div className={styles.formField}>
+          <label htmlFor="newPassword">New Password</label>
+          <input
+            type={passwordInputType}
+            name="newPassword"
+            id="newPassword"
+            placeholder="Enter New Password"
+            required
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+            title="Minimum eight characters, at least one upper case English
+                letter, one lower case English letter, one number and one
+                special character."
+            autoComplete="off"
+            autoCapitalize="off"
+            autoCorrect="off"
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <span onClick={togglePasswordType}>
+            {passwordInputType === 'password' ? (
+              <FaEyeSlash />
+            ) : (
+              <FaEye style={{ color: '#137aca' }} />
+            )}
+          </span>
+        </div>
+        <button type="submit" className="btn" style={{ marginLeft: 'auto' }}>
           Change Password
-        </h1>
-        <form onSubmit={submitHandler} className={`flow ${styles.form}`}>
-          <div className={styles.formField}>
-            <label htmlFor="oldPassword">Old Password</label>
-            <input
-              type={passwordInputType}
-              name="oldPassword"
-              id="oldPassword"
-              placeholder="Enter Old Password"
-              required
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
-              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-              title="Minimum eight characters, at least one upper case English
-                letter, one lower case English letter, one number and one
-                special character."
-              autoFocus
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-            <span onClick={togglePasswordType}>
-              {passwordInputType === 'password' ? (
-                <FaEyeSlash />
-              ) : (
-                <FaEye style={{ color: '#137aca' }} />
-              )}
-            </span>
-          </div>
-          <div className={styles.formField}>
-            <label htmlFor="newPassword">New Password</label>
-            <input
-              type={passwordInputType}
-              name="newPassword"
-              id="newPassword"
-              placeholder="Enter New Password"
-              required
-              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-              title="Minimum eight characters, at least one upper case English
-                letter, one lower case English letter, one number and one
-                special character."
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <span onClick={togglePasswordType}>
-              {passwordInputType === 'password' ? (
-                <FaEyeSlash />
-              ) : (
-                <FaEye style={{ color: '#137aca' }} />
-              )}
-            </span>
-          </div>
-          <button type="submit" className="btn" style={{ marginLeft: 'auto' }}>
-            Change Password
-          </button>
-        </form>
-      </div>
-    </DashboardLayout>
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import SinglePatientPage from '@/components/dashboard/single-patient/SinglePatientPage';
+import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -17,4 +18,5 @@ const SinglePatient = () => {
   );
 };
 
+SinglePatient.PageLayout = DashboardLayout;
 export default SinglePatient;

@@ -8,7 +8,6 @@ import { MdOutlineSearch } from 'react-icons/md';
 import useSWR from 'swr';
 import { useAppContext } from '@/store/appContext';
 import { formatDate } from '../../../utils';
-import DashboardLayout from '../layout/DashboardLayout';
 import styles from './AllPatientsPage.module.scss';
 
 export interface IPatient {
@@ -145,52 +144,48 @@ const AllPatientsPage = () => {
     });
 
   return (
-    <DashboardLayout>
-      <div className={`flow ${styles.dataTable}`}>
-        <div className={`styledbox ${styles.tableHeader}`}>
-          <h1>Available Patients</h1>
-          <form>
-            <div className={styles.searchForm}>
-              <input
-                type="search"
-                name="search"
-                onChange={(e) => setQuery(e.target.value)}
-              />
-              <MdOutlineSearch />
-            </div>
-          </form>
-          <button
-            className={`btn ${styles.btn}`}
-            onClick={() => {
-              router.push('/dashboard/add-new-patient');
-            }}
-          >
-            Add Patient
-          </button>
-        </div>
-        {!newDataWithFormattedDate ? (
-          <Stack
-            sx={{ color: 'grey.500' }}
-            spacing={4}
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            mt={4}
-          >
-            <CircularProgress color="success" />
-          </Stack>
-        ) : (
-          <DataGrid
-            rows={newDataWithFormattedDate}
-            columns={columns}
-            pageSize={7}
-            rowsPerPageOptions={[7]}
-            checkboxSelection
-            getRowId={(row) => row._id}
-          />
-        )}
+    <div className={`flow ${styles.dataTable}`}>
+      <div className={`styledbox ${styles.tableHeader}`}>
+        <h1>Available Patients</h1>
+        <form>
+          <div className={styles.searchForm}>
+            <input
+              type="search"
+              name="search"
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <MdOutlineSearch />
+          </div>
+        </form>
+        <button
+          className={`btn ${styles.btn}`}
+          onClick={() => {
+            router.push('/dashboard/add-new-patient');
+          }}
+        >
+          Add Patient
+        </button>
       </div>
-    </DashboardLayout>
+      {!newDataWithFormattedDate ? (
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          mt={4}
+        >
+          <CircularProgress color="info" />
+        </Stack>
+      ) : (
+        <DataGrid
+          rows={newDataWithFormattedDate}
+          columns={columns}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
+          checkboxSelection
+          getRowId={(row) => row._id}
+        />
+      )}
+    </div>
   );
 };
 

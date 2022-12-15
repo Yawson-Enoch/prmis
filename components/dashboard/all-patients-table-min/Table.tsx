@@ -25,14 +25,12 @@ const Table = () => {
 
       {!newData ? (
         <Stack
-          sx={{ color: 'grey.500' }}
-          spacing={4}
           direction="row"
           alignItems="center"
           justifyContent="center"
           mt={4}
         >
-          <CircularProgress color="success" />
+          <CircularProgress color="info" />
         </Stack>
       ) : (
         <TableContainer component={Paper} className={styles.table}>

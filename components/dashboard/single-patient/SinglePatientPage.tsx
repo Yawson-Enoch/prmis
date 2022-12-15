@@ -5,7 +5,6 @@ import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
 import { useAppContext } from '@/store/appContext';
 import { IPatient } from '../all-patients-table-max/AllPatientsPage';
-import DashboardLayout from '../layout/DashboardLayout';
 import styles from './SinglePatientPage.module.scss';
 
 export interface ISinglePatientResData {
@@ -21,17 +20,15 @@ const SinglePatientPage = () => {
   );
 
   return (
-    <DashboardLayout>
+    <>
       {!data ? (
         <Stack
-          sx={{ color: 'grey.500' }}
-          spacing={4}
           direction="row"
           alignItems="center"
           justifyContent="center"
           mt={4}
         >
-          <CircularProgress color="success" />
+          <CircularProgress color="info" />
         </Stack>
       ) : (
         <div className="flow">
@@ -78,7 +75,7 @@ const SinglePatientPage = () => {
           </div>
         </div>
       )}
-    </DashboardLayout>
+    </>
   );
 };
 

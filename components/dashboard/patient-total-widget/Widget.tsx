@@ -14,14 +14,12 @@ const Widget = () => {
       <p>TOTAL NUMBER OF PATIENTS</p>
       {!data ? (
         <Stack
-          sx={{ color: 'grey.500' }}
-          spacing={4}
           direction="row"
           alignItems="center"
           justifyContent="center"
           mt={4}
         >
-          <CircularProgress color="success" />
+          <CircularProgress color="info" />
         </Stack>
       ) : (
         <p className={styles.total}>{data.patients.length}</p>

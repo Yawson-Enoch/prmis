@@ -7,13 +7,23 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import '@/styles/nprogress.scss';
 import Head from 'next/head';
+import { ReactNode } from 'react';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 NProgress.configure({ showSpinner: false });
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+type ComponentWithPageLayout = AppProps & {
+  Component: AppProps['Component'] & {
+    PageLayout?: React.ComponentType<{ children: ReactNode }>;
+  };
+};
+
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: ComponentWithPageLayout) {
   return (
     <>
       <Head>
@@ -24,7 +34,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       >
         <SessionProvider session={session}>
           <AppContextProvider>
-            <Component {...pageProps} />
+            {Component.PageLayout ? (
+              <Component.PageLayout>
+                <Component {...pageProps} />
+              </Component.PageLayout>
+            ) : (
+              <Component {...pageProps} />
+            )}
           </AppContextProvider>
         </SessionProvider>
       </SWRConfig>

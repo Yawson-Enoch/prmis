@@ -1,16 +1,17 @@
-import { NextPage } from 'next';
 import Head from 'next/head';
-import HomePage from '@/components/home/HomePage';
+import Slider from '@/components/home/Slider';
+import IndexLayout from '@/components/layout/home/IndexLayout';
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <>
       <Head>
         <link rel="canonical" href="/" />
       </Head>
-      <HomePage />
+      <Slider />
     </>
   );
 };
 
+Home.PageLayout = IndexLayout;
 export default Home;

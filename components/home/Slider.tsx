@@ -4,7 +4,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styles from './ContentSlider.module.scss';
+import styles from './Slider.module.scss';
 
 const slides = [
   {
@@ -34,38 +34,40 @@ const slides = [
   },
 ];
 
-const ContentSlider = () => {
+const Slider = () => {
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      navigation
-      slidesPerView={1}
-      pagination={{ clickable: true }}
-      autoplay={{
-        delay: 2000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      loop
-      className={styles.swiper}
-    >
-      {slides.map((slide) => {
-        return (
-          <SwiperSlide key={slide.id}>
-            <div
-              style={{
-                backgroundImage: `url(${slide.image})`,
-              }}
-              className={styles.sliderContent}
-            >
-              <h2>{slide.title}</h2>
-              <p>{slide.description}</p>
-            </div>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+    <section className="wrapper">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        loop
+        className={styles.swiper}
+      >
+        {slides.map((slide) => {
+          return (
+            <SwiperSlide key={slide.id}>
+              <div
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                }}
+                className={styles.sliderContent}
+              >
+                <h2>{slide.title}</h2>
+                <p>{slide.description}</p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </section>
   );
 };
 
-export default ContentSlider;
+export default Slider;

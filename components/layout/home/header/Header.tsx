@@ -1,7 +1,8 @@
+import Logo from '@/components/common/logo/Logo';
+import { CircularProgress, Stack } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaPhoneAlt } from 'react-icons/fa';
-import Logo from '../../common/logo/Logo';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -23,6 +24,12 @@ const Header = () => {
               <span>+233 000000000</span>
             </a>
           </div>
+
+          {status === 'loading' && (
+            <Stack direction="row" alignItems="center" justifyContent="center">
+              <CircularProgress color="info" />
+            </Stack>
+          )}
 
           {status === 'authenticated' && (
             <button
