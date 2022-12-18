@@ -2,6 +2,11 @@ import SinglePatientPage from '@/components/dashboard/single-patient/SinglePatie
 import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Suspense } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Stack from '@mui/material/Stack';
+import { ErrorBoundary } from 'react-error-boundary';
+import Error from '@/components/common/error/Error';
 
 const SinglePatient = () => {
   const { asPath } = useRouter();
@@ -13,7 +18,22 @@ const SinglePatient = () => {
       <Head>
         <link rel="canonical" href={canonicalUrl} />
       </Head>
-      <SinglePatientPage />
+      <ErrorBoundary fallback={<Error text="Could not fetch data." />}>
+        <Suspense
+          fallback={
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              mt={4}
+            >
+              <CircularProgress color="info" />
+            </Stack>
+          }
+        >
+          <SinglePatientPage />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };

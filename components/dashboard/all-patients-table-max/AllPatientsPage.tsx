@@ -1,5 +1,3 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import Stack from '@mui/material/Stack';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -21,7 +19,9 @@ const AllPatientsPage = () => {
 
   const [query, setQuery] = useState('');
 
-  const { data } = useSWR<IAllPatientsResData>('/api/patient');
+  const { data } = useSWR<IAllPatientsResData>('/api/patient', {
+    suspense: true,
+  });
 
   const router = useRouter();
 
@@ -112,7 +112,7 @@ const AllPatientsPage = () => {
   ];
 
   const keys = ['firstName', 'lastName', 'email', 'gender'];
-  const newDataWithFormattedDate = data?.patients
+  const newDataWithFormattedDate = data!.patients
     .map((patient) => {
       return {
         ...patient,
@@ -148,25 +148,14 @@ const AllPatientsPage = () => {
           Add Patient
         </button>
       </div>
-      {!newDataWithFormattedDate ? (
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          mt={4}
-        >
-          <CircularProgress color="info" />
-        </Stack>
-      ) : (
-        <DataGrid
-          rows={newDataWithFormattedDate}
-          columns={columns}
-          pageSize={7}
-          rowsPerPageOptions={[7]}
-          checkboxSelection
-          getRowId={(row) => row._id}
-        />
-      )}
+      <DataGrid
+        rows={newDataWithFormattedDate}
+        columns={columns}
+        pageSize={7}
+        rowsPerPageOptions={[7]}
+        checkboxSelection
+        getRowId={(row) => row._id}
+      />
     </div>
   );
 };

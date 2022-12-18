@@ -1,6 +1,4 @@
 import { IAllPatientsResData } from '@/lib/types';
-import CircularProgress from '@mui/material/CircularProgress';
-import Stack from '@mui/material/Stack';
 import {
   Bar,
   BarChart,
@@ -17,18 +15,12 @@ import styles from './Chart.module.scss';
 const DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const Chart = () => {
-  const { data } = useSWR<IAllPatientsResData>('/api/patient');
-
-  if (!data) {
-    return (
-      <Stack direction="row" alignItems="center" justifyContent="center" mt={4}>
-        <CircularProgress color="info" />
-      </Stack>
-    );
-  }
+  const { data } = useSWR<IAllPatientsResData>('/api/patient', {
+    suspense: true,
+  });
 
   const weeklyTotalNumberOfPatients = (day: string): number => {
-    return data.patients
+    return data!.patients
       .map((patient) => {
         return { name: DAYS_OF_THE_WEEK[new Date(patient.createdAt).getDay()] };
       })

@@ -30,7 +30,9 @@ function MyApp({
         <title>Obeyeyie Medical Center</title>
       </Head>
       <SWRConfig
-        value={{ fetcher: (url) => fetch(url).then((res) => res.json()) }}
+        value={{
+          fetcher: (url: string) => fetch(url).then((res) => res.json()),
+        }}
       >
         <SessionProvider session={session}>
           <AppContextProvider>
