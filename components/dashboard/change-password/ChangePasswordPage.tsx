@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAppContext } from '@/store/appContext';
 import styles from './ChangePasswordPage.module.scss';
+import { IMessageFromResData } from '@/lib/types';
 
 const ChangePasswordPage = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -34,7 +35,7 @@ const ChangePasswordPage = () => {
         }),
       });
 
-      const { message }: { message: string } = await response.json();
+      const { message }: IMessageFromResData = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');

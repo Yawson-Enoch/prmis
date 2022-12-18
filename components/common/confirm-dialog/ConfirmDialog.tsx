@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../../animations/animations';
 import { useAppContext } from '@/store/appContext';
-import { IAllPatientsResData } from '../../dashboard/all-patients-table-max/AllPatientsPage';
 import styles from './ConfirmDialog.module.scss';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { IAllPatientsResData, IMessageFromResData } from '@/lib/types';
 
 const ConfirmDialog = () => {
   const { dispatch, state } = useAppContext();
@@ -32,7 +32,7 @@ const ConfirmDialog = () => {
         method: 'DELETE',
       });
 
-      const { message }: { message: string } = await response.json();
+      const { message }: IMessageFromResData = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');

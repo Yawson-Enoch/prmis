@@ -1,9 +1,9 @@
+import { IAllPatientsResData } from '@/lib/types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import { MdPersonOutline } from 'react-icons/md';
 import useSWR from 'swr';
-import { IAllPatientsResData } from '../all-patients-table-max/AllPatientsPage';
 import styles from './Widget.module.scss';
 
 const Widget = () => {

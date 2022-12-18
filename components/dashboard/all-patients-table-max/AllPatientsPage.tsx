@@ -9,28 +9,10 @@ import useSWR from 'swr';
 import { useAppContext } from '@/store/appContext';
 import { formatDate } from '../../../utils';
 import styles from './AllPatientsPage.module.scss';
-
-export interface IPatient {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  age: number;
-  email: string;
-  phone: string;
-  gender: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
-
-export interface IAllPatientsResData {
-  message: string;
-  patients: IPatient[];
-}
+import { IAllPatientsResData, IReqPatient } from '@/lib/types';
 
 type DynamicSearchKeys = Pick<
-  IPatient,
+  IReqPatient,
   'firstName' | 'lastName' | 'email' | 'gender'
 >;
 

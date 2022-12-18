@@ -1,3 +1,4 @@
+import { IMessageFromResData } from '@/lib/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
@@ -61,7 +62,7 @@ const SignUpPage = () => {
         }),
       });
 
-      const { message }: { message: string } = await response.json();
+      const { message }: IMessageFromResData = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');

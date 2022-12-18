@@ -6,21 +6,12 @@ import multer from 'multer';
 import nextConnect from 'next-connect';
 import { StatusCodes } from 'http-status-codes';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-interface IAllPatients {
-  firstName: string;
-  lastName: string;
-  age: number;
-  email: string;
-  phone: string;
-  gender: string;
-  image: string;
-}
+import { IResPatient } from '@/lib/types';
 
 type IAllPatientsResData =
   | {
       message: string;
-      patients: IAllPatients[];
+      patients: IResPatient[];
     }
   | {
       message: string;
@@ -66,7 +57,7 @@ export default nextConnect<MulterRequest, NextApiResponse<IAllPatientsResData>>(
 )
   .get(async (req, res) => {
     await dbConnect();
-    const allPatients = await Patient.find({});
+    const allPatients = (await Patient.find({})) as IResPatient[];
     res.status(StatusCodes.OK).json({
       message: 'Success.',
       patients: allPatients,

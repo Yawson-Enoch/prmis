@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { MdDriveFolderUpload } from 'react-icons/md';
 import { useAppContext } from '@/store/appContext';
 import styles from './AddNewPatientPage.module.scss';
+import { IMessageFromResData } from '@/lib/types';
 
 interface IFormData {
   firstName: string;
@@ -70,7 +71,7 @@ const AddNewPatientPage = () => {
         body: uploadData,
       });
 
-      const { message }: { message: string } = await response.json();
+      const { message }: IMessageFromResData = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');

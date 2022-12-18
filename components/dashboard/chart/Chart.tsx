@@ -1,3 +1,4 @@
+import { IAllPatientsResData } from '@/lib/types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Stack from '@mui/material/Stack';
 import {
@@ -11,7 +12,6 @@ import {
   YAxis,
 } from 'recharts';
 import useSWR from 'swr';
-import { IAllPatientsResData } from '../all-patients-table-max/AllPatientsPage';
 import styles from './Chart.module.scss';
 
 const DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

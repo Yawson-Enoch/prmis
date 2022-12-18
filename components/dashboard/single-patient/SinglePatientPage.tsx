@@ -4,13 +4,8 @@ import Image from 'next/image';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
 import { useAppContext } from '@/store/appContext';
-import { IPatient } from '../all-patients-table-max/AllPatientsPage';
 import styles from './SinglePatientPage.module.scss';
-
-export interface ISinglePatientResData {
-  message: string;
-  patient: IPatient;
-}
+import { ISinglePatientResData } from '@/lib/types';
 
 const SinglePatientPage = () => {
   const { state, dispatch } = useAppContext();

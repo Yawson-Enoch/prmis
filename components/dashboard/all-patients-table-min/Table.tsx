@@ -1,3 +1,4 @@
+import { IAllPatientsResData } from '@/lib/types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
@@ -9,7 +10,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Image from 'next/image';
 import useSWR from 'swr';
-import { IAllPatientsResData } from '../all-patients-table-max/AllPatientsPage';
 import styles from './Table.module.scss';
 
 const Table = () => {

@@ -5,7 +5,7 @@ import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../../animations/animations';
 import { useAppContext } from '@/store/appContext';
 import styles from './EditPatientDetailsForm.module.scss';
-import { ISinglePatientResData } from '../single-patient/SinglePatientPage';
+import { IMessageFromResData, ISinglePatientResData } from '@/lib/types';
 
 const EditPatientDetailsForm = () => {
   const { dispatch, state } = useAppContext();
@@ -53,7 +53,7 @@ const EditPatientDetailsForm = () => {
         }),
       });
 
-      const { message }: { message: string } = await response.json();
+      const { message }: IMessageFromResData = await response.json();
 
       if (!response.ok) {
         throw new Error(message || 'Something went wrong!');
