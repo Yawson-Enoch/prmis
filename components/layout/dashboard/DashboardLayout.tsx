@@ -3,11 +3,36 @@ import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';
 import styles from './DashboardLayout.module.scss';
 import { useAppContext } from '@/store/appContext';
-import ConfirmDialog from '@/components/common/confirm-dialog/ConfirmDialog';
-import NotificationModal from '@/components/common/notification/NotificationModal';
-import EditPatientDetailsForm from '@/components/dashboard/edit-patient-details/EditPatientDetailsForm';
-import Backdrop from '@/components/common/backdrop/Backdrop';
 import { AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const ConfirmDialog = dynamic(
+  () => import('@/components/common/confirm-dialog/ConfirmDialog'),
+  {
+    ssr: false,
+  }
+);
+const NotificationModal = dynamic(
+  () => import('@/components/common/notification/NotificationModal'),
+  {
+    ssr: false,
+  }
+);
+const EditPatientDetailsForm = dynamic(
+  () =>
+    import(
+      '@/components/dashboard/edit-patient-details/EditPatientDetailsForm'
+    ),
+  {
+    ssr: false,
+  }
+);
+const Backdrop = dynamic(
+  () => import('@/components/common/backdrop/Backdrop'),
+  {
+    ssr: false,
+  }
+);
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { state } = useAppContext();
