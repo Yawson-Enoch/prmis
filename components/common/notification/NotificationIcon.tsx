@@ -1,5 +1,9 @@
-import { MdInfo, MdCheckCircle, MdError } from 'react-icons/md';
 import { useAppContext } from '@/store/appContext';
+import {
+  MdOutlineCheckCircle,
+  MdOutlineErrorOutline,
+  MdOutlineInfo,
+} from 'react-icons/md';
 
 export const notificationColors = (
   colorDesc: 'success' | 'error' | 'info' | null
@@ -22,18 +26,18 @@ const NotificationIcon = () => {
     },
   } = useAppContext();
 
-  let notificationIcon = <MdCheckCircle />;
+  let notificationIcon = <MdOutlineInfo />;
 
   if (style === 'success') {
-    notificationIcon = <MdCheckCircle />;
+    notificationIcon = <MdOutlineCheckCircle />;
   }
 
   if (style === 'error') {
-    notificationIcon = <MdError />;
+    notificationIcon = <MdOutlineErrorOutline />;
   }
 
   if (style === 'info') {
-    notificationIcon = <MdInfo />;
+    notificationIcon = <MdOutlineInfo />;
   }
 
   return (

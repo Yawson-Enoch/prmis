@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
           <meta name="author" content="Yawson Enoch" />
           <meta
             name="description"
-            content="Welcome to Obeyeyie Medical Center. We have assembled some of the finest Doctors, Nurses, Dentists, etc who take care of all your medical and mental health needs."
+            content="Welcome to Obeyeyie Medical Center. We have assembled some of the finest Doctors, Nurses, Dentists, etc who take care of all your medical needs."
           />
           <link rel="icon" href="/favicon.png" />
         </Head>

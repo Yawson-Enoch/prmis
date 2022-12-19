@@ -1,11 +1,9 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import Stack from '@mui/material/Stack';
+import { ISinglePatientResData } from '@/lib/types';
+import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
-import { useAppContext } from '@/store/appContext';
 import styles from './SinglePatientPage.module.scss';
-import { ISinglePatientResData } from '@/lib/types';
 
 const SinglePatientPage = () => {
   const { state, dispatch } = useAppContext();
