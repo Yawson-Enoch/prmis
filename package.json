@@ -1,7 +1,9 @@
 {
   "name": "prmis",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "A patient record management information system",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
