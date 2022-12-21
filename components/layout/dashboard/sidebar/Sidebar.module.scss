@@ -1,0 +1,58 @@
+@use '@/styles/abstracts' as *;
+
+.sidebarContainer {
+  --flow-space: 1.5rem;
+  position: fixed;
+  inset: 0 auto 0 0;
+  background-color: var(--clr-primary);
+  border-right: 1px solid lighten(black, 80%);
+  width: 15rem;
+}
+
+.logoSecondary {
+  border-bottom: 1px solid lighten(black, 80%);
+  height: px-to-rem-or-em(60px);
+  @include center();
+  font-size: var(--fs-large);
+  color: var(--clr-accent-primary);
+  cursor: pointer;
+}
+
+.sidebarLinks {
+  p {
+    padding-inline-start: px-to-rem-or-em(5px);
+    padding-block: px-to-rem-or-em(10px);
+    font-size: var(--fs-medium);
+    background-color: lighten(blue, 40%);
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-inline-start: px-to-rem-or-em(5px);
+
+    a,
+    .logOut {
+      color: var(--clr-accent-primary);
+      opacity: 1;
+      padding: 0;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    > :first-child {
+      font-size: px-to-rem-or-em(30px);
+      color: var(--clr-accent-primary);
+      padding-inline-end: px-to-rem-or-em(5px);
+    }
+
+    > :last-child {
+      font-size: var(--fs-medium);
+    }
+  }
+
+  li:last-of-type {
+    margin-top: px-to-rem-or-em(10px);
+  }
+}

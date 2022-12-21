@@ -1,16 +1,17 @@
-import { NextPage } from 'next';
 import Head from 'next/head';
-import HomePage from '../components/HomePage/HomePage';
+import Slider from '@/components/home/Slider';
+import IndexLayout from '@/components/layout/home/IndexLayout';
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <>
       <Head>
-        <title>Obeyeyie Medical Center</title>
+        <link rel="canonical" href="/" />
       </Head>
-      <HomePage />
+      <Slider />
     </>
   );
 };
 
+Home.PageLayout = IndexLayout;
 export default Home;

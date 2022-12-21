@@ -1,0 +1,40 @@
+@use '@/styles/abstracts' as *;
+
+.footer {
+  background-color: lighten(blue, 35%);
+  padding-block: px-to-rem-or-em(10px);
+  box-shadow: var(--shadow-large);
+}
+
+.footerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+}
+
+.socialMedia {
+  display: flex;
+  gap: var(--space-xtra-small);
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  gap: var(--space-xtra-small);
+
+  @include hover() {
+    svg:hover {
+      color: var(--clr-primary);
+    }
+  }
+
+  svg:active {
+    color: var(--clr-primary);
+  }
+}

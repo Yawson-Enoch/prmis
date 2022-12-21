@@ -1,0 +1,16 @@
+@use '@/styles/abstracts' as *;
+
+.box {
+  color: red;
+  display: flex;
+  gap: px-to-rem-or-em(5px);
+  align-items: center;
+}
+
+.icon {
+  font-size: var(--fs-large);
+}
+
+.text {
+  font-size: var(--fs-medium);
+}

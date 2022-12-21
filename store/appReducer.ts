@@ -11,14 +11,14 @@ export const appReducer = (
     case 'SHOW_BACKDROP': {
       return { ...state, showBackdrop: action.payload };
     }
-    case 'SHOW_PATIENT_DELETE_DIALOG': {
-      return { ...state, showPatientDeleteDialog: action.payload };
-    }
     case 'SHOW_PATIENT_DETAILS_EDIT_FORM': {
       return { ...state, showPatientDetailsEditForm: action.payload };
     }
     case 'API_PATIENT_ID': {
       return { ...state, apiPatientId: action.payload };
+    }
+    case 'CONFIRM_DIALOG': {
+      return { ...state, confirmDialog: action.payload };
     }
     default: {
       throw new Error('Action not found.');

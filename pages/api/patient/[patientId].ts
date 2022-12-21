@@ -1,22 +1,14 @@
 import { StatusCodes } from 'http-status-codes';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../lib/db-connect';
-import Patient from '../../../models/patient';
-
-interface ISinglePatient {
-  firstName: string;
-  lastName: string;
-  age: number;
-  email: string;
-  phone: string;
-  gender: string;
-  image: string;
-}
+import dbConnect from '@/lib/db-connect';
+import Patient from '@/models/patient';
+import fs from 'fs';
+import { IResPatient } from '@/lib/types';
 
 type ISinglePatientResData =
   | {
       message: string;
-      patient: ISinglePatient;
+      patient: IResPatient;
     }
   | {
       message: string;
@@ -34,7 +26,9 @@ export default async function handler(
   switch (method) {
     case 'GET': {
       try {
-        const singlePatient = await Patient.findOne({ _id: patientId });
+        const singlePatient = (await Patient.findOne({
+          _id: patientId,
+        })) as IResPatient;
         res.status(StatusCodes.OK).json({
           message: 'Patient added successfully.',
           patient: singlePatient,
@@ -78,7 +72,10 @@ export default async function handler(
 
     case 'DELETE': {
       try {
-        await Patient.findOneAndDelete({ _id: patientId });
+        // await Patient.findOneAndDelete({ _id: patientId });
+        const patient = await Patient.findById({ _id: patientId });
+        patient.remove();
+        fs.unlinkSync(`public${patient.image}`);
         res.status(StatusCodes.OK).json({
           message: 'Patient deleted.',
         });

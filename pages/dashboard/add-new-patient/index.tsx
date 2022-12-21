@@ -1,16 +1,17 @@
-import AddNewPatientPage from '../../../components/Dashboard/AddNewPatientPage/AddNewPatientPage';
-import NotificationModal from '../../../components/NotificationModal/NotificationModal';
-import { useAppContext } from '../../../store/appContext';
+import AddNewPatientPage from '@/components/dashboard/add-new-patient/AddNewPatientPage';
+import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
+import Head from 'next/head';
 
 const AddNewPatient = () => {
-  const { state } = useAppContext();
-
   return (
     <>
+      <Head>
+        <link rel="canonical" href="/dashboard/add-new-patient" />
+      </Head>
       <AddNewPatientPage />
-      {state.notification.active && <NotificationModal />}
     </>
   );
 };
 
+AddNewPatient.PageLayout = DashboardLayout;
 export default AddNewPatient;

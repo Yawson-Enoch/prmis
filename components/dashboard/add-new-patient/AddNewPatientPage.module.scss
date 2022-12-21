@@ -1,0 +1,70 @@
+@use '@/styles/abstracts' as *;
+
+.img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgContainer {
+  border: 2px solid lighten(gray, 10%);
+  border-radius: var(--radius-round);
+  width: 150px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-large);
+}
+
+.form {
+  --flow-space: 1.5rem;
+}
+
+.formInput {
+  input:not([type='file']) {
+    background-color: #e8f6f3;
+    height: px-to-rem-or-em(35px);
+    border: 2px solid lighten(gray, 30%);
+    border-radius: var(--radius-xtra-small);
+    padding: px-to-rem-or-em(2px);
+    caret-color: lighten(black, 30%);
+
+    &:is(:focus, :focus-visible) {
+      outline: none;
+      border-color: var(--clr-accent-primary);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-large);
+}
+
+.formInputRadioOptions,
+.formInputRadio {
+  display: flex;
+  align-items: center;
+  gap: px-to-rem-or-em(10px);
+
+  p {
+    opacity: 1;
+  }
+}
+
+.btn {
+  margin-left: auto;
+
+  &:disabled {
+    opacity: 0.3;
+    background-color: lighten(blue, 10%);
+    cursor: not-allowed;
+  }
+}

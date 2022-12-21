@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../lib/db-connect';
-import Admin from '../../../models/admin';
+import dbConnect from '@/lib/db-connect';
+import Admin from '@/models/admin';
 
 export default async function handler(
   req: NextApiRequest,

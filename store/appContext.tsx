@@ -10,22 +10,27 @@ import { appReducer } from './appReducer';
 
 export interface INotification {
   active: boolean;
-  title: 'success' | 'error';
-  description: string;
-  style: 'success' | 'error';
+  title: 'success' | 'error' | 'info' | null;
+  description: string | null;
+  style: 'success' | 'error' | 'info' | null;
+}
+export interface IConfirmDialog {
+  active: boolean;
+  type: 'logOut' | 'deleteUser' | null;
+  description: string | null;
 }
 
 export type ActionTypes =
   | { type: 'NOTIFICATION'; payload: INotification }
+  | { type: 'CONFIRM_DIALOG'; payload: IConfirmDialog }
   | { type: 'SHOW_BACKDROP'; payload: boolean }
   | { type: 'API_PATIENT_ID'; payload: string }
-  | { type: 'SHOW_PATIENT_DELETE_DIALOG'; payload: boolean }
   | { type: 'SHOW_PATIENT_DETAILS_EDIT_FORM'; payload: boolean };
 
 export interface IAppState {
   notification: INotification;
+  confirmDialog: IConfirmDialog;
   showBackdrop: boolean;
-  showPatientDeleteDialog: boolean;
   showPatientDetailsEditForm: boolean;
   apiPatientId: string;
 }
@@ -44,38 +49,46 @@ const AppContext = createContext({} as IAppContextProps);
 const initialAppState: IAppState = {
   notification: {
     active: false,
-    title: 'success',
-    description: '',
-    style: 'success',
+    title: null,
+    description: null,
+    style: null,
+  },
+  confirmDialog: {
+    active: false,
+    type: null,
+    description: null,
   },
   showBackdrop: false,
-  showPatientDeleteDialog: false,
   showPatientDetailsEditForm: false,
-  apiPatientId: '',
+  apiPatientId:
+    (typeof localStorage !== 'undefined' &&
+      localStorage.getItem('apiPatientId')) ||
+    '',
 };
 
 const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-
     if (state.notification.active) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         dispatch({
           type: 'NOTIFICATION',
           payload: {
             active: false,
-            title: 'success',
-            description: '',
-            style: 'success',
+            title: null,
+            description: null,
+            style: null,
           },
         });
       }, 3000);
+      return () => clearInterval(timer);
     }
-
-    return () => clearInterval(timer);
   }, [state.notification.active]);
+
+  useEffect(() => {
+    localStorage.setItem('apiPatientId', state.apiPatientId);
+  }, [state.apiPatientId]);
 
   useEffect(() => {
     window.addEventListener('keyup', (e: KeyboardEvent) => {
@@ -84,9 +97,9 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           type: 'NOTIFICATION',
           payload: {
             active: false,
-            title: 'success',
-            description: '',
-            style: 'success',
+            title: null,
+            description: null,
+            style: null,
           },
         });
         dispatch({
@@ -94,8 +107,12 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           payload: false,
         });
         dispatch({
-          type: 'SHOW_PATIENT_DELETE_DIALOG',
-          payload: false,
+          type: 'CONFIRM_DIALOG',
+          payload: {
+            active: false,
+            description: null,
+            type: null,
+          },
         });
         dispatch({
           type: 'SHOW_PATIENT_DETAILS_EDIT_FORM',

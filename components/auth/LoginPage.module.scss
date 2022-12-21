@@ -1,0 +1,134 @@
+@use '@/styles/abstracts' as *;
+
+.main {
+  min-height: 100vh;
+  background-image: url(/assets/cover/login.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-block: px-to-rem-or-em(10px);
+
+  @include breakpoint(lg) {
+    background-position: -250px -70px;
+    justify-content: flex-end;
+    padding-right: px-to-rem-or-em(50px);
+  }
+}
+
+.formContainer {
+  --flow-space: 1rem;
+  background-color: var(--clr-primary);
+  width: min(px-to-rem-or-em(400px), 95%);
+  padding: px-to-rem-or-em(20px);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-large);
+}
+
+.icon {
+  width: px-to-rem-or-em(40px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  background-color: lighten(black, 70%);
+  color: lighten(red, 20%);
+  border-radius: var(--radius-pill);
+}
+
+.title {
+  text-align: center;
+  color: lighten(black, 20%);
+  font-size: var(--fs-medium);
+}
+
+.form {
+  --flow-space: 1.2rem;
+
+  button {
+    width: 100%;
+    height: px-to-rem-or-em(40px);
+    color: var(--clr-primary);
+  }
+
+  &:invalid {
+    button {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.formField {
+  label {
+    color: lighten(black, 30%);
+
+    &::after {
+      content: '*';
+      color: lighten(red, 10%);
+    }
+  }
+
+  input {
+    width: 100%;
+    height: px-to-rem-or-em(40px);
+    border: 2px solid lighten(black, 70%);
+    border-radius: var(--radius-xtra-small);
+    padding: px-to-rem-or-em(2px);
+    caret-color: lighten(black, 30%);
+    background-color: #e8f6f3;
+
+    &:where(:focus, :focus-visible) {
+      outline: none;
+      border-color: var(--clr-accent-primary);
+    }
+  }
+
+  .errorMessage {
+    margin-top: 0.3rem;
+    color: lighten(red, 10%);
+    opacity: 0;
+    pointer-events: none;
+    font-size: px-to-rem-or-em(14px);
+  }
+
+  input:invalid:not(:placeholder-shown) {
+    border-color: lighten(red, 30%);
+
+    ~ .errorMessage {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
+
+.passwordControl {
+  position: relative;
+
+  input + span {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    color: lighten(black, 50%);
+    cursor: pointer;
+  }
+}
+
+.trustDevice {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-xtra-small);
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xtra-small);
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+
+  a {
+    font-size: px-to-rem-or-em(15px);
+  }
+}

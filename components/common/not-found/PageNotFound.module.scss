@@ -1,0 +1,34 @@
+@use '@/styles/abstracts' as *;
+
+.mainBox {
+  display: grid;
+  place-items: center;
+  padding-block-start: px-to-rem-or-em(40px);
+}
+
+.imageBox {
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.descBox {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-rem-or-em(20px);
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background-color: lighten(red, 20%);
+  width: fit-content;
+  outline: none;
+  font-size: var(--fs-small);
+
+  &:hover {
+    background-color: lighten(red, 15%);
+  }
+}

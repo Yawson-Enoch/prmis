@@ -12,7 +12,7 @@
   @include wrapper();
 }
 
-.btn {
+:where(.btn) {
   font-size: var(--fs-small);
   background-color: $clr-links;
   border-radius: var(--radius-xtra-small);

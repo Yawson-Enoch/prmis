@@ -1,0 +1,26 @@
+@use '@/styles/abstracts' as *;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.total {
+  color: var(--clr-secondary);
+  font-size: 10rem;
+  justify-self: center;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+@use '@/styles/abstracts' as *;
+
+.box {
+  border: 2px solid var(--grey-600);
+  border-radius: var(--radius-small);
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  max-width: fit-content;
+  background-color: var(--clr-primary);
+  padding: px-to-rem-or-em(5px) px-to-rem-or-em(10px);
+}
+
+.cancelBtn {
+  margin-left: auto;
+  font-size: var(--fs-medium);
+  color: var(--grey-500);
+}

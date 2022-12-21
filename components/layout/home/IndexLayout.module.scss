@@ -1,0 +1,9 @@
+@use '@/styles/abstracts' as *;
+
+.indexLayout {
+  min-height: 100vh;
+  display: grid;
+  align-content: space-between;
+  grid-auto-rows: minmax(px-to-rem-or-em(70px), auto);
+  gap: var(--space-large);
+}

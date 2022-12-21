@@ -1,16 +1,17 @@
-import ChangePasswordPage from '../../../components/Dashboard/ChangePasswordPage/ChangePasswordPage';
-import NotificationModal from '../../../components/NotificationModal/NotificationModal';
-import { useAppContext } from '../../../store/appContext';
+import ChangePasswordPage from '@/components/dashboard/change-password/ChangePasswordPage';
+import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
+import Head from 'next/head';
 
 const ChangePassword = () => {
-  const { state } = useAppContext();
-
   return (
     <>
+      <Head>
+        <link rel="canonical" href="/dashboard/change-password" />
+      </Head>
       <ChangePasswordPage />
-      {state.notification.active && <NotificationModal />}
     </>
   );
 };
 
+ChangePassword.PageLayout = DashboardLayout;
 export default ChangePassword;
