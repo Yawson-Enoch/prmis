@@ -1,13 +1,6 @@
-export const bumpEffect = {
-  hover: {
-    scale: 1.1,
-  },
-  tap: {
-    scale: 0.9,
-  },
-};
+import { Variants } from 'framer-motion';
 
-export const scaleUp = {
+export const scaleUp: Variants = {
   hide: {
     translateX: '100%',
     translateY: '-50%',
@@ -28,23 +21,7 @@ export const scaleUp = {
   },
 };
 
-export const scaleDown = {
-  initial: {
-    y: -20,
-    opacity: 0,
-    scale: 0.5,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-export const slideLeft = {
+export const slideLeft: Variants = {
   hide: {
     x: 100,
     opacity: 0,
@@ -60,23 +37,7 @@ export const slideLeft = {
   },
 };
 
-export const slideRight = {
-  initial: {
-    x: -20,
-    opacity: 0,
-    scale: 0.9,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-export const flash = {
+export const flash: Variants = {
   initial: {
     opacity: 0,
   },

@@ -12,13 +12,13 @@ const slides = [
     image: '/assets/services/service-image1.jpg',
     title: 'Emergency Service',
     description:
-      'Obeyeyie Medical Center provide 24/7 quick response to your emergencies with world-class ambulances distributed accross the city.',
+      'PRMIS provides 24/7 quick response to your emergencies with world-class ambulances distributed accross the city.',
   },
   {
     id: 2,
     image: '/assets/services/service-image2.jpg',
     title: 'Counseling',
-    description: `Obeyeyie Medical Center have the best counselors available in the country. We provide world-class treatment services for our patients with any health-related problems.`,
+    description: `PRMIS have the best counselors available in the country. We provide world-class treatment services for our patients with any health-related problems.`,
   },
   {
     id: 3,

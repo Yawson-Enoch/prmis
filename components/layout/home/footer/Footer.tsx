@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
         </div>
         <p className={styles.copyrightInfo}>
-          &copy; {new Date().getFullYear()} Obeyeyie Medical Center
+          &copy; {new Date().getFullYear()} PRMIS
         </p>
       </div>
     </footer>

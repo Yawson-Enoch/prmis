@@ -27,7 +27,7 @@ function MyApp({
   return (
     <>
       <Head>
-        <title>Obeyeyie Medical Center</title>
+        <title>PRMIS</title>
       </Head>
       <SWRConfig
         value={{
