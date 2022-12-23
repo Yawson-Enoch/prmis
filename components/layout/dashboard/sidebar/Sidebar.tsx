@@ -1,4 +1,5 @@
 import styles from './Sidebar.module.scss';
+import Logo from '@/components/common/logo/Logo';
 import { useAppContext } from '@/store/appContext';
 import Link from 'next/link';
 import {
@@ -14,7 +15,9 @@ const Sidebar = () => {
   return (
     <aside className={`flow ${styles.sidebarContainer}`}>
       <Link href='/'>
-        <a className={styles.logoSecondary}>OMC</a>
+        <div className={`center ${styles.logo}`}>
+          <Logo />
+        </div>
       </Link>
       <div className={styles.sidebarLinks}>
         <ul>

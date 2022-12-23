@@ -1,7 +1,7 @@
 @use '@/styles/abstracts' as *;
 
 .sidebarContainer {
-  --flow-space: 1.5rem;
+  --flow-space: 0.6rem;
   position: fixed;
   inset: 0 auto 0 0;
   background-color: var(--clr-primary);
@@ -9,13 +9,8 @@
   width: 15rem;
 }
 
-.logoSecondary {
-  border-bottom: 1px solid lighten(black, 80%);
-  height: px-to-rem-or-em(60px);
-  @include center();
-  font-size: var(--fs-large);
-  color: var(--clr-accent-primary);
-  cursor: pointer;
+.logo {
+  padding-block-start: 0.6rem;
 }
 
 .sidebarLinks {
