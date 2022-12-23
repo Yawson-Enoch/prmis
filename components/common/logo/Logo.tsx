@@ -10,7 +10,7 @@ const Logo = () => {
           <a className="center">
             <Image
               src="/assets/cover/logo.png"
-              alt="Obeyeyie Medical Center logo"
+              alt="PRMIS logo"
               width={40}
               height={40}
               priority
@@ -20,7 +20,7 @@ const Logo = () => {
       </div>
 
       <div className={`${styles.nameAndMotto} flow`}>
-        <p>Obeyeyie Medical Center</p>
+        <p>PRMIS</p>
 
         <p>We prioritize your health</p>
       </div>
