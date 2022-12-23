@@ -1,12 +1,12 @@
-import path from 'path';
-import fs from 'fs';
 import dbConnect from '@/lib/db-connect';
-import Patient from '@/models/patient';
-import multer from 'multer';
-import nextConnect from 'next-connect';
-import { StatusCodes } from 'http-status-codes';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { IResPatient } from '@/lib/types';
+import Patient from '@/models/patient';
+import fs from 'fs';
+import { StatusCodes } from 'http-status-codes';
+import multer from 'multer';
+import { NextApiRequest, NextApiResponse } from 'next';
+import nextConnect from 'next-connect';
+import path from 'path';
 
 type IAllPatientsResData =
   | {

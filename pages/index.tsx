@@ -1,12 +1,12 @@
-import Head from 'next/head';
 import Slider from '@/components/home/Slider';
 import IndexLayout from '@/components/layout/home/IndexLayout';
+import Head from 'next/head';
 
 const Home = () => {
   return (
     <>
       <Head>
-        <link rel="canonical" href="/" />
+        <link rel='canonical' href='/' />
       </Head>
       <Slider />
     </>

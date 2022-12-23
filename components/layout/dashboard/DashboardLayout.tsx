@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import styles from './DashboardLayout.module.scss';
 import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';
-import styles from './DashboardLayout.module.scss';
 import { useAppContext } from '@/store/appContext';
 import { AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { ReactNode } from 'react';
 
 const ConfirmDialog = dynamic(
   () => import('@/components/common/confirm-dialog/ConfirmDialog'),
@@ -42,13 +42,13 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <Navbar />
       <main className={styles.children}>{children}</main>
       {state.showBackdrop && <Backdrop />}
-      <AnimatePresence key="notification-modal">
+      <AnimatePresence key='notification-modal'>
         {state.notification.active && <NotificationModal />}
       </AnimatePresence>
-      <AnimatePresence key="confirm-dialog">
+      <AnimatePresence key='confirm-dialog'>
         {state.confirmDialog.active && <ConfirmDialog />}
       </AnimatePresence>
-      <AnimatePresence key="edit-patient-details">
+      <AnimatePresence key='edit-patient-details'>
         {state.showPatientDetailsEditForm && <EditPatientDetailsForm />}
       </AnimatePresence>
     </>

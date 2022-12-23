@@ -1,12 +1,12 @@
-import ReactDOM from 'react-dom';
-import { motion } from 'framer-motion';
-import useSWR, { useSWRConfig } from 'swr';
 import { scaleUp } from '../../../animations/animations';
-import { useAppContext } from '@/store/appContext';
 import styles from './ConfirmDialog.module.scss';
+import { IAllPatientsResData, IMessageFromResData } from '@/lib/types';
+import { useAppContext } from '@/store/appContext';
+import { motion } from 'framer-motion';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { IAllPatientsResData, IMessageFromResData } from '@/lib/types';
+import ReactDOM from 'react-dom';
+import useSWR, { useSWRConfig } from 'swr';
 
 const ConfirmDialog = () => {
   const { dispatch, state } = useAppContext();
@@ -64,15 +64,15 @@ const ConfirmDialog = () => {
     <motion.form
       className={styles.form}
       variants={scaleUp}
-      initial="hide"
-      animate="show"
-      exit="hide"
+      initial='hide'
+      animate='show'
+      exit='hide'
     >
       <p className={styles.desc}>{state.confirmDialog.description}</p>
       <div className={styles.btnsContainer}>
         <button
-          type="button"
-          className="btn"
+          type='button'
+          className='btn'
           autoFocus
           onClick={() => {
             dispatch({
@@ -92,8 +92,8 @@ const ConfirmDialog = () => {
           no
         </button>
         <button
-          type="button"
-          className="btn"
+          type='button'
+          className='btn'
           onClick={() => {
             if (state.confirmDialog.type === 'deleteUser') {
               state.apiPatientId && deletePatient(state.apiPatientId);

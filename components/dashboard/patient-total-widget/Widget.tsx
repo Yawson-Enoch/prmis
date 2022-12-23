@@ -1,8 +1,8 @@
+import styles from './Widget.module.scss';
 import { IAllPatientsResData } from '@/lib/types';
 import Link from 'next/link';
 import { MdPersonOutline } from 'react-icons/md';
 import useSWR from 'swr';
-import styles from './Widget.module.scss';
 
 const Widget = () => {
   const { data } = useSWR<IAllPatientsResData>('/api/patient', {
@@ -14,7 +14,7 @@ const Widget = () => {
       <p>TOTAL NUMBER OF PATIENTS</p>
       <p className={styles.total}>{data?.patients.length}</p>
       <div className={styles.bottom}>
-        <Link href="/dashboard/patients">
+        <Link href='/dashboard/patients'>
           <a>See all patients</a>
         </Link>
         <MdPersonOutline />

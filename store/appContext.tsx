@@ -1,12 +1,12 @@
+import { appReducer } from './appReducer';
 import {
-  createContext,
   Dispatch,
   ReactNode,
+  createContext,
   useContext,
   useEffect,
   useReducer,
 } from 'react';
-import { appReducer } from './appReducer';
 
 export interface INotification {
   active: boolean;

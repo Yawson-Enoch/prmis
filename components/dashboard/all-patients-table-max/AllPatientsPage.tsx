@@ -1,13 +1,13 @@
+import { formatDate } from '../../../utils';
+import styles from './AllPatientsPage.module.scss';
+import { IAllPatientsResData, IReqPatient } from '@/lib/types';
+import { useAppContext } from '@/store/appContext';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
 import useSWR from 'swr';
-import { useAppContext } from '@/store/appContext';
-import { formatDate } from '../../../utils';
-import styles from './AllPatientsPage.module.scss';
-import { IAllPatientsResData, IReqPatient } from '@/lib/types';
 
 type DynamicSearchKeys = Pick<
   IReqPatient,
@@ -46,8 +46,8 @@ const AllPatientsPage = () => {
               alt={`${params.row.firstName} ${params.row.lastName}`}
               width={30}
               height={30}
-              objectFit="cover"
-              objectPosition="center"
+              objectFit='cover'
+              objectPosition='center'
               className={styles.cellImage}
             />
             {`${params.row.firstName} ${params.row.lastName}`}
@@ -132,8 +132,8 @@ const AllPatientsPage = () => {
         <form>
           <div className={styles.searchForm}>
             <input
-              type="search"
-              name="search"
+              type='search'
+              name='search'
               onChange={(e) => setQuery(e.target.value)}
             />
             <MdOutlineSearch />

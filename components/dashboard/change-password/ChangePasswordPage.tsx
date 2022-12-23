@@ -1,8 +1,8 @@
-import { FormEvent, useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useAppContext } from '@/store/appContext';
 import styles from './ChangePasswordPage.module.scss';
 import { IMessageFromResData } from '@/lib/types';
+import { useAppContext } from '@/store/appContext';
+import { FormEvent, useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const ChangePasswordPage = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -64,26 +64,26 @@ const ChangePasswordPage = () => {
   };
 
   return (
-    <div className="flow">
-      <h1 className="styledbox" style={{ textAlign: 'center' }}>
+    <div className='flow'>
+      <h1 className='styledbox' style={{ textAlign: 'center' }}>
         Change Password
       </h1>
       <form onSubmit={submitHandler} className={`flow ${styles.form}`}>
         <div className={styles.formField}>
-          <label htmlFor="oldPassword">Old Password</label>
+          <label htmlFor='oldPassword'>Old Password</label>
           <input
             type={passwordInputType}
-            name="oldPassword"
-            id="oldPassword"
-            placeholder="Enter Old Password"
+            name='oldPassword'
+            id='oldPassword'
+            placeholder='Enter Old Password'
             required
-            autoComplete="off"
-            autoCapitalize="off"
-            autoCorrect="off"
-            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-            title="Minimum eight characters, at least one upper case English
+            autoComplete='off'
+            autoCapitalize='off'
+            autoCorrect='off'
+            pattern='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$'
+            title='Minimum eight characters, at least one upper case English
                 letter, one lower case English letter, one number and one
-                special character."
+                special character.'
             autoFocus
             onChange={(e) => setOldPassword(e.target.value)}
           />
@@ -96,20 +96,20 @@ const ChangePasswordPage = () => {
           </span>
         </div>
         <div className={styles.formField}>
-          <label htmlFor="newPassword">New Password</label>
+          <label htmlFor='newPassword'>New Password</label>
           <input
             type={passwordInputType}
-            name="newPassword"
-            id="newPassword"
-            placeholder="Enter New Password"
+            name='newPassword'
+            id='newPassword'
+            placeholder='Enter New Password'
             required
-            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-            title="Minimum eight characters, at least one upper case English
+            pattern='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$'
+            title='Minimum eight characters, at least one upper case English
                 letter, one lower case English letter, one number and one
-                special character."
-            autoComplete="off"
-            autoCapitalize="off"
-            autoCorrect="off"
+                special character.'
+            autoComplete='off'
+            autoCapitalize='off'
+            autoCorrect='off'
             onChange={(e) => setNewPassword(e.target.value)}
           />
           <span onClick={togglePasswordType}>
@@ -120,7 +120,7 @@ const ChangePasswordPage = () => {
             )}
           </span>
         </div>
-        <button type="submit" className="btn" style={{ marginLeft: 'auto' }}>
+        <button type='submit' className='btn' style={{ marginLeft: 'auto' }}>
           Change Password
         </button>
       </form>

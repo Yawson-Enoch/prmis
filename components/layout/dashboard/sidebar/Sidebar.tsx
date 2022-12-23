@@ -1,3 +1,4 @@
+import styles from './Sidebar.module.scss';
 import { useAppContext } from '@/store/appContext';
 import Link from 'next/link';
 import {
@@ -6,14 +7,13 @@ import {
   MdOutlineAccountCircle,
   MdPersonOutline,
 } from 'react-icons/md';
-import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   const { dispatch } = useAppContext();
 
   return (
     <aside className={`flow ${styles.sidebarContainer}`}>
-      <Link href="/">
+      <Link href='/'>
         <a className={styles.logoSecondary}>OMC</a>
       </Link>
       <div className={styles.sidebarLinks}>
@@ -21,18 +21,18 @@ const Sidebar = () => {
           <p>MAIN</p>
           <li>
             <MdDashboard />
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href='/dashboard'>Dashboard</Link>
           </li>
 
           <p>LIST</p>
           <li>
             <MdPersonOutline />
-            <Link href="/dashboard/patients">Patients</Link>
+            <Link href='/dashboard/patients'>Patients</Link>
           </li>
           <p>PATIENT</p>
           <li>
             <MdOutlineAccountCircle />
-            <Link href="/dashboard/change-password">Profile</Link>
+            <Link href='/dashboard/change-password'>Profile</Link>
           </li>
           <li>
             <MdExitToApp />

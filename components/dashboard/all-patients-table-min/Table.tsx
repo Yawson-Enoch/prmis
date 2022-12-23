@@ -1,3 +1,4 @@
+import styles from './Table.module.scss';
 import { IAllPatientsResData } from '@/lib/types';
 import Paper from '@mui/material/Paper';
 import MTable from '@mui/material/Table';
@@ -8,7 +9,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Image from 'next/image';
 import useSWR from 'swr';
-import styles from './Table.module.scss';
 
 const Table = () => {
   const { data } = useSWR<IAllPatientsResData>('/api/patient', {
@@ -20,10 +20,10 @@ const Table = () => {
   });
 
   return (
-    <div className="styledbox">
+    <div className='styledbox'>
       <p>RECENTLY ADDED PATIENTS</p>
       <TableContainer component={Paper} className={styles.table}>
-        <MTable sx={{ minWidth: 650 }} aria-label="simple table">
+        <MTable sx={{ minWidth: 650 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell className={styles.tableCell}>ID</TableCell>
@@ -46,8 +46,8 @@ const Table = () => {
                       alt={row.firstName}
                       width={30}
                       height={30}
-                      objectFit="cover"
-                      objectPosition="center"
+                      objectFit='cover'
+                      objectPosition='center'
                       className={styles.cellImage}
                     />
                     {`${row.firstName} ${row.lastName}`}

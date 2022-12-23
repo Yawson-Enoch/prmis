@@ -1,10 +1,10 @@
-import ReactDOM from 'react-dom';
-import { motion } from 'framer-motion';
-import { MdCancel } from 'react-icons/md';
 import { slideLeft } from '../../../animations/animations';
-import { useAppContext } from '@/store/appContext';
-import styles from './NotificationModal.module.scss';
 import NotificationIcon, { notificationColors } from './NotificationIcon';
+import styles from './NotificationModal.module.scss';
+import { useAppContext } from '@/store/appContext';
+import { motion } from 'framer-motion';
+import ReactDOM from 'react-dom';
+import { MdCancel } from 'react-icons/md';
 
 const NotificationModal = () => {
   const {
@@ -18,9 +18,9 @@ const NotificationModal = () => {
     <motion.div
       className={styles.box}
       variants={slideLeft}
-      initial="hide"
-      animate="show"
-      exit="hide"
+      initial='hide'
+      animate='show'
+      exit='hide'
     >
       <NotificationIcon />
       <div className={styles.textBox}>

@@ -1,5 +1,5 @@
-import Chart from './chart/Chart';
 import Table from './all-patients-table-min/Table';
+import Chart from './chart/Chart';
 import Widget from './patient-total-widget/Widget';
 
 const DashboardIndexPage = () => {
@@ -10,7 +10,7 @@ const DashboardIndexPage = () => {
   };
 
   return (
-    <div className="flow">
+    <div className='flow'>
       <div style={topStyle}>
         <Widget />
         <Chart />

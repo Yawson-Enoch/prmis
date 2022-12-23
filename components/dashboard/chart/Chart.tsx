@@ -1,3 +1,4 @@
+import styles from './Chart.module.scss';
 import { IAllPatientsResData } from '@/lib/types';
 import {
   Bar,
@@ -10,7 +11,6 @@ import {
   YAxis,
 } from 'recharts';
 import useSWR from 'swr';
-import styles from './Chart.module.scss';
 
 const DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -61,14 +61,14 @@ const Chart = () => {
   return (
     <div className={`styledbox ${styles.box}`}>
       <p style={{ marginBottom: '0.7rem' }}>WEEKLY COUNT OF PATIENTS</p>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width='100%' height='100%'>
         <BarChart width={730} height={250} data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='name' />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="total" fill="#9999ff" />
+          <Bar dataKey='total' fill='#9999ff' />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -1,9 +1,9 @@
+import styles from './SinglePatientPage.module.scss';
 import { ISinglePatientResData } from '@/lib/types';
 import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
-import styles from './SinglePatientPage.module.scss';
 
 const SinglePatientPage = () => {
   const { state, dispatch } = useAppContext();
@@ -17,11 +17,11 @@ const SinglePatientPage = () => {
     data!.patient;
 
   return (
-    <div className="flow">
+    <div className='flow'>
       <div className={styles.top}>
-        <h1 className="styledbox">Patient Information</h1>
+        <h1 className='styledbox'>Patient Information</h1>
         <button
-          type="button"
+          type='button'
           className={`btn ${styles.editButton}`}
           onClick={() => {
             dispatch({
@@ -39,14 +39,14 @@ const SinglePatientPage = () => {
         </button>
       </div>
       <div className={styles.info}>
-        <div className="center">
+        <div className='center'>
           <Image
             src={image || '/assets/patients/user.png'}
-            alt="patient image"
+            alt='patient image'
             width={200}
             height={200}
-            objectFit="cover"
-            objectPosition="center"
+            objectFit='cover'
+            objectPosition='center'
             className={styles.patientImg}
           />
         </div>

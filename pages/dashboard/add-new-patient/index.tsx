@@ -6,7 +6,7 @@ const AddNewPatient = () => {
   return (
     <>
       <Head>
-        <link rel="canonical" href="/dashboard/add-new-patient" />
+        <link rel='canonical' href='/dashboard/add-new-patient' />
       </Head>
       <AddNewPatientPage />
     </>
