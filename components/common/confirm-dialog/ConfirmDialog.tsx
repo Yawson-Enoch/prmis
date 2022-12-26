@@ -4,20 +4,17 @@ import { IAllPatientsResData, IMessageFromResData } from '@/lib/types';
 import { useAppContext } from '@/store/appContext';
 import { motion } from 'framer-motion';
 import { signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import ReactDOM from 'react-dom';
 import useSWR, { useSWRConfig } from 'swr';
 
 const ConfirmDialog = () => {
   const { dispatch, state } = useAppContext();
-  const router = useRouter();
 
   const { data } = useSWR<IAllPatientsResData>('/api/patient');
   const { mutate } = useSWRConfig();
 
   const logOutHandler = () => {
     signOut();
-    router.replace('/');
   };
 
   const deletePatient = async (id: string) => {
