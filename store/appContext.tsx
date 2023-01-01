@@ -10,14 +10,14 @@ import {
 
 export interface INotification {
   active: boolean;
-  title: 'success' | 'error' | 'info' | null;
-  description: string | null;
-  style: 'success' | 'error' | 'info' | null;
+  title: 'success' | 'info' | 'warning' | 'error';
+  description: string;
+  style: 'success' | 'info' | 'warning' | 'error';
 }
 export interface IConfirmDialog {
   active: boolean;
   type: 'logOut' | 'deleteUser' | null;
-  description: string | null;
+  description: string;
 }
 
 export type ActionTypes =
@@ -49,14 +49,14 @@ const AppContext = createContext({} as IAppContextProps);
 const initialAppState: IAppState = {
   notification: {
     active: false,
-    title: null,
-    description: null,
-    style: null,
+    title: 'info',
+    description: '',
+    style: 'info',
   },
   confirmDialog: {
     active: false,
     type: null,
-    description: null,
+    description: '',
   },
   showBackdrop: false,
   showPatientDetailsEditForm: false,
@@ -75,16 +75,16 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         dispatch({
           type: 'NOTIFICATION',
           payload: {
+            style: state.notification.style,
             active: false,
-            title: null,
-            description: null,
-            style: null,
+            title: 'info',
+            description: '',
           },
         });
       }, 3000);
       return () => clearInterval(timer);
     }
-  }, [state.notification.active]);
+  }, [state.notification.active, state.notification.style]);
 
   useEffect(() => {
     localStorage.setItem('apiPatientId', state.apiPatientId);
@@ -94,15 +94,6 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     window.addEventListener('keyup', (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         dispatch({
-          type: 'NOTIFICATION',
-          payload: {
-            active: false,
-            title: null,
-            description: null,
-            style: null,
-          },
-        });
-        dispatch({
           type: 'SHOW_BACKDROP',
           payload: false,
         });
@@ -110,7 +101,7 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
           type: 'CONFIRM_DIALOG',
           payload: {
             active: false,
-            description: null,
+            description: '',
             type: null,
           },
         });

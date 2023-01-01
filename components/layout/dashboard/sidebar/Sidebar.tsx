@@ -45,7 +45,7 @@ const Sidebar = () => {
                   type: 'CONFIRM_DIALOG',
                   payload: {
                     active: true,
-                    description: 'Are you sure want to log out?',
+                    description: 'Are you sure you want to log out?',
                     type: 'logOut',
                   },
                 });

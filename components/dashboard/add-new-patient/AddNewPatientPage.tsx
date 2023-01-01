@@ -50,9 +50,9 @@ const AddNewPatientPage = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'info',
+            title: 'warning',
             description: 'Please select an image.',
-            style: 'info',
+            style: 'warning',
           },
         });
         return;

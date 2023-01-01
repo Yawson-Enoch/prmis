@@ -93,7 +93,7 @@ const AllPatientsPage = () => {
                   type: 'CONFIRM_DIALOG',
                   payload: {
                     active: true,
-                    description: 'Are you sure want to delete?',
+                    description: 'Are you sure you want to delete?',
                     type: 'deleteUser',
                   },
                 });

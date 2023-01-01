@@ -80,7 +80,7 @@ const ConfirmDialog = () => {
               type: 'CONFIRM_DIALOG',
               payload: {
                 active: false,
-                description: null,
+                description: '',
                 type: null,
               },
             });
@@ -107,7 +107,7 @@ const ConfirmDialog = () => {
               type: 'CONFIRM_DIALOG',
               payload: {
                 active: false,
-                description: null,
+                description: '',
                 type: null,
               },
             });
