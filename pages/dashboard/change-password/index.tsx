@@ -6,7 +6,7 @@ const ChangePassword = () => {
   return (
     <>
       <Head>
-        <link rel="canonical" href="/dashboard/change-password" />
+        <link rel='canonical' href='/dashboard/change-password' />
       </Head>
       <ChangePasswordPage />
     </>

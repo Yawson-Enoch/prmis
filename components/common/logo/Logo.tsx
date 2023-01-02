@@ -1,16 +1,16 @@
+import styles from './Logo.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Logo.module.scss';
 
 const Logo = () => {
   return (
     <div className={`center ${styles.companyInfo}`}>
       <div className={styles.logo}>
-        <Link href="/">
-          <a className="center">
+        <Link href='/'>
+          <a className='center'>
             <Image
-              src="/assets/cover/logo.png"
-              alt="PRMIS logo"
+              src='/assets/cover/logo.png'
+              alt='PRMIS logo'
               width={40}
               height={40}
               priority

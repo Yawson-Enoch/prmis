@@ -1,9 +1,9 @@
-import { StatusCodes } from 'http-status-codes';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '@/lib/db-connect';
+import { IResPatient } from '@/lib/types';
 import Patient from '@/models/patient';
 import fs from 'fs';
-import { IResPatient } from '@/lib/types';
+import { StatusCodes } from 'http-status-codes';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 type ISinglePatientResData =
   | {

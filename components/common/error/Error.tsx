@@ -1,5 +1,5 @@
-import { MdOutlineErrorOutline } from 'react-icons/md';
 import styles from './Error.module.scss';
+import { MdOutlineErrorOutline } from 'react-icons/md';
 
 const Error = ({ text }: { text: string }) => {
   return (

@@ -1,9 +1,9 @@
+import styles from './LoginPage.module.scss';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
-import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -60,29 +60,29 @@ const LoginPage = () => {
 
         <form className={`flow ${styles.form}`} onSubmit={submitHandler}>
           <div className={styles.formField}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor='email'>Email</label>
             <input
-              type="email"
-              id="email"
+              type='email'
+              id='email'
               required
-              pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
+              pattern='[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="enter email"
+              placeholder='enter email'
               autoFocus
             />
             <div className={styles.errorMessage}>Invalid email!</div>
           </div>
 
           <div className={styles.formField}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor='password'>Password</label>
             <div className={styles.passwordControl}>
               <input
                 type={passwordInputType}
-                id="password"
+                id='password'
                 required
                 onChange={(e) => setPassword(e.target.value)}
-                pattern="\S{8,}"
-                placeholder="enter password"
+                pattern='\S{8,}'
+                placeholder='enter password'
               />
               <span onClick={togglePasswordType}>
                 {passwordInputType === 'password' ? (
@@ -97,7 +97,7 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
-          <button type="submit" className="btn" disabled={!canSubmit}>
+          <button type='submit' className='btn' disabled={!canSubmit}>
             Login
           </button>
           {errorMessage && (
@@ -110,7 +110,7 @@ const LoginPage = () => {
         </form>
         <div></div>
         <div className={styles.optionsContainer}>
-          <Link href="/signup">Don&#39;t have an account? Sign Up.</Link>
+          <Link href='/signup'>Don&#39;t have an account? Sign Up.</Link>
         </div>
       </div>
     </main>

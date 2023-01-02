@@ -1,22 +1,82 @@
 @use '@/styles/abstracts' as *;
 
-.box {
-  border: 2px solid var(--grey-600);
-  border-radius: var(--radius-small);
+.container {
+  border-radius: var(--radius-xtra-small);
+  box-shadow: 0 0 1px 1px hsla(0, 100%, 0%, 0.01);
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 7px;
+  right: 7px;
   z-index: 30;
   display: flex;
   align-items: center;
   gap: var(--space-small);
   max-width: fit-content;
-  background-color: var(--clr-primary);
   padding: px-to-rem-or-em(5px) px-to-rem-or-em(10px);
+
+  .iconContainer {
+    color: white;
+    width: px-to-rem-or-em(30px);
+    aspect-ratio: 1;
+    border-radius: var(--radius-round);
+    @include center;
+  }
+
+  .icon {
+    font-size: var(--fs-small);
+  }
+
+  .title,
+  .description {
+    font-size: var(--fs-small);
+  }
+
+  .title {
+    text-transform: uppercase;
+  }
+
+  .close {
+    font-size: var(--fs-small);
+    color: var(--grey-500);
+    cursor: pointer;
+  }
 }
 
-.cancelBtn {
-  margin-left: auto;
-  font-size: var(--fs-medium);
-  color: var(--grey-500);
+.info {
+  @extend .container;
+  background-color: hsl(240, 100%, 90%);
+  color: blue;
+
+  .iconContainer {
+    background-color: blue;
+  }
+}
+
+.error {
+  @extend .container;
+  background-color: hsl(16, 100%, 90%);
+  color: orangered;
+
+  .iconContainer {
+    background-color: orangered;
+  }
+}
+
+.warning {
+  @extend .container;
+  background-color: hsl(40, 100%, 90%);
+  color: orange;
+
+  .iconContainer {
+    background-color: orange;
+  }
+}
+
+.success {
+  @extend .container;
+  background-color: hsl(120, 100%, 90%);
+  color: green;
+
+  .iconContainer {
+    background-color: green;
+  }
 }

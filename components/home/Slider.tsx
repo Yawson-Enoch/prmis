@@ -1,10 +1,10 @@
+import styles from './Slider.module.scss';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styles from './Slider.module.scss';
 
 const slides = [
   {
@@ -36,7 +36,7 @@ const slides = [
 
 const Slider = () => {
   return (
-    <section className="wrapper">
+    <section className='wrapper'>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation

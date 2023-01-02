@@ -1,6 +1,6 @@
+import styles from './PageNotFound.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styles from './PageNotFound.module.scss';
 
 const PageNotFound = () => {
   const router = useRouter();
@@ -14,18 +14,18 @@ const PageNotFound = () => {
       <div className={styles.imgBox}>
         <Image
           src={'/assets/others/404-error.png'}
-          alt="Page not found"
+          alt='Page not found'
           width={250}
           height={250}
-          objectFit="cover"
-          objectPosition="center"
+          objectFit='cover'
+          objectPosition='center'
           className={styles.image}
         />
       </div>
       <div className={styles.descBox}>
         <p>This is definitely not the page your are looking for.</p>
         <button
-          type="button"
+          type='button'
           className={`btn ${styles.btn}`}
           onClick={goToHome}
         >

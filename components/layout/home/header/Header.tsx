@@ -1,9 +1,9 @@
+import styles from './Header.module.scss';
 import Logo from '@/components/common/logo/Logo';
 import { CircularProgress, Stack } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaPhoneAlt } from 'react-icons/fa';
-import styles from './Header.module.scss';
 
 const Header = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const Header = () => {
             <p>Emergency Service</p>
             <a
               className={`center ${styles.callLink}`}
-              href="tel: +233000000000"
+              href='tel: +233000000000'
             >
               <FaPhoneAlt />
               <span>+233 000000000</span>
@@ -26,8 +26,8 @@ const Header = () => {
           </div>
 
           {status === 'loading' && (
-            <Stack direction="row" alignItems="center" justifyContent="center">
-              <CircularProgress color="info" />
+            <Stack direction='row' alignItems='center' justifyContent='center'>
+              <CircularProgress color='info' />
             </Stack>
           )}
 

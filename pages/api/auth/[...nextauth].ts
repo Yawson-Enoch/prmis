@@ -1,8 +1,8 @@
+import dbConnect from '@/lib/db-connect';
+import Admin from '@/models/admin';
 import { compare } from 'bcryptjs';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import dbConnect from '@/lib/db-connect';
-import Admin from '@/models/admin';
 
 interface ICredentials {
   email: string;

@@ -1,9 +1,9 @@
+import styles from './AddNewPatientPage.module.scss';
+import { IMessageFromResData } from '@/lib/types';
+import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { MdDriveFolderUpload } from 'react-icons/md';
-import { useAppContext } from '@/store/appContext';
-import styles from './AddNewPatientPage.module.scss';
-import { IMessageFromResData } from '@/lib/types';
 
 interface IFormData {
   firstName: string;
@@ -50,9 +50,9 @@ const AddNewPatientPage = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'info',
+            title: 'warning',
             description: 'Please select an image.',
-            style: 'info',
+            style: 'warning',
           },
         });
         return;
@@ -113,15 +113,15 @@ const AddNewPatientPage = () => {
   };
 
   return (
-    <div className="flow">
-      <h1 className="styledbox">Add New Patient</h1>
+    <div className='flow'>
+      <h1 className='styledbox'>Add New Patient</h1>
 
       <div className={styles.formContainer}>
         <div className={styles.imgContainer}>
           {selectedImage ? (
             <Image
               src={selectedImage}
-              alt="Image preview"
+              alt='Image preview'
               width={150}
               height={150}
               className={styles.img}
@@ -133,13 +133,13 @@ const AddNewPatientPage = () => {
         <form className={`flow ${styles.form}`} onSubmit={submitHandler}>
           <div className={styles.formInput}>
             <label
-              htmlFor="image"
+              htmlFor='image'
               style={{
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
               }}
-              title="Upload image"
+              title='Upload image'
             >
               Image:{' '}
               <MdDriveFolderUpload
@@ -147,9 +147,9 @@ const AddNewPatientPage = () => {
               />
             </label>
             <input
-              type="file"
-              id="image"
-              accept=".jpg,.jpeg,.png"
+              type='file'
+              id='image'
+              accept='.jpg,.jpeg,.png'
               style={{ display: 'none' }}
               onChange={(e) => {
                 if (e.target.files) {
@@ -162,76 +162,76 @@ const AddNewPatientPage = () => {
           </div>
           <div className={styles.wrapper}>
             <div className={styles.formInput}>
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor='firstName'>First Name</label>
               <input
-                type="text"
-                id="firstName"
-                name="firstName"
+                type='text'
+                id='firstName'
+                name='firstName'
                 value={formData.firstName}
                 onChange={changeHandler}
-                placeholder="Enoch"
+                placeholder='Enoch'
                 required
-                pattern="^[a-z0-9_-]{2,15}$"
-                title="First name must be 2-16 characters long - all lowercase."
+                pattern='^[a-z0-9_-]{2,15}$'
+                title='First name must be 2-16 characters long - all lowercase.'
               />
             </div>
             <div className={styles.formInput}>
-              <label htmlFor="lastName">Last Name</label>
+              <label htmlFor='lastName'>Last Name</label>
               <input
-                type="text"
-                id="lastName"
-                name="lastName"
+                type='text'
+                id='lastName'
+                name='lastName'
                 value={formData.lastName}
                 required
                 onChange={changeHandler}
-                placeholder="Gybex"
-                pattern="^[a-z0-9_-]{2,15}$"
-                title="Last name must be 2-16 characters long - all lowercase."
+                placeholder='Gybex'
+                pattern='^[a-z0-9_-]{2,15}$'
+                title='Last name must be 2-16 characters long - all lowercase.'
               />
             </div>
           </div>
           <div className={styles.wrapper}>
             <div className={styles.formInput}>
-              <label htmlFor="age">Age</label>
+              <label htmlFor='age'>Age</label>
               <input
-                type="number"
+                type='number'
                 required
-                id="age"
+                id='age'
                 value={formData.age}
                 onChange={changeHandler}
-                name="age"
-                placeholder="20"
+                name='age'
+                placeholder='20'
                 min={1}
               />
             </div>
             <div className={styles.formInput}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor='email'>Email</label>
               <input
-                type="email"
-                id="email"
+                type='email'
+                id='email'
                 required
-                name="email"
+                name='email'
                 value={formData.email}
                 onChange={changeHandler}
-                placeholder="user@gmail.com"
-                pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
-                title="Invalid email!"
+                placeholder='user@gmail.com'
+                pattern='[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
+                title='Invalid email!'
               />
             </div>
           </div>
           <div className={styles.wrapper}>
             <div className={styles.formInput}>
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor='phone'>Phone</label>
               <input
-                type="tel"
+                type='tel'
                 required
-                id="phone"
-                name="phone"
+                id='phone'
+                name='phone'
                 value={formData.phone}
                 onChange={changeHandler}
-                placeholder="+233000000000"
-                pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-                title="Incorrect format! Example: 000-000-0000"
+                placeholder='+233000000000'
+                pattern='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'
+                title='Incorrect format! Example: 000-000-0000'
               />
             </div>
             <div className={styles.formInputRadioOptions}>
@@ -239,32 +239,32 @@ const AddNewPatientPage = () => {
 
               <div className={styles.formInputRadio}>
                 <input
-                  type="radio"
+                  type='radio'
                   required
-                  name="gender"
-                  value="male"
-                  id="male"
+                  name='gender'
+                  value='male'
+                  id='male'
                   onChange={changeHandler}
                 />
-                <label htmlFor="male">Male</label>
+                <label htmlFor='male'>Male</label>
               </div>
 
               <div className={styles.formInputRadio}>
                 <input
-                  type="radio"
+                  type='radio'
                   required
-                  name="gender"
-                  value="female"
-                  id="female"
+                  name='gender'
+                  value='female'
+                  id='female'
                   onChange={changeHandler}
                 />
-                <label htmlFor="female">Female</label>
+                <label htmlFor='female'>Female</label>
               </div>
             </div>
           </div>
 
           <button
-            type="submit"
+            type='submit'
             className={`btn ${styles.btn}`}
             disabled={uploading}
           >

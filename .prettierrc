@@ -2,6 +2,12 @@
   "tabWidth": 2,
   "printWidth": 80,
   "singleQuote": true,
+  "jsxSingleQuote": true,
   "semi": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "pluginSearchDirs": false
 }

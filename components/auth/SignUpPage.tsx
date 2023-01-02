@@ -1,9 +1,9 @@
+import styles from './SignUpPage.module.scss';
 import { IMessageFromResData } from '@/lib/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import styles from './SignUpPage.module.scss';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -84,33 +84,33 @@ const SignUpPage = () => {
           <div className={styles.userNames}>
             <div className={styles.formField}>
               <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="Enter First Name"
+                type='text'
+                name='firstName'
+                id='firstName'
+                placeholder='Enter First Name'
                 required
                 autoFocus
                 value={formData.firstName}
                 onChange={changeHandler}
-                pattern="^[a-z0-9_-]{2,15}$"
+                pattern='^[a-z0-9_-]{2,15}$'
               />
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor='firstName'>First Name</label>
               <p className={styles.errorMessage}>
                 First name must be 2-16 characters long - all lowercase.
               </p>
             </div>
             <div className={styles.formField}>
               <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                placeholder="Enter Last Name"
+                type='text'
+                name='lastName'
+                id='lastName'
+                placeholder='Enter Last Name'
                 required
                 value={formData.lastName}
                 onChange={changeHandler}
-                pattern="^[a-z0-9_-]{2,15}$"
+                pattern='^[a-z0-9_-]{2,15}$'
               />
-              <label htmlFor="lastName">Last Name</label>
+              <label htmlFor='lastName'>Last Name</label>
               <p className={styles.errorMessage}>
                 Last name must be 2-16 characters long - all lowercase.
               </p>
@@ -118,30 +118,30 @@ const SignUpPage = () => {
           </div>
           <div className={styles.formField}>
             <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="name@example.com"
+              type='email'
+              name='email'
+              id='email'
+              placeholder='name@example.com'
               required
               value={formData.email}
               onChange={changeHandler}
-              pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
+              pattern='[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+'
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor='email'>Email</label>
             <p className={styles.errorMessage}>Invalid email!</p>
           </div>
           <div className={styles.formField}>
             <input
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="+233000000000"
+              type='tel'
+              name='phone'
+              id='phone'
+              placeholder='+233000000000'
               required
               value={formData.phone}
               onChange={changeHandler}
-              pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+              pattern='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'
             />
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor='phone'>Phone Number</label>
             <p className={styles.errorMessage}>
               Incorrect format! <br />
               Example: 000-000-0000
@@ -150,18 +150,18 @@ const SignUpPage = () => {
           <div className={styles.formField}>
             <input
               type={passwordInputType}
-              name="password"
-              id="password"
-              placeholder="Enter Password"
+              name='password'
+              id='password'
+              placeholder='Enter Password'
               required
               value={formData.password}
               onChange={changeHandler}
-              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
+              pattern='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$'
+              autoComplete='off'
+              autoCapitalize='off'
+              autoCorrect='off'
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor='password'>Password</label>
             <span onClick={togglePasswordType}>
               {passwordInputType === 'password' ? (
                 <FaEyeSlash />
@@ -178,16 +178,16 @@ const SignUpPage = () => {
           <div className={styles.formField}>
             <input
               type={passwordInputType}
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="Confirm Entered Password"
+              name='confirmPassword'
+              id='confirmPassword'
+              placeholder='Confirm Entered Password'
               required
               pattern={formData.password}
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
+              autoComplete='off'
+              autoCapitalize='off'
+              autoCorrect='off'
             />
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor='confirmPassword'>Confirm Password</label>
             <span onClick={togglePasswordType}>
               {passwordInputType === 'password' ? (
                 <FaEyeSlash />
@@ -197,7 +197,7 @@ const SignUpPage = () => {
             </span>
             <p className={styles.errorMessage}>Passwords do not match!</p>
           </div>
-          <button type="submit" className="btn" disabled={!canSubmit}>
+          <button type='submit' className='btn' disabled={!canSubmit}>
             Sign Up
           </button>
           <p
@@ -211,7 +211,7 @@ const SignUpPage = () => {
           </p>
         </form>
         <div className={styles.loginOption}>
-          <Link href="/login">Already have an account? Log In.</Link>
+          <Link href='/login'>Already have an account? Log In.</Link>
         </div>
       </div>
     </main>

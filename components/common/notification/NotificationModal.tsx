@@ -1,10 +1,11 @@
-import ReactDOM from 'react-dom';
-import { motion } from 'framer-motion';
-import { MdCancel } from 'react-icons/md';
 import { slideLeft } from '../../../animations/animations';
-import { useAppContext } from '@/store/appContext';
 import styles from './NotificationModal.module.scss';
-import NotificationIcon, { notificationColors } from './NotificationIcon';
+import { useAppContext } from '@/store/appContext';
+import { motion } from 'framer-motion';
+import ReactDOM from 'react-dom';
+import { FiX } from 'react-icons/fi';
+import { MdOutlineErrorOutline } from 'react-icons/md';
+import { TiInfoLarge, TiTick, TiWarningOutline } from 'react-icons/ti';
 
 const NotificationModal = () => {
   const {
@@ -16,41 +17,37 @@ const NotificationModal = () => {
 
   return ReactDOM.createPortal(
     <motion.div
-      className={styles.box}
+      className={styles[style]}
       variants={slideLeft}
-      initial="hide"
-      animate="show"
-      exit="hide"
+      initial='hide'
+      animate='show'
+      exit='hide'
     >
-      <NotificationIcon />
+      <div className={styles.iconContainer}>
+        {style === 'success' && <TiTick className={styles.icon} />}
+        {style === 'error' && <MdOutlineErrorOutline className={styles.icon} />}
+        {style === 'info' && <TiInfoLarge className={styles.icon} />}
+        {style === 'warning' && <TiWarningOutline className={styles.icon} />}
+      </div>
       <div className={styles.textBox}>
-        <p
-          style={{
-            textTransform: 'capitalize',
-            color: `${notificationColors(style)}`,
-            fontSize: '1.3rem',
-            marginBottom: '0.2rem',
-          }}
-        >
-          {title}
-        </p>
-        <p>{description}</p>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.description}>{description}</p>
       </div>
       <div
-        className={styles.cancelBtn}
+        className={styles.close}
         onClick={() => {
           dispatch({
             type: 'NOTIFICATION',
             payload: {
+              style,
               active: false,
-              title: null,
-              description: null,
-              style: null,
+              title: 'info',
+              description: '',
             },
           });
         }}
       >
-        <MdCancel />
+        <FiX />
       </div>
     </motion.div>,
     document.getElementById('notification') as HTMLDivElement
