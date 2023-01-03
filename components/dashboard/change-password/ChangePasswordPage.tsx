@@ -12,6 +12,8 @@ const ChangePasswordPage = () => {
     'password' | 'text'
   >('password');
 
+  const canSubmit = [oldPassword, newPassword].every(Boolean);
+
   const { dispatch } = useAppContext();
 
   const togglePasswordType = () => {
@@ -23,6 +25,18 @@ const ChangePasswordPage = () => {
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (oldPassword === newPassword) {
+      dispatch({
+        type: 'NOTIFICATION',
+        payload: {
+          active: true,
+          title: 'info',
+          description: 'Passwords are the same.',
+          style: 'info',
+        },
+      });
+      return;
+    }
     try {
       const response = await fetch('/api/admin/change-password', {
         method: 'PATCH',
@@ -94,6 +108,10 @@ const ChangePasswordPage = () => {
               <FaEye style={{ color: '#137aca' }} />
             )}
           </span>
+          <p className={styles.errorMessage}>
+            Minimum eight characters, at least one upper case English letter,
+            one lower case English letter, one number and one special character.
+          </p>
         </div>
         <div className={styles.formField}>
           <label htmlFor='newPassword'>New Password</label>
@@ -119,8 +137,12 @@ const ChangePasswordPage = () => {
               <FaEye style={{ color: '#137aca' }} />
             )}
           </span>
+          <p className={styles.errorMessage}>
+            Minimum eight characters, at least one upper case English letter,
+            one lower case English letter, one number and one special character.
+          </p>
         </div>
-        <button type='submit' className='btn' style={{ marginLeft: 'auto' }}>
+        <button type='submit' className='btn' disabled={!canSubmit}>
           Change Password
         </button>
       </form>
