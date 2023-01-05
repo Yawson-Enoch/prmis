@@ -2,7 +2,7 @@ import styles from './AddNewPatientPage.module.scss';
 import { IMessageFromResData } from '@/lib/types';
 import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { MdDriveFolderUpload } from 'react-icons/md';
 
 interface IFormData {
@@ -29,6 +29,12 @@ const AddNewPatientPage = () => {
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const filePickerRef = useRef<HTMLInputElement>(null);
+
+  const handleFilePicker = () => {
+    filePickerRef.current?.click();
+  };
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const type = e.target.type;
@@ -117,7 +123,7 @@ const AddNewPatientPage = () => {
       <h1 className='styledbox'>Add New Patient</h1>
 
       <div className={styles.formContainer}>
-        <div className={styles.imgContainer}>
+        <button className={styles.imgContainer} onClick={handleFilePicker}>
           {selectedImage ? (
             <Image
               src={selectedImage}
@@ -129,7 +135,7 @@ const AddNewPatientPage = () => {
           ) : (
             <p style={{ padding: '0.5rem' }}>Select Image</p>
           )}
-        </div>
+        </button>
         <form className={`flow ${styles.form}`} onSubmit={submitHandler}>
           <div className={styles.formInput}>
             <label
@@ -151,6 +157,7 @@ const AddNewPatientPage = () => {
               id='image'
               accept='.jpg,.jpeg,.png'
               style={{ display: 'none' }}
+              ref={filePickerRef}
               onChange={(e) => {
                 if (e.target.files) {
                   const file = e.target.files[0];
