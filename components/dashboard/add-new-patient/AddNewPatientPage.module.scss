@@ -7,9 +7,10 @@
 
 .imgContainer {
   border: 2px solid lighten(gray, 10%);
+  background-color: #e8f6f3;
   border-radius: var(--radius-round);
   width: 150px;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
