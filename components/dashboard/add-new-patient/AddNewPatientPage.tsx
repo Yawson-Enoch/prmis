@@ -56,9 +56,8 @@ const AddNewPatientPage = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'warning',
             description: 'Please select an image.',
-            style: 'warning',
+            theme: 'warning',
           },
         });
         return;
@@ -86,9 +85,8 @@ const AddNewPatientPage = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'success',
             description: message || 'Patient added.',
-            style: 'success',
+            theme: 'success',
           },
         });
       }
@@ -108,9 +106,8 @@ const AddNewPatientPage = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'error',
           description: error.message,
-          style: 'error',
+          theme: 'error',
         },
       });
     } finally {

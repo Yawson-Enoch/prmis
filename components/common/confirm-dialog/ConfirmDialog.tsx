@@ -38,9 +38,8 @@ const ConfirmDialog = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'success',
             description: message || 'Patient deleted.',
-            style: 'success',
+            theme: 'success',
           },
         });
       }
@@ -49,9 +48,8 @@ const ConfirmDialog = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'error',
           description: error.message,
-          style: 'error',
+          theme: 'error',
         },
       });
     }
