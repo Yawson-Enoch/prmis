@@ -1,4 +1,5 @@
 import Error from '@/components/common/error/Error';
+import Loader from '@/components/common/loader/Loader';
 import DashboardIndexPage from '@/components/dashboard/DashboardIndexPage';
 import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -37,13 +38,8 @@ const Dashboard = () => {
       <ErrorBoundary fallback={<Error text='Could not fetch data.' />}>
         <Suspense
           fallback={
-            <Stack
-              direction='row'
-              alignItems='center'
-              justifyContent='center'
-              mt={4}
-            >
-              <CircularProgress color='info' />
+            <Stack mt={4}>
+              <Loader />
             </Stack>
           }
         >
