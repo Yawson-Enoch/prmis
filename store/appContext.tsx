@@ -10,9 +10,8 @@ import {
 
 export interface INotification {
   active: boolean;
-  title: 'success' | 'info' | 'warning' | 'error';
   description: string;
-  style: 'success' | 'info' | 'warning' | 'error';
+  theme: 'success' | 'info' | 'warning' | 'error';
 }
 export interface IConfirmDialog {
   active: boolean;
@@ -49,9 +48,8 @@ const AppContext = createContext({} as IAppContextProps);
 const initialAppState: IAppState = {
   notification: {
     active: false,
-    title: 'info',
     description: '',
-    style: 'info',
+    theme: 'info',
   },
   confirmDialog: {
     active: false,
@@ -75,16 +73,15 @@ const AppContextProvider = ({ children }: IAppContextProviderProps) => {
         dispatch({
           type: 'NOTIFICATION',
           payload: {
-            style: state.notification.style,
+            theme: state.notification.theme,
             active: false,
-            title: 'info',
             description: '',
           },
         });
       }, 3000);
       return () => clearInterval(timer);
     }
-  }, [state.notification.active, state.notification.style]);
+  }, [state.notification.active, state.notification.theme]);
 
   useEffect(() => {
     localStorage.setItem('apiPatientId', state.apiPatientId);

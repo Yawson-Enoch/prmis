@@ -10,27 +10,27 @@ import { TiInfoLarge, TiTick, TiWarningOutline } from 'react-icons/ti';
 const NotificationModal = () => {
   const {
     state: {
-      notification: { title, description, style },
+      notification: { description, theme },
     },
     dispatch,
   } = useAppContext();
 
   return ReactDOM.createPortal(
     <motion.div
-      className={styles[style]}
+      className={styles[theme]}
       variants={slideLeft}
       initial='hide'
       animate='show'
       exit='hide'
     >
       <div className={styles.iconContainer}>
-        {style === 'success' && <TiTick className={styles.icon} />}
-        {style === 'error' && <MdOutlineErrorOutline className={styles.icon} />}
-        {style === 'info' && <TiInfoLarge className={styles.icon} />}
-        {style === 'warning' && <TiWarningOutline className={styles.icon} />}
+        {theme === 'success' && <TiTick className={styles.icon} />}
+        {theme === 'error' && <MdOutlineErrorOutline className={styles.icon} />}
+        {theme === 'info' && <TiInfoLarge className={styles.icon} />}
+        {theme === 'warning' && <TiWarningOutline className={styles.icon} />}
       </div>
       <div className={styles.textBox}>
-        <p className={styles.title}>{title}</p>
+        <p className={styles.title}>{theme}</p>
         <p className={styles.description}>{description}</p>
       </div>
       <div
@@ -39,9 +39,8 @@ const NotificationModal = () => {
           dispatch({
             type: 'NOTIFICATION',
             payload: {
-              style,
+              theme,
               active: false,
-              title: 'info',
               description: '',
             },
           });

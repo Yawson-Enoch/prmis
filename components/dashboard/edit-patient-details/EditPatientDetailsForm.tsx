@@ -70,9 +70,8 @@ const EditPatientDetailsForm = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'success',
             description: message || 'Patient info updated successfully',
-            style: 'success',
+            theme: 'success',
           },
         });
       }
@@ -81,9 +80,8 @@ const EditPatientDetailsForm = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'error',
           description: error.message,
-          style: 'error',
+          theme: 'error',
         },
       });
     }

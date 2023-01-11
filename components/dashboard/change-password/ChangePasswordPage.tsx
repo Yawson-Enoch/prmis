@@ -30,9 +30,8 @@ const ChangePasswordPage = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'info',
           description: 'Passwords are the same.',
-          style: 'info',
+          theme: 'info',
         },
       });
       return;
@@ -58,9 +57,8 @@ const ChangePasswordPage = () => {
           type: 'NOTIFICATION',
           payload: {
             active: true,
-            title: 'success',
             description: message || 'Password changed successfully.',
-            style: 'success',
+            theme: 'success',
           },
         });
       }
@@ -69,9 +67,8 @@ const ChangePasswordPage = () => {
         type: 'NOTIFICATION',
         payload: {
           active: true,
-          title: 'error',
           description: error.message,
-          style: 'error',
+          theme: 'error',
         },
       });
     }
