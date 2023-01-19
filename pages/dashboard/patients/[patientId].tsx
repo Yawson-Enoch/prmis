@@ -1,4 +1,5 @@
 import Error from '@/components/common/error/Error';
+import Loader from '@/components/common/loader/Loader';
 import SinglePatientPage from '@/components/dashboard/single-patient/SinglePatientPage';
 import DashboardLayout from '@/components/layout/dashboard/DashboardLayout';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -21,13 +22,8 @@ const SinglePatient = () => {
       <ErrorBoundary fallback={<Error text='Could not fetch data.' />}>
         <Suspense
           fallback={
-            <Stack
-              direction='row'
-              alignItems='center'
-              justifyContent='center'
-              mt={4}
-            >
-              <CircularProgress color='info' />
+            <Stack mt={4}>
+              <Loader />
             </Stack>
           }
         >
