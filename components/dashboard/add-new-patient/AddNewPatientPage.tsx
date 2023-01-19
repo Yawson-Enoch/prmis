@@ -12,6 +12,7 @@ interface IFormData {
   email: string;
   gender: string;
   phone: string;
+  image: string;
 }
 
 const AddNewPatientPage = () => {
@@ -22,13 +23,14 @@ const AddNewPatientPage = () => {
     email: '',
     gender: '',
     phone: '',
+    image: '',
   });
 
   const { dispatch } = useAppContext();
 
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [_, setSelectedFile] = useState<File | null>(null);
 
   const filePickerRef = useRef<HTMLInputElement>(null);
 
@@ -45,35 +47,19 @@ const AddNewPatientPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  type DynamicKeys = keyof IFormData;
-
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
     setUploading(true);
+
     try {
-      if (!selectedFile) {
-        dispatch({
-          type: 'NOTIFICATION',
-          payload: {
-            active: true,
-            description: 'Please select an image.',
-            theme: 'warning',
-          },
-        });
-        return;
-      }
-
-      const uploadData = new FormData();
-
-      for (const data in formData) {
-        uploadData.append(data, formData[data as DynamicKeys]);
-      }
-
-      uploadData.append('image', selectedFile);
-
       const response = await fetch('/api/patient', {
         method: 'POST',
-        body: uploadData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+        }),
       });
 
       const { message }: IMessageFromResData = await response.json();
@@ -98,8 +84,8 @@ const AddNewPatientPage = () => {
         email: '',
         gender: '',
         phone: '',
+        image: '',
       });
-      setSelectedImage('');
       setSelectedFile(null);
     } catch (error: any) {
       dispatch({

@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
           <meta name='author' content='Yawson Enoch' />
           <meta
             name='description'
-            content='Welcome to PRMIS. We have assembled some of the finest Doctors, Nurses, Dentists, etc who take care of all your medical needs.'
+            content='Welcome to PRMIS. The top Patient Record Management Information System.'
           />
           <link rel='icon' href='/favicon.png' />
         </Head>
