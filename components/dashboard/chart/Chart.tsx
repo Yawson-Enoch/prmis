@@ -16,7 +16,7 @@ import { BASE_URL } from 'utils';
 const DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const Chart = () => {
-  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`, {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patients`, {
     suspense: true,
   });
 

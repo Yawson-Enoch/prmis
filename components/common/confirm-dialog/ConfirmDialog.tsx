@@ -11,7 +11,7 @@ import { BASE_URL } from 'utils';
 const ConfirmDialog = () => {
   const { dispatch, state } = useAppContext();
 
-  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`);
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patients`);
   const { mutate } = useSWRConfig();
 
   const logOutHandler = () => {
@@ -23,10 +23,10 @@ const ConfirmDialog = () => {
       ...data,
       patients: data?.patients.filter((patient) => patient._id !== id),
     };
-    await mutate(`${BASE_URL}/patient`, newData, false);
+    await mutate(`${BASE_URL}/patients`, newData, false);
 
     try {
-      const response = await fetch(`${BASE_URL}/patient/${id}`, {
+      const response = await fetch(`${BASE_URL}/patients/${id}`, {
         method: 'DELETE',
       });
 

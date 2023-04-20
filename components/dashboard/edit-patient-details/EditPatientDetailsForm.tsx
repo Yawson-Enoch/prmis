@@ -11,7 +11,7 @@ import { BASE_URL } from 'utils';
 const EditPatientDetailsForm = () => {
   const { dispatch, state } = useAppContext();
   const { data } = useSWR<ISinglePatientResData>(
-    `${BASE_URL}/patient/${state.apiPatientId}`
+    `${BASE_URL}/patients/${state.apiPatientId}`
   );
   const { mutate } = useSWRConfig();
 
@@ -41,11 +41,11 @@ const EditPatientDetailsForm = () => {
       patient: { ...data?.patient, ...formData },
     };
 
-    await mutate(`${BASE_URL}/patient/${state.apiPatientId}`, newData, false);
+    await mutate(`${BASE_URL}/patients/${state.apiPatientId}`, newData, false);
 
     try {
       const response = await fetch(
-        `${BASE_URL}/patient/${state.apiPatientId}`,
+        `${BASE_URL}/patients/${state.apiPatientId}`,
         {
           method: 'PATCH',
           headers: {

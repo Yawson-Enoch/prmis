@@ -53,7 +53,7 @@ const AddNewPatientPage = () => {
     setUploading(true);
 
     try {
-      const response = await fetch(`${BASE_URL}/patient`, {
+      const response = await fetch(`${BASE_URL}/patients`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

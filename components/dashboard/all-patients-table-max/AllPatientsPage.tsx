@@ -19,7 +19,7 @@ const AllPatientsPage = () => {
 
   const [query, setQuery] = useState('');
 
-  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`, {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patients`, {
     suspense: true,
   });
 

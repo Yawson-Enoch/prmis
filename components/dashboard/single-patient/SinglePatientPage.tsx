@@ -10,7 +10,7 @@ const SinglePatientPage = () => {
   const { state, dispatch } = useAppContext();
 
   const { data } = useSWR<ISinglePatientResData>(
-    `${BASE_URL}/patient/${state.apiPatientId}`,
+    `${BASE_URL}/patients/${state.apiPatientId}`,
     { suspense: true }
   );
 

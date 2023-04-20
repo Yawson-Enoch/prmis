@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import { BASE_URL } from 'utils';
 
 const Widget = () => {
-  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`, {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patients`, {
     suspense: true,
   });
 
