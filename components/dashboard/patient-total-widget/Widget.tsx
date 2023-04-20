@@ -3,9 +3,10 @@ import { IAllPatientsResData } from '@/lib/types';
 import Link from 'next/link';
 import { MdPersonOutline } from 'react-icons/md';
 import useSWR from 'swr';
+import { BASE_URL } from 'utils';
 
 const Widget = () => {
-  const { data } = useSWR<IAllPatientsResData>('/api/patient', {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patients`, {
     suspense: true,
   });
 

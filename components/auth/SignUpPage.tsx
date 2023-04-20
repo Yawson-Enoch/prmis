@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { BASE_URL } from 'utils';
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +53,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/auth/signup', {
+      const response = await fetch(`${BASE_URL}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

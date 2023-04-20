@@ -4,12 +4,13 @@ import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
 import { FaEdit } from 'react-icons/fa';
 import useSWR from 'swr';
+import { BASE_URL } from 'utils';
 
 const SinglePatientPage = () => {
   const { state, dispatch } = useAppContext();
 
   const { data } = useSWR<ISinglePatientResData>(
-    `/api/patient/${state.apiPatientId}`,
+    `${BASE_URL}/patients/${state.apiPatientId}`,
     { suspense: true }
   );
 

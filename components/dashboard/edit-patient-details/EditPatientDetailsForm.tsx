@@ -6,11 +6,12 @@ import { motion } from 'framer-motion';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR, { useSWRConfig } from 'swr';
+import { BASE_URL } from 'utils';
 
 const EditPatientDetailsForm = () => {
   const { dispatch, state } = useAppContext();
   const { data } = useSWR<ISinglePatientResData>(
-    `/api/patient/${state.apiPatientId}`
+    `${BASE_URL}/patients/${state.apiPatientId}`
   );
   const { mutate } = useSWRConfig();
 
@@ -40,18 +41,21 @@ const EditPatientDetailsForm = () => {
       patient: { ...data?.patient, ...formData },
     };
 
-    await mutate(`/api/patient/${state.apiPatientId}`, newData, false);
+    await mutate(`${BASE_URL}/patients/${state.apiPatientId}`, newData, false);
 
     try {
-      const response = await fetch(`/api/patient/${state.apiPatientId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-        }),
-      });
+      const response = await fetch(
+        `${BASE_URL}/patients/${state.apiPatientId}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+          }),
+        }
+      );
 
       const { message }: IMessageFromResData = await response.json();
 

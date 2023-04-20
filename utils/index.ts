@@ -8,3 +8,6 @@ export const formatDate = (
   });
   return format(date).toString();
 };
+
+const URL = process.env.NEXT_PUBLIC_URL as string;
+export const BASE_URL = `${URL}/api`;
