@@ -9,9 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Image from 'next/image';
 import useSWR from 'swr';
+import { BASE_URL } from 'utils';
 
 const Table = () => {
-  const { data } = useSWR<IAllPatientsResData>('/api/patient', {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`, {
     suspense: true,
   });
 

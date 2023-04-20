@@ -4,6 +4,7 @@ import { useAppContext } from '@/store/appContext';
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { MdDriveFolderUpload } from 'react-icons/md';
+import { BASE_URL } from 'utils';
 
 interface IFormData {
   firstName: string;
@@ -52,7 +53,7 @@ const AddNewPatientPage = () => {
     setUploading(true);
 
     try {
-      const response = await fetch('/api/patient', {
+      const response = await fetch(`${BASE_URL}/patient`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

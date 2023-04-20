@@ -3,6 +3,7 @@ import { IMessageFromResData } from '@/lib/types';
 import { useAppContext } from '@/store/appContext';
 import { FormEvent, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { BASE_URL } from 'utils';
 
 const ChangePasswordPage = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -37,7 +38,7 @@ const ChangePasswordPage = () => {
       return;
     }
     try {
-      const response = await fetch('/api/admin/change-password', {
+      const response = await fetch(`${BASE_URL}/admin/change-password`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

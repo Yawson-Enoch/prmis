@@ -1,4 +1,4 @@
-import { formatDate } from '../../../utils';
+import { BASE_URL, formatDate } from '../../../utils';
 import styles from './AllPatientsPage.module.scss';
 import { IAllPatientsResData, IReqPatient } from '@/lib/types';
 import { useAppContext } from '@/store/appContext';
@@ -19,7 +19,7 @@ const AllPatientsPage = () => {
 
   const [query, setQuery] = useState('');
 
-  const { data } = useSWR<IAllPatientsResData>('/api/patient', {
+  const { data } = useSWR<IAllPatientsResData>(`${BASE_URL}/patient`, {
     suspense: true,
   });
 
