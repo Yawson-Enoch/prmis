@@ -42,7 +42,7 @@ export default async function handler(
       } catch (error: any) {
         res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
-          .json({ message: error.message });
+          .json({ message: 'Something went wrong. Please try again later.' });
       }
       break;
     }
