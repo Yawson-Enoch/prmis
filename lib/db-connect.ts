@@ -20,6 +20,8 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  mongoose.set('strictQuery', false);
+
   if (cached.conn) {
     return cached.conn;
   }
